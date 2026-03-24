@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ CyberScout
 
-## Getting Started
+### Обучающая игра по кибербезопасности для детей
 
-First, run the development server:
+**CyberScout** — это интерактивный веб-проект, который в игровой форме обучает детей основам безопасного поведения в интернете.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Игрок проходит уровни, выполняет задания и постепенно становится настоящим **кибер-разведчиком**, способным распознавать угрозы в сети.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Цель проекта
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Помочь детям:
 
-## Learn More
+* понимать базовые угрозы интернета
+* научиться защищать свои данные
+* развить критическое мышление при работе с онлайн-контентом
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧩 Основные уровни
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🔗 **Фишинг-атаки**
 
-## Deploy on Vercel
+> Игрок учится отличать настоящие ссылки от поддельных
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🔐 **Надёжные пароли**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Создание сложных и безопасных паролей через мини-игры
+
+🌐 **Проверка доменов**
+
+> Определение фейковых сайтов (например: `g00gle.com`)
+
+💬 **Скам-сообщения**
+
+> Распознавание мошеннических сообщений и манипуляций
+
+---
+
+## 🎮 Особенности проекта
+
+* 🎨 Яркий и дружелюбный интерфейс (ориентирован на детей)
+* 🕹️ Игровая механика с уровнями и прогрессом
+* 🧠 Обучение через практику, а не теорию
+* ⚡ Быстрая и простая навигация
+* 📱 Адаптивный дизайн
+
+---
+
+## 🛠️ Технологический стек
+
+* **Frontend:** React / Next.js
+* **Язык:** TypeScript
+* **State Manager:** Zustand
+* **Архитектура:** Feature-Sliced Design (FSD)
+
+---
+
+## 🧱 Архитектура проекта
+
+Проект построен по методологии **FSD**, что обеспечивает:
+
+* масштабируемость
+* читаемость кода
+* удобство добавления новых уровней
+
+---
+
+## 🚀 Возможности для развития
+
+* 🏆 Система достижений и наград
+* 👤 Профили пользователей
+* 📊 Отслеживание прогресса
+* 🌍 Мультиязычность
+* 🤖 Добавление AI-помощника
+* 🕹️ Новые уровни и мханики
+
+---
+
+## 📌 О проекте
+
+Проект разработан в рамках конкурса:
+
+> 🛡️ **«КиберПраво: твой щит в сети»**
+
+---
+
+## 👨‍💻 Автор
+
+**Страленя Артем Викторович**
+Студент 32-П группы
+Бобруйский аграрно-экономический колледж
+
+---
+
+## 💡 Идея проекта
+
+> В современном мире дети сталкиваются с интернетом с раннего возраста,
+> но редко получают системное обучение безопасности.
+
+**CyberScout** решает эту проблему через геймификацию —
+делая обучение не скучным, а увлекательным приключением.
+
