@@ -1,0 +1,19 @@
+:root {
+    --color-base:#FFFFFF;
+    --color-primary-100:#EEEFFF;
+    --color-primary-200:#EFF0FF;
+    --color-primary-300:rgba(90, 114, 197, 0.50);
+    --color-primary-700:#6E9FFF;
+    --color-primary-800: #0057BD;
+
+    --spacing-sm:8px;
+    --spacing-s:12px;
+    --spacing-m:16px;
+    --spacing-l:24px;
+    --spacing-xl:48px;
+
+    --border-radius:48px;
+    
+    --gradient-base:linear-gradient(90deg, var(--color-primary-800) 0%, var(--color-primary-700) 100%);
+
+}
