@@ -1,0 +1,33 @@
+.button {
+    width: 415px;
+    color: var(--color-base);
+    display: flex;
+    gap: var(--spacing-s);
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-m);
+    border-radius: var(--border-radius);
+    background: var(--gradient-base);
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    transition: opacity, box-shadow,filter, var(--transition);
+}
+
+.button:hover:not(:disabled) {
+    filter: hue-rotate(40deg);
+}
+
+.button:active:not(:disabled) {
+    opacity: 0.75;
+}
+
+.button:focus-visible {
+    outline: 3px solid var(--color-primary-800);
+    outline-offset: 3px;
+}
+
+.button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}

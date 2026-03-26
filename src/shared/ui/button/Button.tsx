@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from "react"
 import styles from "./button.module.css"
 import clsx from "clsx"
@@ -9,9 +11,9 @@ interface IProps {
     children: ReactNode
 }
 
-export default function Button({variant, onClick,isDisable,children}:IProps) {
+export function Button({variant, onClick,isDisable,children}:IProps) {
   return (
-    <button className={clsx(styles.button, styles[variant], isDisable && styles.disabled) }onClick={onClick}>
+    <button className={clsx(styles.button, styles[variant])} onClick={onClick} disabled={isDisable}>
       {children}
     </button>
   )
