@@ -1,7 +1,7 @@
 "use client"; // спросить 
 
 import { useState } from "react";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Image from 'next/image'
 import {Button, Icon, Input} from "@/shared/ui";
 import { AVATARS } from "@/entities/avatar/model/avatars";
@@ -41,13 +41,13 @@ export default function Home() {
       <main className={styles.main}>
         <form className={styles.form}>
           <div className={styles.formWrapper}> 
-            <label htmlFor="name" className={styles.label}>
+            <label htmlFor="name" className={styles.subtitle}>
               Как тебя зовут
             </label>
             <Input id="name" placeholder="Введи имя..."/>
           </div>
-          <fieldset>
-            <legend className={styles.label}>Выбери своего аватара</legend>
+          <fieldset className={styles.avatarFieldset}>
+            <legend className={styles.subtitle}>Выбери своего аватара</legend>
             <ul className={styles.avatarList}>
              {avatars}
           </ul>

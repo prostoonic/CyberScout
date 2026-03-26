@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react"
-import styles from "./button.module.css"
+import styles from "./button.module.scss"
 import clsx from "clsx"
 
 interface IProps {

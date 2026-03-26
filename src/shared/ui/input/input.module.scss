@@ -12,17 +12,17 @@
     color: var(--color-primary-800);
     width: 100%;
     transition: border-color var(--transition), background-color var(--transition);
-}
 
-.input::placeholder {
-    color: var(--color-primary-300);
-}
+    &::placeholder {
+        color: var(--color-primary-300);
+    }
 
-.input:hover {
-    background-color: var(--color-primary-100);
-}
+    &:hover {
+        background-color: var(--color-primary-100);
+    }
 
-.input:focus {
-    border-color: var(--color-primary-800);
-    background-color: var(--color-primary-100);
+    &:focus {
+        border-color: var(--color-primary-800);
+        background-color: var(--color-primary-100);
+    }
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import "@/app/styles/globals.css";
+import "@/app/styles/globals.scss";
 
 const inter = Inter({
   variable: "--font-inter",
