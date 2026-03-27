@@ -71,11 +71,14 @@
   width: 36px;
   height: 8px;
   border-radius: var(--border-radius);
-  transition: background 0.3s ease;
+  transition:
+    background 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .roundDotEmpty {
-  background: var(--color-primary-200);
+  background: transparent;
+  border: 2px solid rgba(90, 114, 197, 0.35);
 }
 
 .roundDotActive {
