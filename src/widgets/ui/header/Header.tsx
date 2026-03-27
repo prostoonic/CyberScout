@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from './header.module.scss'
 import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { AVATARS } from '@/entities/avatar/model/avatars'
@@ -16,9 +17,9 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <Link href="/levels" className={styles.logo} aria-label="CyberScout — на карту уровней">
         <Image src="/logo.svg" alt="CyberScout" width={115} height={28} />
-      </div>
+      </Link>
 
       <div className={styles.center}>
         <div className={styles.progressWrapper}>

@@ -1,5 +1,6 @@
 .button {
-  width: 415px;
+  width: 100%;
+  max-width: 415px;
   color: var(--color-base);
   display: flex;
   gap: var(--spacing-s);

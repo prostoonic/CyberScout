@@ -2,19 +2,48 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Input, Button, Icon } from '@/shared/ui'
+import { Input, Button, Icon, SuccessModal, LevelIntroModal } from '@/shared/ui'
 import { useUserStore } from '@/entities/user'
 import { usePasswordValidation } from '../model/usePasswordValidation'
 import { ChecklistItem } from './ChecklistItem'
 import { PasswordStrengthBar } from './PasswordStrengthBar'
-import { SuccessModal } from './SuccessModal'
 import styles from './password-shield.module.scss'
+import introStyles from './intro-content.module.scss'
 
 const LEVEL_ID = 1
+
+function Level1IntroContent() {
+  return (
+    <div className={introStyles.content}>
+      <p className={introStyles.lead}>
+        Пароль — это защита твоего аккаунта. Если пароль простой, злоумышленники могут легко его
+        подобрать и получить доступ к твоим данным, играм и личной информации. Сложный пароль
+        делает твой аккаунт безопаснее и защищает от взлома.
+      </p>
+
+      <h3 className={introStyles.listTitle}>Чек-лист хорошего пароля:</h3>
+      <ul className={introStyles.list}>
+        <li>Минимум 8 символов</li>
+        <li>Есть заглавная буква (A–Z)</li>
+        <li>Есть строчная буква (a–z)</li>
+        <li>Есть цифра (0–9)</li>
+        <li>Есть специальный символ (!@#$%^&*)</li>
+        <li>Не содержит личную информацию (имя, дата рождения)</li>
+        <li>Уникальный, не используется на других сайтах</li>
+      </ul>
+
+      <div className={introStyles.example}>
+        <span className={introStyles.exampleLabel}>Пример хорошего пароля:</span>
+        <code className={introStyles.exampleCode}>G4m3!Hero#2026</code>
+      </div>
+    </div>
+  )
+}
 
 export function PasswordShield() {
   const router = useRouter()
   const completeLevel = useUserStore((s) => s.completeLevel)
+  const [showIntro, setShowIntro] = useState(true)
   const [showModal, setShowModal] = useState(false)
 
   const {
@@ -57,6 +86,16 @@ export function PasswordShield() {
 
   return (
     <>
+      {showIntro && (
+        <LevelIntroModal
+          levelNumber={1}
+          levelTitle="Надёжный пароль"
+          onStart={() => setShowIntro(false)}
+        >
+          <Level1IntroContent />
+        </LevelIntroModal>
+      )}
+
       <main className={styles.main}>
         <div className={styles.container}>
           <header className={styles.pageHeader}>
@@ -65,16 +104,12 @@ export function PasswordShield() {
             </div>
             <div>
               <h1 className={styles.title}>Надёжный пароль</h1>
-              <p className={styles.subtitle}>
-                Создай пароль, который не взломают хакеры!
-              </p>
+              <p className={styles.subtitle}>Создай пароль, который не взломают хакеры!</p>
             </div>
           </header>
 
           <section className={styles.card} aria-labelledby="form-heading">
-            <h2 id="form-heading" className={styles.sectionTitle}>
-              Придумай пароль
-            </h2>
+            <h2 id="form-heading" className={styles.sectionTitle}>Придумай пароль</h2>
 
             <form
               className={styles.form}
@@ -122,11 +157,7 @@ export function PasswordShield() {
                 </p>
               </div>
 
-              <Button
-                variant="primary"
-                onClick={handleSubmit}
-                isDisable={!canSubmit}
-              >
+              <Button variant="primary" onClick={handleSubmit} isDisable={!canSubmit}>
                 <span>Завершить уровень</span>
                 <Icon icon="RocketIcon" />
               </Button>
@@ -136,7 +167,10 @@ export function PasswordShield() {
       </main>
 
       {showModal && (
-        <SuccessModal onClose={handleModalClose} />
+        <SuccessModal
+          onClose={handleModalClose}
+          description="Отличная работа! Ты создал надёжный пароль и знаешь, как защитить свой аккаунт. Продолжай своё кибер-приключение!"
+        />
       )}
     </>
   )

@@ -23,6 +23,8 @@ function computeLevels(completedLevels: number[]): Level[] {
 
 const LEVEL_ROUTES: Record<number, string> = {
   1: '/levels/1',
+  2: '/levels/2',
+  3: '/levels/3',
 }
 
 export function AdventureMap() {

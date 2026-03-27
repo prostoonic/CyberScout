@@ -8,8 +8,6 @@ export interface Level {
   icon: string
   status: LevelStatus
   isFinal?: boolean
-  starsEarned?: number
-  maxStars?: number
 }
 
 export const LEVELS: Level[] = [
@@ -20,8 +18,6 @@ export const LEVELS: Level[] = [
     description: 'Как создавать надёжные пароли и хранить их в безопасности',
     icon: 'KeyIcon',
     status: 'completed',
-    starsEarned: 3,
-    maxStars: 3,
   },
   {
     id: 2,
@@ -34,16 +30,16 @@ export const LEVELS: Level[] = [
   {
     id: 3,
     number: 3,
-    title: 'Личные данные',
-    description: 'Какую информацию можно публиковать в интернете',
+    title: 'Фальшивые домены',
+    description: 'Как распознавать поддельные сайты и домены',
     icon: 'ShieldIcon',
     status: 'current',
   },
   {
     id: 4,
     number: 4,
-    title: 'Кибербуллинг',
-    description: 'Как вести себя и защититься от травли в сети',
+    title: 'Скам-сообщения',
+    description: 'Как распознавать мошеннические сообщения и спам',
     icon: 'ChatWarningIcon',
     status: 'locked',
   },
