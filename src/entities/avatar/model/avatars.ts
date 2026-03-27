@@ -1,26 +1,26 @@
 export const AVATARS = [
-    {
-        id:1,
-        image:"/avatars/test.svg",
-    },
-    {
-        id:2,
-        image:"/avatars/test.svg",
-    },
-    {
-        id:3,
-        image:"/avatars/test.svg",
-    },
-    {
-        id:4,
-        image:"/avatars/test.svg",
-    },
-    {
-        id:5,
-        image:"/avatars/test.svg",
-    },
-    {
-        id:6,
-        image:"/avatars/test.svg",
-    },
+  {
+    id: 1,
+    image: '/avatars/test.svg',
+  },
+  {
+    id: 2,
+    image: '/avatars/test.svg',
+  },
+  {
+    id: 3,
+    image: '/avatars/test.svg',
+  },
+  {
+    id: 4,
+    image: '/avatars/test.svg',
+  },
+  {
+    id: 5,
+    image: '/avatars/test.svg',
+  },
+  {
+    id: 6,
+    image: '/avatars/test.svg',
+  },
 ]

@@ -1,35 +1,38 @@
 .button {
-    width: 415px;
-    color: var(--color-base);
-    display: flex;
-    gap: var(--spacing-s);
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-m);
-    border-radius: var(--border-radius);
-    background: var(--gradient-base);
-    border: 0;
-    cursor: pointer;
-    outline: none;
-    transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+  width: 415px;
+  color: var(--color-base);
+  display: flex;
+  gap: var(--spacing-s);
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-m);
+  border-radius: var(--border-radius);
+  background: var(--gradient-base);
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  transition:
+    opacity var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 
-    &:hover:not(:disabled) {
-        opacity: 0.88;
-        transform: translateY(-1px);
-    }
+  &:hover:not(:disabled) {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
 
-    &:active:not(:disabled) {
-        opacity: 0.75;
-        transform: translateY(0);
-    }
+  &:active:not(:disabled) {
+    opacity: 0.75;
+    transform: translateY(0);
+  }
 
-    &:focus-visible {
-        outline: 3px solid var(--color-primary-800);
-        outline-offset: 3px;
-    }
+  &:focus-visible {
+    outline: 3px solid var(--color-primary-800);
+    outline-offset: 3px;
+  }
 
-    &:disabled {
-        opacity: 0.4;
-        cursor: not-allowed;
-    }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 }

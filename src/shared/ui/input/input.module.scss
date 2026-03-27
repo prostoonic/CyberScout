@@ -1,28 +1,30 @@
 .input {
-    padding-inline: var(--spacing-l);
-    padding-block: var(--spacing-m);
-    border-radius: var(--border-radius);
-    background-color: var(--color-primary-200);
-    border: 2px solid transparent;
-    outline: none;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    font-family: var(--font-inter);
-    color: var(--color-primary-800);
-    width: 100%;
-    transition: border-color var(--transition), background-color var(--transition);
+  padding-inline: var(--spacing-l);
+  padding-block: var(--spacing-m);
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary-200);
+  border: 2px solid transparent;
+  outline: none;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-primary-800);
+  width: 100%;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
 
-    &::placeholder {
-        color: var(--color-primary-300);
-    }
+  &::placeholder {
+    color: var(--color-primary-300);
+  }
 
-    &:hover {
-        background-color: var(--color-primary-100);
-    }
+  &:hover {
+    background-color: var(--color-primary-100);
+  }
 
-    &:focus {
-        border-color: var(--color-primary-800);
-        background-color: var(--color-primary-100);
-    }
+  &:focus {
+    border-color: var(--color-primary-800);
+    background-color: var(--color-primary-100);
+  }
 }

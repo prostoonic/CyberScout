@@ -1,17 +1,17 @@
-import RocketIcon from "./icons/RocketIcon";
+import RocketIcon from './icons/RocketIcon'
 
 const iconsMap = {
-    RocketIcon,
-} as const;
+  RocketIcon,
+} as const
 
 type iconName = keyof typeof iconsMap
 
 interface IProps {
-    icon: iconName;
+  icon: iconName
 }
 
-export function Icon({ icon }:IProps) {
-    const IconComponent = iconsMap[icon]
+export function Icon({ icon }: IProps) {
+  const IconComponent = iconsMap[icon]
 
-    return IconComponent ? <IconComponent /> : null
+  return IconComponent ? <IconComponent /> : null
 }
