@@ -47,7 +47,9 @@ export function Header({
 
       <div className={styles.avatar}>
         <span className={styles.avatarText}>Ванька</span>
-        <Image src={avatarSrc} alt="Аватар" width={44} height={44} />
+        <div className={styles.avatarImage}>
+          <Image src={avatarSrc} alt="Аватар" width={44} height={44} />
+        </div>
       </div>
     </header>
   )
