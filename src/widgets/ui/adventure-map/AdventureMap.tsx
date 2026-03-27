@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { LEVELS } from '@/entities/level'
 import { LevelNode } from '@/entities/level'
 import type { Level, LevelStatus } from '@/entities/level'
@@ -20,12 +21,20 @@ function computeLevels(completedLevels: number[]): Level[] {
   })
 }
 
+const LEVEL_ROUTES: Record<number, string> = {
+  1: '/levels/1',
+}
+
 export function AdventureMap() {
+  const router = useRouter()
   const completedLevels = useUserStore((s) => s.completedLevels)
   const levels = computeLevels(completedLevels)
 
   function handlePlay(id: number) {
-    console.log('play level', id)
+    const route = LEVEL_ROUTES[id]
+    if (route) {
+      router.push(route)
+    }
   }
 
   return (
