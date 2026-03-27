@@ -1,3 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
 .input {
   padding-inline: var(--spacing-l);
   padding-block: var(--spacing-m);
@@ -27,4 +34,26 @@
     border-color: var(--color-primary-800);
     background-color: var(--color-primary-100);
   }
+
+  &.inputError {
+    border-color: var(--color-error);
+    background-color: var(--color-error-bg);
+
+    &:hover {
+      background-color: var(--color-error-bg);
+    }
+
+    &:focus {
+      border-color: var(--color-error);
+      background-color: var(--color-error-bg);
+    }
+  }
+}
+
+.errorText {
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-error);
+  padding-inline: var(--spacing-s);
 }

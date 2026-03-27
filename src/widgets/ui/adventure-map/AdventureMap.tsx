@@ -2,11 +2,29 @@
 
 import { LEVELS } from '@/entities/level'
 import { LevelNode } from '@/entities/level'
+import type { Level, LevelStatus } from '@/entities/level'
 import styles from './adventure-map.module.scss'
+import { useUserStore } from '@/entities/user'
+
+function computeLevels(completedLevels: number[]): Level[] {
+  let foundCurrent = false
+  return LEVELS.map((level) => {
+    if (completedLevels.includes(level.id)) {
+      return { ...level, status: 'completed' as LevelStatus }
+    }
+    if (!foundCurrent) {
+      foundCurrent = true
+      return { ...level, status: 'current' as LevelStatus }
+    }
+    return { ...level, status: 'locked' as LevelStatus }
+  })
+}
 
 export function AdventureMap() {
+  const completedLevels = useUserStore((s) => s.completedLevels)
+  const levels = computeLevels(completedLevels)
+
   function handlePlay(id: number) {
-    // TODO: navigate to level page
     console.log('play level', id)
   }
 
@@ -23,7 +41,7 @@ export function AdventureMap() {
         </div>
 
         <div className={styles.mapWrapper} role="list" aria-label="Уровни игры">
-          {LEVELS.map((level, index) => (
+          {levels.map((level, index) => (
             <div
               key={level.id}
               className={styles.levelItem}

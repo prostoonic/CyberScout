@@ -1,18 +1,18 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './header.module.scss'
+import { useUserStore, MAX_LIVES } from '@/entities/user'
+import { AVATARS } from '@/entities/avatar/model/avatars'
 
-interface IProps {
-  progress?: number
-  lives?: number
-  avatarSrc?: string
-}
+export function Header() {
+  const username = useUserStore((s) => s.username)
+  const progress = useUserStore((s) => s.progress)
+  const selectedAvatarId = useUserStore((s) => s.selectedAvatarId)
+  const lives = useUserStore((s) => s.lives)
 
-export function Header({
-  progress = 20,
-  lives = 3,
-  avatarSrc = '/avatars/test.svg',
-}: IProps) {
-  const MAX_LIVES = 3
+  const avatarSrc =
+    AVATARS.find((a) => a.id === selectedAvatarId)?.image ?? '/avatars/test.svg'
 
   return (
     <header className={styles.header}>
@@ -31,22 +31,24 @@ export function Header({
           <span className={styles.progressLabel}>{progress}%</span>
         </div>
         <ul className={styles.heartsList}>
-          {Array.from({ length: MAX_LIVES }).map((_, i) => (
-            <li key={i} className={styles.heartItem}>
-              <Image
-                src="/heart.svg"
-                alt="Жизнь"
-                width={20}
-                height={19}
-                className={i >= lives ? styles.heartLost : ''}
-              />
-            </li>
-          ))}
+          {Array.from({ length: MAX_LIVES }).map((_, i) => {
+            const isLost = i >= lives
+            return (
+              <li key={i} className={styles.heartItem}>
+                <Image
+                  src={isLost ? '/heart-broken.svg' : '/heart.svg'}
+                  alt={isLost ? 'Потраченная жизнь' : 'Жизнь'}
+                  width={20}
+                  height={19}
+                />
+              </li>
+            )
+          })}
         </ul>
       </div>
 
       <div className={styles.avatar}>
-        <span className={styles.avatarText}>Ванька</span>
+        <span className={styles.avatarText}>{username || 'Гость'}</span>
         <div className={styles.avatarImage}>
           <Image src={avatarSrc} alt="Аватар" width={44} height={44} />
         </div>
