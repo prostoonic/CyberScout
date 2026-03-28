@@ -26,6 +26,7 @@ const LEVEL_ROUTES: Record<number, string> = {
   2: '/levels/2',
   3: '/levels/3',
   4: '/levels/4',
+  5: '/levels/5',
 }
 
 export function AdventureMap() {
