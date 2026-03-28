@@ -2,6 +2,7 @@
 
 import type { ErrorInfo } from '../model/useDomainCatcher'
 import styles from './domain-error-modal.module.scss'
+import { useBodyScrollLock } from '@/shared/lib/useBodyScrollLock'
 
 interface IProps {
   errorInfo: ErrorInfo
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 export function DomainErrorModal({ errorInfo, onClose }: IProps) {
+  useBodyScrollLock()
   const { round, selectedDomainValue } = errorInfo
   const phishingDomain = round.domains.find((d) => d.isPhishing)
 

@@ -2,6 +2,7 @@
 
 import type { Chat } from '../model/chats'
 import styles from './messenger-error-modal.module.scss'
+import { useBodyScrollLock } from '@/shared/lib/useBodyScrollLock'
 
 interface IProps {
   chat: Chat
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 export function MessengerErrorModal({ chat, onClose }: IProps) {
+  useBodyScrollLock()
   return (
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="msg-error-title">
       <div className={styles.modal}>

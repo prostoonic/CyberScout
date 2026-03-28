@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import confetti from 'canvas-confetti'
 import styles from './success-modal.module.scss'
 import { Button } from '../button/Button'
+import { useBodyScrollLock, useFocusTrap } from '@/shared/lib/useBodyScrollLock'
 
 interface IProps {
   onClose: () => void
@@ -20,6 +21,9 @@ export function SuccessModal({
   buttonLabel = 'Продолжить путешествие',
   headerHeight = 64,
 }: IProps) {
+  useBodyScrollLock()
+  const modalRef = useFocusTrap<HTMLDivElement>()
+
   const hasLaunched = useRef(false)
 
   useEffect(() => {
@@ -56,7 +60,7 @@ export function SuccessModal({
 
   return (
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
-      <div className={styles.modal}>
+      <div className={styles.modal} ref={modalRef}>
         <div className={styles.iconWrapper} aria-hidden="true">
           <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
             <circle cx="36" cy="36" r="36" fill="url(#successGradient)" />

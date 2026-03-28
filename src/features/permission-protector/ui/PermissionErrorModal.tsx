@@ -3,6 +3,7 @@
 import type { ErrorDetail } from '../model/usePermissionProtector'
 import { ALL_PERMISSIONS } from '../model/apps'
 import styles from './permission-error-modal.module.scss'
+import { useBodyScrollLock } from '@/shared/lib/useBodyScrollLock'
 
 interface IProps {
   errorDetail: ErrorDetail
@@ -10,6 +11,7 @@ interface IProps {
 }
 
 export function PermissionErrorModal({ errorDetail, onClose }: IProps) {
+  useBodyScrollLock()
   const { app, extraPermissions, missingPermissions } = errorDetail
 
   const getPermission = (id: string) => ALL_PERMISSIONS.find((p) => p.id === id)

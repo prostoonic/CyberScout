@@ -1,8 +1,9 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { useEffect, ReactNode } from 'react'
 import styles from './level-intro-modal.module.scss'
 import { Button } from '../button/Button'
+import { useBodyScrollLock, useFocusTrap } from '@/shared/lib/useBodyScrollLock'
 
 interface IProps {
   levelNumber: number
@@ -12,9 +13,20 @@ interface IProps {
 }
 
 export function LevelIntroModal({ levelNumber, levelTitle, onStart, children }: IProps) {
+  useBodyScrollLock()
+  const modalRef = useFocusTrap<HTMLDivElement>()
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') onStart()
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [onStart])
+
   return (
     <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="intro-modal-title">
-      <div className={styles.modal}>
+      <div className={styles.modal} ref={modalRef}>
         <div className={styles.topRow}>
           <span className={styles.levelBadge}>Уровень {levelNumber}</span>
         </div>

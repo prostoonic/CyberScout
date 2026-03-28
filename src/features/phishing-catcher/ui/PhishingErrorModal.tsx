@@ -2,6 +2,7 @@
 
 import type { ErrorInfo } from '../model/usePhishingCatcher'
 import styles from './phishing-error-modal.module.scss'
+import { useBodyScrollLock } from '@/shared/lib/useBodyScrollLock'
 
 interface IProps {
   errorInfo: ErrorInfo
@@ -9,6 +10,7 @@ interface IProps {
 }
 
 export function PhishingErrorModal({ errorInfo, onClose }: IProps) {
+  useBodyScrollLock()
   const { email, userAnswer } = errorInfo
   const calledPhishing = userAnswer === 'phishing'
 

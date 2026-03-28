@@ -18,4 +18,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-primary-200);
+
+  &.scroll-locked {
+    overflow: hidden;
+  }
+}
+
+/* Prevent scroll leaking from modal content to page */
+[role='dialog'] {
+  overscroll-behavior: contain;
 }
