@@ -17,6 +17,7 @@ interface UserState {
   loseLife: () => void
   resetLives: () => void
   startGame: (username: string, avatarId: number) => void
+  retryAfterGameOver: () => void
 }
 
 export const useUserStore = create<UserState>()(
@@ -49,6 +50,16 @@ export const useUserStore = create<UserState>()(
 
       startGame: (username, avatarId) =>
         set({ username, selectedAvatarId: avatarId, lives: MAX_LIVES }),
+
+      retryAfterGameOver: () =>
+        set((state) => {
+          const completed = state.completedLevels.slice(0, -1)
+          const progress =
+            completed.length > 0
+              ? Math.round((completed.length / LEVELS.length) * 100)
+              : 0
+          return { lives: MAX_LIVES, completedLevels: completed, progress }
+        }),
     }),
     { name: 'cyberscout-user' }
   )

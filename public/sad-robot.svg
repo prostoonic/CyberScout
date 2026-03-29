@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 320" fill="none">
+  <!-- Antenna -->
+  <rect x="134" y="20" width="12" height="30" rx="6" fill="#3d57a7"/>
+  <circle cx="140" cy="16" r="10" fill="#6e9fff"/>
+  <circle cx="140" cy="16" r="5" fill="#0057bd"/>
+
+  <!-- Head -->
+  <rect x="60" y="50" width="160" height="120" rx="24" fill="#eeefff" stroke="#3d57a7" stroke-width="3"/>
+
+  <!-- Eyes (sad) -->
+  <ellipse cx="103" cy="100" rx="18" ry="18" fill="white" stroke="#3d57a7" stroke-width="2.5"/>
+  <ellipse cx="177" cy="100" rx="18" ry="18" fill="white" stroke="#3d57a7" stroke-width="2.5"/>
+  <!-- Pupils looking down-left -->
+  <circle cx="99" cy="104" r="8" fill="#0057bd"/>
+  <circle cx="173" cy="104" r="8" fill="#0057bd"/>
+  <!-- Shine -->
+  <circle cx="95" cy="100" r="3" fill="white"/>
+  <circle cx="169" cy="100" r="3" fill="white"/>
+  <!-- Sad eyebrows -->
+  <path d="M88 82 Q103 75 118 82" stroke="#3d57a7" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M162 82 Q177 75 192 82" stroke="#3d57a7" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Mouth (sad arc) -->
+  <path d="M110 137 Q140 124 170 137" stroke="#3d57a7" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Tear left eye -->
+  <ellipse cx="96" cy="122" rx="4" ry="7" fill="#6e9fff" opacity="0.7"/>
+  <!-- Tear right eye -->
+  <ellipse cx="170" cy="122" rx="4" ry="7" fill="#6e9fff" opacity="0.7"/>
+
+  <!-- Neck -->
+  <rect x="122" y="170" width="36" height="20" rx="8" fill="#3d57a7"/>
+
+  <!-- Body -->
+  <rect x="50" y="190" width="180" height="110" rx="24" fill="#eeefff" stroke="#3d57a7" stroke-width="3"/>
+
+  <!-- Chest panel -->
+  <rect x="90" y="210" width="100" height="60" rx="12" fill="#eff0ff" stroke="#6e9fff" stroke-width="2"/>
+
+  <!-- Question mark on chest -->
+  <text x="140" y="250" text-anchor="middle" font-size="36" font-weight="800" font-family="Arial" fill="#6e9fff">?</text>
+
+  <!-- Left arm -->
+  <rect x="14" y="198" width="36" height="80" rx="18" fill="#eeefff" stroke="#3d57a7" stroke-width="3"/>
+  <!-- Left hand -->
+  <circle cx="32" cy="288" r="14" fill="#eeefff" stroke="#3d57a7" stroke-width="3"/>
+
+  <!-- Right arm -->
+  <rect x="230" y="198" width="36" height="80" rx="18" fill="#eeefff" stroke="#3d57a7" stroke-width="3"/>
+  <!-- Right hand -->
+  <circle cx="248" cy="288" r="14" fill="#eeefff" stroke="#3d57a7" stroke-width="3"/>
+
+  <!-- Legs -->
+  <rect x="86" y="300" width="36" height="16" rx="8" fill="#3d57a7"/>
+  <rect x="158" y="300" width="36" height="16" rx="8" fill="#3d57a7"/>
+</svg>

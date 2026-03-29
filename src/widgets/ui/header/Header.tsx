@@ -2,20 +2,33 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import styles from './header.module.scss'
 import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { AVATARS } from '@/entities/avatar/model/avatars'
+import { GameOverModal } from '@/shared/ui'
 
 export function Header() {
+  const router = useRouter()
   const username = useUserStore((s) => s.username)
   const progress = useUserStore((s) => s.progress)
   const selectedAvatarId = useUserStore((s) => s.selectedAvatarId)
   const lives = useUserStore((s) => s.lives)
+  const retryAfterGameOver = useUserStore((s) => s.retryAfterGameOver)
+
+  function handleRetry() {
+    retryAfterGameOver()
+    router.replace('/levels')
+  }
 
   const avatarSrc =
     AVATARS.find((a) => a.id === selectedAvatarId)?.image ?? '/avatars/test.svg'
 
   return (
+    <>
+    {lives === 0 && username && (
+      <GameOverModal onRetry={handleRetry} />
+    )}
     <header className={styles.header}>
       <Link href="/levels" className={styles.logo} aria-label="CyberScout — на карту уровней">
         <Image src="/logo.svg" alt="CyberScout" width={115} height={28} />
@@ -55,5 +68,6 @@ export function Header() {
         </div>
       </div>
     </header>
+    </>
   )
 }

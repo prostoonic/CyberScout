@@ -1,0 +1,115 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-100);
+  padding: var(--spacing-xl) var(--spacing-m);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  max-width: 860px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    text-align: center;
+  }
+}
+
+.robotWrapper {
+  flex-shrink: 0;
+  width: 280px;
+
+  img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 16px 32px rgba(0, 87, 189, 0.18));
+  }
+
+  @media (max-width: 480px) {
+    width: 200px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-m);
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
+}
+
+.code {
+  font-size: 96px;
+  font-weight: 900;
+  font-family: var(--font-plus-jakarta-sans);
+  background: var(--gradient-base);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  letter-spacing: -4px;
+
+  @media (max-width: 480px) {
+    font-size: 72px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+  margin: 0;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
+}
+
+.description {
+  font-size: 16px;
+  font-family: var(--font-inter);
+  color: var(--color-primary-700);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 420px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: var(--gradient-base);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-plus-jakarta-sans);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: opacity var(--transition), transform var(--transition);
+  margin-top: var(--spacing-sm);
+
+  &:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-primary-800);
+    outline-offset: 4px;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
