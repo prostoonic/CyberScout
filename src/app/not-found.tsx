@@ -13,6 +13,8 @@ export default function NotFoundPage() {
             width={280}
             height={320}
             priority
+            sizes="(max-width: 480px) 200px, 280px"
+            style={{ width: '100%', height: 'auto' }}
           />
         </div>
 

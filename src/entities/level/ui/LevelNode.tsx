@@ -48,9 +48,6 @@ export function LevelNode({ level, onPlay }: IProps) {
             <Icon icon={isLocked ? 'LockIcon' : icon} />
           </span>
 
-          {isFinal && !isLocked && (
-            <span className={styles.finalBadge} aria-hidden="true">★</span>
-          )}
         </button>
 
         <span className={styles.numberBadge} aria-hidden="true">

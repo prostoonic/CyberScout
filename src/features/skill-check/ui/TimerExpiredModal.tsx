@@ -36,7 +36,7 @@ export function TimerExpiredModal({ onRestart }: IProps) {
           Время вышло!
         </h2>
         <p className={styles.description}>
-          Ты не успел набрать 10 очков за 90 секунд. Не расстраивайся — попробуй ещё раз!
+          Ты не успел набрать 10 очков за 30 секунд. Не расстраивайся — попробуй ещё раз!
         </p>
 
         <button className={styles.button} onClick={onRestart} type="button">

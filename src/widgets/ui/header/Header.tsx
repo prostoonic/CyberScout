@@ -24,7 +24,7 @@ export function Header() {
   }
 
   const avatarSrc =
-    AVATARS.find((a) => a.id === selectedAvatarId)?.image ?? '/avatars/test.svg'
+    AVATARS.find((a) => a.id === selectedAvatarId)?.image ?? '/avatars/Avatar1.svg'
 
   return (
     <>

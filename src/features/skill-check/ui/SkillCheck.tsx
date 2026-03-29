@@ -27,7 +27,7 @@ function SkillCheckIntroContent() {
           <span className={introStyles.statLabel}>Очков для победы</span>
         </div>
         <div className={introStyles.stat}>
-          <span className={introStyles.statValue}>90</span>
+          <span className={introStyles.statValue}>30</span>
           <span className={introStyles.statLabel}>Секунд на всё</span>
         </div>
         <div className={introStyles.stat}>
@@ -39,7 +39,7 @@ function SkillCheckIntroContent() {
       <ul className={introStyles.rulesList}>
         <li className={introStyles.rulesItem}>Появляется ситуация — ты выбираешь «Безопасно» или «Опасно»</li>
         <li className={introStyles.rulesItem}>Темы: пароли, фишинг, домены, 2FA, мессенджеры, Wi-Fi, разрешения</li>
-        <li className={introStyles.rulesItem}>Если таймер истечёт — уровень начнётся заново и спишется жизнь</li>
+        <li className={introStyles.rulesItem}>Если таймер истечёт — уровень начнётся заново (жизнь не снимается)</li>
       </ul>
 
       <p className={introStyles.mainRule}>
@@ -79,7 +79,6 @@ export function SkillCheck() {
   }
 
   function handleTimeoutRestart() {
-    loseLife()
     start()
   }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import confetti from 'canvas-confetti'
@@ -17,18 +17,24 @@ const ACHIEVEMENTS = [
   { icon: '🏆', title: 'Кибер Герой', desc: 'Прошёл финальное испытание' },
 ]
 
-function getCurrentDate(): string {
-  return new Date().toLocaleDateString('ru-RU', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-}
-
 export function VictoryPage() {
   const username = useUserStore((s) => s.username)
   const selectedAvatarId = useUserStore((s) => s.selectedAvatarId)
   const hasLaunched = useRef(false)
+  const [issueDate, setIssueDate] = useState('')
+  const [issueYear, setIssueYear] = useState('')
+
+  // Дата только на клиенте — иначе возможен hydration mismatch (локаль/таймзона)
+  useEffect(() => {
+    setIssueDate(
+      new Date().toLocaleDateString('ru-RU', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      })
+    )
+    setIssueYear(String(new Date().getFullYear()))
+  }, [])
 
   const avatarSrc =
     AVATARS.find((a) => a.id === selectedAvatarId)?.image ?? '/avatars/Avatar1.svg'
@@ -128,7 +134,7 @@ export function VictoryPage() {
                   </div>
                   <div className={styles.infoRow}>
                     <dt className={styles.infoLabel}>Дата выдачи</dt>
-                    <dd className={styles.infoValue}>{getCurrentDate()}</dd>
+                    <dd className={styles.infoValue}>{issueDate || '—'}</dd>
                   </div>
                 </dl>
               </div>
@@ -158,7 +164,7 @@ export function VictoryPage() {
                 ))}
               </div>
               <span className={styles.passportCode}>
-                CS-{new Date().getFullYear()}-HERO
+                CS-{issueYear || '—'}-HERO
               </span>
             </div>
           </div>
