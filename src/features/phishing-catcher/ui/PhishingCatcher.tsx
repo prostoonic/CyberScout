@@ -50,6 +50,7 @@ export function PhishingCatcher() {
   const router = useRouter()
   const completeLevel = useUserStore((s) => s.completeLevel)
   const loseLife = useUserStore((s) => s.loseLife)
+  const addMistake = useUserStore((s) => s.addMistake)
   const [showIntro, setShowIntro] = useState(true)
   const [mobileView, setMobileView] = useState<'list' | 'email'>('list')
 
@@ -79,6 +80,13 @@ export function PhishingCatcher() {
   }
 
   function handleErrorDismiss() {
+    if (errorInfo) {
+      const wasPhishing = errorInfo.email.isPhishing
+      const mistakeText = wasPhishing
+        ? `Пропустил фишинг от ${errorInfo.email.fromEmail}`
+        : `Ложная тревога: письмо от ${errorInfo.email.fromEmail} было безопасным`
+      addMistake(mistakeText)
+    }
     loseLife()
     dismissError()
   }

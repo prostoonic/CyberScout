@@ -2,6 +2,7 @@
 
 import styles from './game-over-modal.module.scss'
 import { useBodyScrollLock, useFocusTrap } from '@/shared/lib/useBodyScrollLock'
+import { useUserStore } from '@/entities/user'
 
 interface IProps {
   onRetry: () => void
@@ -13,15 +14,10 @@ const CONSEQUENCES = [
   { icon: '🔒', text: 'Потерян доступ к аккаунту' },
 ]
 
-const MISTAKES = [
-  'Ты передал код подтверждения',
-  'Ты перешёл по подозрительной ссылке',
-  'Ты доверился незнакомому отправителю',
-]
-
 export function GameOverModal({ onRetry }: IProps) {
   useBodyScrollLock()
   const modalRef = useFocusTrap<HTMLDivElement>()
+  const mistakes = useUserStore((s) => s.mistakes)
 
   return (
     <div
@@ -65,19 +61,19 @@ export function GameOverModal({ onRetry }: IProps) {
           </ul>
         </div>
 
-        <div className={styles.mistakesBlock}>
-          <p className={styles.mistakesTitle}>
-            Разбор ошибок
-          </p>
-          <ul className={styles.mistakesList} role="list">
-            {MISTAKES.map((m) => (
-              <li key={m} className={styles.mistakeItem}>
-                <span className={styles.mistakeIcon} aria-hidden="true">✗</span>
-                <span>{m}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {mistakes.length > 0 && (
+          <div className={styles.mistakesBlock}>
+            <p className={styles.mistakesTitle}>Разбор ошибок</p>
+            <ul className={styles.mistakesList} role="list">
+              {mistakes.map((m, i) => (
+                <li key={i} className={styles.mistakeItem}>
+                  <span className={styles.mistakeIcon} aria-hidden="true">✗</span>
+                  <span>{m}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <button className={styles.retryButton} onClick={onRetry} type="button">
           Попробовать ещё

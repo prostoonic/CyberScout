@@ -40,6 +40,7 @@ export function MessengerTrap() {
   const router = useRouter()
   const completeLevel = useUserStore((s) => s.completeLevel)
   const loseLife = useUserStore((s) => s.loseLife)
+  const addMistake = useUserStore((s) => s.addMistake)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -59,6 +60,9 @@ export function MessengerTrap() {
   } = useMessengerTrap()
 
   function handleErrorDismiss() {
+    if (errorChat) {
+      addMistake(`Попался на мошенника: ${errorChat.contactName}`)
+    }
     loseLife()
     dismissError()
   }

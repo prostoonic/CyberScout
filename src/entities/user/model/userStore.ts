@@ -10,6 +10,7 @@ interface UserState {
   completedLevels: number[]
   selectedAvatarId: number | null
   lives: number
+  mistakes: string[]
 
   setUsername: (name: string) => void
   setAvatarId: (id: number) => void
@@ -18,6 +19,8 @@ interface UserState {
   resetLives: () => void
   startGame: (username: string, avatarId: number) => void
   retryAfterGameOver: () => void
+  addMistake: (text: string) => void
+  clearMistakes: () => void
 }
 
 export const useUserStore = create<UserState>()(
@@ -28,6 +31,7 @@ export const useUserStore = create<UserState>()(
       completedLevels: [],
       selectedAvatarId: null,
       lives: MAX_LIVES,
+      mistakes: [],
 
       setUsername: (name) => set({ username: name }),
 
@@ -52,14 +56,14 @@ export const useUserStore = create<UserState>()(
         set({ username, selectedAvatarId: avatarId, lives: MAX_LIVES }),
 
       retryAfterGameOver: () =>
-        set((state) => {
-          const completed = state.completedLevels.slice(0, -1)
-          const progress =
-            completed.length > 0
-              ? Math.round((completed.length / LEVELS.length) * 100)
-              : 0
-          return { lives: MAX_LIVES, completedLevels: completed, progress }
-        }),
+        set({ lives: MAX_LIVES, mistakes: [] }),
+
+      addMistake: (text) =>
+        set((state) => ({
+          mistakes: [...state.mistakes, text],
+        })),
+
+      clearMistakes: () => set({ mistakes: [] }),
     }),
     { name: 'cyberscout-user' }
   )

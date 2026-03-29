@@ -42,6 +42,7 @@ export function DomainCatcher() {
   const router = useRouter()
   const completeLevel = useUserStore((s) => s.completeLevel)
   const loseLife = useUserStore((s) => s.loseLife)
+  const addMistake = useUserStore((s) => s.addMistake)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -61,6 +62,10 @@ export function DomainCatcher() {
   } = useDomainCatcher()
 
   function handleErrorDismiss() {
+    if (errorInfo) {
+      const phishingDomain = errorInfo.round.domains.find((d) => d.isPhishing)
+      addMistake(`Пропустил фишинговый домен: ${phishingDomain?.value ?? ''}`)
+    }
     loseLife()
     dismissError()
   }

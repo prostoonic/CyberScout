@@ -11,6 +11,7 @@ import styles from './skill-check.module.scss'
 import introStyles from './intro-content.module.scss'
 
 const LEVEL_ID = 6
+const TOTAL_TIME = 30
 
 function SkillCheckIntroContent() {
   return (
@@ -60,12 +61,22 @@ export function SkillCheck() {
   const router = useRouter()
   const completeLevel = useUserStore((s) => s.completeLevel)
   const loseLife = useUserStore((s) => s.loseLife)
+  const addMistake = useUserStore((s) => s.addMistake)
 
   const { phase, score, timeLeft, current, lastVerdict, start, answer, restart } =
     useSkillCheck()
 
-  const timePercent = (timeLeft / 90) * 100
-  const isTimeLow = timeLeft <= 20
+  const timePercent = (timeLeft / TOTAL_TIME) * 100
+  const isTimeLow = timeLeft <= 10
+
+  function handleAnswer(verdict: 'safe' | 'danger') {
+    if (!current) return
+    if (verdict !== current.verdict) {
+      loseLife()
+      addMistake(`${current.topic}: ${current.type}`)
+    }
+    answer(verdict)
+  }
 
   function handleTimeoutRestart() {
     loseLife()
@@ -178,7 +189,7 @@ export function SkillCheck() {
               <div className={styles.choiceButtons}>
                 <button
                   className={styles.safeButton}
-                  onClick={() => answer('safe')}
+                  onClick={() => handleAnswer('safe')}
                   type="button"
                   aria-label="Безопасная ситуация"
                   disabled={lastVerdict !== null}
@@ -188,7 +199,7 @@ export function SkillCheck() {
                 </button>
                 <button
                   className={styles.dangerButton}
-                  onClick={() => answer('danger')}
+                  onClick={() => handleAnswer('danger')}
                   type="button"
                   aria-label="Опасная ситуация"
                   disabled={lastVerdict !== null}

@@ -1,22 +1,58 @@
 import { useEffect, useRef } from 'react'
 
-/** Locks body scroll while a modal is mounted and restores it on unmount */
+let scrollLockCount = 0
+let savedScrollY = 0
+
+const html = () => document.documentElement
+const body = () => document.body
+
+function applyScrollLock() {
+  if (scrollLockCount === 0) {
+    savedScrollY = window.scrollY
+    const h = html()
+    const b = body()
+    const scrollbarWidth = window.innerWidth - h.clientWidth
+
+    h.style.overflow = 'hidden'
+    h.style.overscrollBehavior = 'none'
+    b.style.overflow = 'hidden'
+    if (scrollbarWidth > 0) {
+      b.style.paddingRight = `${scrollbarWidth}px`
+    }
+    // iOS / touch: overflow:hidden на body часто не блокирует «резиновый» скролл фона
+    b.style.position = 'fixed'
+    b.style.top = `-${savedScrollY}px`
+    b.style.left = '0'
+    b.style.right = '0'
+    b.style.width = '100%'
+  }
+  scrollLockCount += 1
+}
+
+function releaseScrollLock() {
+  scrollLockCount = Math.max(0, scrollLockCount - 1)
+  if (scrollLockCount > 0) return
+
+  const h = html()
+  const b = body()
+  h.style.overflow = ''
+  h.style.overscrollBehavior = ''
+  b.style.overflow = ''
+  b.style.paddingRight = ''
+  b.style.position = ''
+  b.style.top = ''
+  b.style.left = ''
+  b.style.right = ''
+  b.style.width = ''
+  window.scrollTo(0, savedScrollY)
+}
+
+/** Locks page scroll while a modal is mounted; supports nested modals via ref-counting */
 export function useBodyScrollLock() {
   useEffect(() => {
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
-    const prev = {
-      overflow: document.body.style.overflow,
-      paddingRight: document.body.style.paddingRight,
-    }
-
-    document.body.style.overflow = 'hidden'
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`
-    }
-
+    applyScrollLock()
     return () => {
-      document.body.style.overflow = prev.overflow
-      document.body.style.paddingRight = prev.paddingRight
+      releaseScrollLock()
     }
   }, [])
 }
@@ -63,4 +99,3 @@ export function useFocusTrap<T extends HTMLElement>() {
 
   return ref
 }
-

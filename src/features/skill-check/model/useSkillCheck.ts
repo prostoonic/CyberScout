@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { SITUATIONS, type Situation } from './situations'
 
-const TOTAL_TIME = 90
+const TOTAL_TIME = 30
 const TARGET_SCORE = 10
 
 type GamePhase = 'idle' | 'playing' | 'timeout' | 'won'

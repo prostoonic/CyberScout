@@ -53,6 +53,7 @@ export function PermissionProtector() {
   const router = useRouter()
   const completeLevel = useUserStore((s) => s.completeLevel)
   const loseLife = useUserStore((s) => s.loseLife)
+  const addMistake = useUserStore((s) => s.addMistake)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -70,6 +71,9 @@ export function PermissionProtector() {
   } = usePermissionProtector()
 
   function handleErrorDismiss() {
+    if (errorDetail) {
+      addMistake(`Неверные разрешения для приложения «${errorDetail.app.name}»`)
+    }
     loseLife()
     dismissError()
   }

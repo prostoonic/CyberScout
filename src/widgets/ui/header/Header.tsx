@@ -16,6 +16,8 @@ export function Header() {
   const lives = useUserStore((s) => s.lives)
   const retryAfterGameOver = useUserStore((s) => s.retryAfterGameOver)
 
+  const isGameOver = lives === 0 && !!username
+
   function handleRetry() {
     retryAfterGameOver()
     router.replace('/levels')
@@ -26,7 +28,7 @@ export function Header() {
 
   return (
     <>
-    {lives === 0 && username && (
+    {isGameOver && (
       <GameOverModal onRetry={handleRetry} />
     )}
     <header className={styles.header}>
