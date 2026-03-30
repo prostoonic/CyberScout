@@ -1,0 +1,129 @@
+.page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.title {
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 72px;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+}
+
+.text {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  font-family: var(--font-inter);
+  color: var(--color-primary-700);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+  background-color: var(--color-base);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xl);
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.subtitle {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+}
+
+.avatarFieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
+.avatarList {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--spacing-s);
+}
+
+.avatarItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.avatarLabel {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+  transition:
+    outline-color var(--transition),
+    transform var(--transition);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &:hover {
+    outline-color: var(--color-primary-600);
+    transform: scale(1.05);
+  }
+
+  &:has(.radio:focus-visible) {
+    outline-color: var(--color-primary-800);
+  }
+
+  &:has(.radio:checked) {
+    outline-color: var(--color-primary-800);
+
+    &:hover {
+      outline-color: var(--color-primary-600);
+    }
+  }
+}

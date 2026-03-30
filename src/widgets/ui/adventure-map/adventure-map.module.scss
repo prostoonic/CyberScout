@@ -1,0 +1,111 @@
+.section {
+  flex: 1;
+  padding: var(--spacing-xl) var(--spacing-m);
+  padding-bottom: 48px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Heading ── */
+
+.heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--color-primary-800);
+  margin: 0 0 var(--spacing-sm);
+  font-family: var(--font-plus-jakarta-sans);
+  line-height: 1.2;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--color-primary-700);
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* ── Map wrapper — serpentine path ── */
+
+.mapWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+
+/* ── Single level item ── */
+
+.levelItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  /*
+   * Zigzag: odd items shift left, even — right.
+   * On mobile — no shift, keep centred.
+   */
+  @media (min-width: 600px) {
+    &[data-position='left'] {
+      align-items: flex-start;
+      padding-left: 80px;
+    }
+
+    &[data-position='right'] {
+      align-items: flex-end;
+      padding-right: 80px;
+    }
+
+    /* Final level — always centred */
+    &:last-child {
+      align-items: center !important;
+      padding: 0 !important;
+    }
+  }
+
+  @media (min-width: 900px) {
+    &[data-position='left'] {
+      padding-left: 140px;
+    }
+
+    &[data-position='right'] {
+      padding-right: 140px;
+    }
+  }
+}
+
+/* ── Connector dots between levels ── */
+
+.connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: var(--spacing-m) 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary-300);
+  flex-shrink: 0;
+
+  &:nth-child(odd) {
+    background: var(--color-primary-600);
+    opacity: 0.5;
+  }
+}

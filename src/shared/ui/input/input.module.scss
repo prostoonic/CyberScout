@@ -1,0 +1,104 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+  padding-inline: var(--spacing-s);
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.inputWithToggle {
+  padding-right: 48px;
+}
+
+.toggleButton {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 4px;
+  transition: color var(--transition);
+  outline: none;
+
+  &:hover {
+    color: var(--color-primary-800);
+  }
+
+  &:focus-visible {
+    color: var(--color-primary-800);
+    outline: 2px solid var(--color-primary-800);
+  }
+}
+
+.input {
+  padding-inline: var(--spacing-l);
+  padding-block: var(--spacing-m);
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary-200);
+  border: 2px solid transparent;
+  outline: none;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-primary-800);
+  width: 100%;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+
+  &::placeholder {
+    color: var(--color-primary-300);
+  }
+
+  &:hover {
+    background-color: var(--color-primary-100);
+  }
+
+  &:focus {
+    border-color: var(--color-primary-800);
+    background-color: var(--color-primary-100);
+  }
+
+  &.inputError {
+    border-color: var(--color-error);
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+
+    &:hover {
+      background-color: var(--color-error-bg);
+    }
+
+    &:focus {
+      border-color: var(--color-error);
+      background-color: var(--color-error-bg);
+    }
+  }
+}
+
+.errorText {
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-inter);
+  color: var(--color-error);
+  padding-inline: var(--spacing-s);
+}

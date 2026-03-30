@@ -1,0 +1,123 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 87, 189, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: var(--spacing-m);
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: var(--color-base);
+  border-radius: 24px;
+  padding: 40px 32px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-m);
+  text-align: center;
+  box-shadow:
+    0 24px 48px rgba(0, 87, 189, 0.15),
+    0 8px 16px rgba(0, 87, 189, 0.08);
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  @media (max-width: 480px) {
+    padding: var(--spacing-xl) var(--spacing-m);
+    border-radius: 16px;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.topRow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.levelBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: var(--border-radius);
+  background: var(--color-primary-200);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+}
+
+.iconWrapper {
+  margin-bottom: 4px;
+}
+
+.introIconCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0057bd 0%, #6e9fff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.introIconGlyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :global(svg) {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+  margin: 0;
+}
+
+.content {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  padding: var(--spacing-m);
+  background: var(--color-primary-100);
+  border-radius: 12px;
+  border: 1px solid var(--color-primary-200);
+  max-height: 280px;
+  overflow-y: auto;
+}

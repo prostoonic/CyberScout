@@ -1,0 +1,300 @@
+.main {
+  flex: 1;
+  padding: var(--spacing-xl);
+  background: var(--color-primary-100);
+  min-height: calc(100vh - 61px);
+
+  @media (max-width: 600px) {
+    padding: var(--spacing-m);
+  }
+}
+
+.container {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* ── Page header ── */
+.pageHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+}
+
+.levelBadge {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--gradient-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-base);
+  flex-shrink: 0;
+}
+
+.levelTitle {
+  font-size: 24px;
+  font-weight: 800;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+  margin: 0 0 2px;
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+  }
+}
+
+.levelSubtitle {
+  font-size: 14px;
+  font-family: var(--font-inter);
+  color: var(--color-primary-700);
+  margin: 0;
+}
+
+/* ── Progress row ── */
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.progressDotEmpty,
+.progressDotActive,
+.progressDotDone {
+  width: 40px;
+  height: 8px;
+  border-radius: var(--border-radius);
+  transition: background 0.3s ease;
+}
+
+.progressDotEmpty {
+  background: transparent;
+  border: 2px solid rgba(90, 114, 197, 0.35);
+}
+
+.progressDotActive {
+  background: var(--gradient-base);
+}
+
+.progressDotDone {
+  background: var(--color-secondary-600);
+}
+
+.progressLabel {
+  margin-left: var(--spacing-sm);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-inter);
+  color: var(--color-primary-700);
+}
+
+/* ── App card ── */
+.card {
+  background: var(--color-base);
+  border-radius: 20px;
+  border: 1.5px solid var(--color-primary-200);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+
+  @media (max-width: 480px) {
+    padding: var(--spacing-m);
+    gap: var(--spacing-m);
+    border-radius: 16px;
+  }
+}
+
+.appHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-m);
+}
+
+.appIconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--color-primary-100);
+  border: 1.5px solid var(--color-primary-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.appIcon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.appName {
+  font-size: 20px;
+  font-weight: 800;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+  margin: 0 0 6px;
+}
+
+.appDesc {
+  font-size: 14px;
+  font-family: var(--font-inter);
+  color: var(--color-primary-700);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Permissions fieldset ── */
+.permissionsFieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.permissionsLegend {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-plus-jakarta-sans);
+  color: var(--color-primary-800);
+  margin-bottom: var(--spacing-m);
+  padding: 0;
+  float: left;
+  width: 100%;
+}
+
+.permissionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.permissionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-m);
+  border-radius: 12px;
+  background: var(--color-primary-100);
+  border: 1.5px solid var(--color-primary-200);
+  transition:
+    border-color var(--transition),
+    background var(--transition);
+
+  &:has(.toggleOn) {
+    border-color: var(--color-primary-600);
+    background: rgba(110, 159, 255, 0.08);
+  }
+}
+
+.permissionLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+}
+
+.permissionIconWrap {
+  font-size: 22px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-base);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.permissionText {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-inter);
+  color: var(--color-primary-800);
+}
+
+/* ── Toggle switch ── */
+.toggle {
+  width: 52px;
+  height: 28px;
+  border-radius: 14px;
+  border: none;
+  background: var(--color-primary-200);
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background 0.25s ease;
+  padding: 0;
+  outline: none;
+
+  &:focus-visible {
+    outline: 3px solid var(--color-primary-800);
+    outline-offset: 3px;
+  }
+
+  &.toggleOn {
+    background: var(--gradient-base);
+  }
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-base);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s ease;
+
+  .toggleOn & {
+    transform: translateX(24px);
+  }
+}
+
+/* ── Save button ── */
+.saveButton {
+  width: 100%;
+  padding: var(--spacing-m);
+  border-radius: var(--border-radius);
+  background: var(--gradient-base);
+  border: none;
+  color: var(--color-base);
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font-plus-jakarta-sans);
+  cursor: pointer;
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
+
+  &:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    opacity: 0.75;
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-primary-800);
+    outline-offset: 3px;
+  }
+}

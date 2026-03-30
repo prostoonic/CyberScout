@@ -1,0 +1,40 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  width: 100%;
+}
+
+.lead {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--font-inter);
+  color: var(--color-primary-700);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.warning {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-start;
+  padding: var(--spacing-sm) var(--spacing-m);
+  background: rgba(229, 57, 53, 0.08);
+  border: 1px solid rgba(229, 57, 53, 0.2);
+  border-radius: 8px;
+}
+
+.warningIcon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.warningText {
+  font-size: 13px;
+  font-family: var(--font-inter);
+  font-weight: 500;
+  color: var(--color-error);
+  margin: 0;
+  line-height: 1.5;
+}

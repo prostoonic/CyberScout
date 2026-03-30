@@ -1,0 +1,30 @@
+@use 'normalize';
+@use 'variables';
+
+html {
+  height: 100%;
+
+  &,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-primary-200);
+
+  &.scroll-locked {
+    overflow: hidden;
+  }
+}
+
+/* Prevent scroll leaking from modal content to page */
+[role='dialog'] {
+  overscroll-behavior: contain;
+}
