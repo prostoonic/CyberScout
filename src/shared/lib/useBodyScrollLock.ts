@@ -78,7 +78,10 @@ export function useFocusTrap<T extends HTMLElement>() {
 
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key !== 'Tab') return
-      if (focusable.length === 0) { e.preventDefault(); return }
+      if (focusable.length === 0) {
+        e.preventDefault()
+        return
+      }
 
       if (e.shiftKey) {
         if (document.activeElement === first) {

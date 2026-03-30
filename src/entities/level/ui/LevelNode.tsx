@@ -21,7 +21,7 @@ const BUTTON_LABEL: Record<string, string> = {
 }
 
 export function LevelNode({ level, onPlay }: IProps) {
-  const { id, number, title, description, icon, status, isFinal} = level
+  const { id, number, title, description, icon, status, isFinal } = level
   const isLocked = status === 'locked'
   const isCompleted = status === 'completed'
   const isCurrent = status === 'current'
@@ -47,7 +47,6 @@ export function LevelNode({ level, onPlay }: IProps) {
           <span className={styles.circleIcon}>
             <Icon icon={isLocked ? 'LockIcon' : icon} />
           </span>
-
         </button>
 
         <span className={styles.numberBadge} aria-hidden="true">

@@ -28,7 +28,7 @@ export function useMessengerTrap() {
   const allDone = completedCount === CHATS.length
 
   function openChat(chatId: number) {
-    const chat = CHATS.find((c) => c.id === chatId)
+    const chat = CHATS.find(c => c.id === chatId)
     if (!chat) return
     setActiveChatId(chatId)
     const existing = results[chatId]
@@ -41,7 +41,12 @@ export function useMessengerTrap() {
         outcome,
       })
     } else {
-      setActiveState({ chat, selectedOptionId: null, showResponse: false, outcome: null })
+      setActiveState({
+        chat,
+        selectedOptionId: null,
+        showResponse: false,
+        outcome: null,
+      })
     }
   }
 
@@ -54,15 +59,24 @@ export function useMessengerTrap() {
     (optionId: 1 | 2) => {
       if (!activeState || activeState.selectedOptionId !== null) return
       const { chat } = activeState
-      const outcome: ChatOutcome = optionId === chat.goodOptionId ? 'good' : 'bad'
+      const outcome: ChatOutcome =
+        optionId === chat.goodOptionId ? 'good' : 'bad'
 
-      setActiveState((prev) => prev ? { ...prev, selectedOptionId: optionId } : prev)
+      setActiveState(prev =>
+        prev ? { ...prev, selectedOptionId: optionId } : prev
+      )
 
       setTimeout(() => {
-        setActiveState((prev) => prev ? { ...prev, showResponse: true, outcome } : prev)
+        setActiveState(prev =>
+          prev ? { ...prev, showResponse: true, outcome } : prev
+        )
 
-        const result: ChatResult = { chatId: chat.id, outcome, selectedOptionId: optionId }
-        setResults((prev) => ({ ...prev, [chat.id]: result }))
+        const result: ChatResult = {
+          chatId: chat.id,
+          outcome,
+          selectedOptionId: optionId,
+        }
+        setResults(prev => ({ ...prev, [chat.id]: result }))
 
         if (outcome === 'bad') {
           setTimeout(() => {

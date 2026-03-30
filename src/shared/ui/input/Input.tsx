@@ -39,9 +39,8 @@ export function Input({
   const [visible, setVisible] = useState(false)
 
   const isError = !!error || hasError
-  const resolvedType = type === 'password' && showToggle
-    ? visible ? 'text' : 'password'
-    : type
+  const resolvedType =
+    type === 'password' && showToggle ? (visible ? 'text' : 'password') : type
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const clean = sanitize(e.target.value)
@@ -56,7 +55,11 @@ export function Input({
 
   return (
     <div className={styles.wrapper}>
-      {label && <label htmlFor={id} className={styles.label}>{label}</label>}
+      {label && (
+        <label htmlFor={id} className={styles.label}>
+          {label}
+        </label>
+      )}
       <div className={styles.inputWrapper}>
         <input
           type={resolvedType}
@@ -77,7 +80,7 @@ export function Input({
           <button
             type="button"
             className={styles.toggleButton}
-            onClick={() => setVisible((v) => !v)}
+            onClick={() => setVisible(v => !v)}
             aria-label={visible ? 'Скрыть пароль' : 'Показать пароль'}
             tabIndex={-1}
           >

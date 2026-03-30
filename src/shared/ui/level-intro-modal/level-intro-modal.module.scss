@@ -13,8 +13,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal {
@@ -72,6 +76,28 @@
 
 .iconWrapper {
   margin-bottom: 4px;
+}
+
+.introIconCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0057bd 0%, #6e9fff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.introIconGlyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :global(svg) {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .title {

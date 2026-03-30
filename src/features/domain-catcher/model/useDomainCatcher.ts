@@ -21,7 +21,7 @@ export function useDomainCatcher() {
   function checkAnswer() {
     if (selectedDomainId === null) return
 
-    const selected = currentRound.domains.find((d) => d.id === selectedDomainId)
+    const selected = currentRound.domains.find(d => d.id === selectedDomainId)
     if (!selected) return
 
     if (selected.isPhishing) {
@@ -32,7 +32,7 @@ export function useDomainCatcher() {
         if (roundIndex + 1 >= totalRounds) {
           setShowSuccess(true)
         } else {
-          setRoundIndex((i) => i + 1)
+          setRoundIndex(i => i + 1)
         }
       }, 900)
     } else {

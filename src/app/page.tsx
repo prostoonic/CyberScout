@@ -12,7 +12,7 @@ const MAX_NAME_LENGTH = 15
 
 export default function Home() {
   const router = useRouter()
-  const startGame = useUserStore((s) => s.startGame)
+  const startGame = useUserStore(s => s.startGame)
 
   const [name, setName] = useState('')
   const [nameError, setNameError] = useState('')
@@ -73,7 +73,10 @@ export default function Home() {
         <main className={styles.main}>
           <form
             className={styles.form}
-            onSubmit={e => { e.preventDefault(); handleStart() }}
+            onSubmit={e => {
+              e.preventDefault()
+              handleStart()
+            }}
           >
             <div className={styles.formWrapper}>
               <label htmlFor="name" className={styles.subtitle}>

@@ -16,11 +16,13 @@ function Level3IntroContent() {
   return (
     <div className={introStyles.content}>
       <p className={introStyles.lead}>
-        Домен — это адрес сайта в интернете. Мошенники создают поддельные сайты с адресами,
-        очень похожими на настоящие, чтобы украсть твои данные.
+        Домен — это адрес сайта в интернете. Мошенники создают поддельные сайты
+        с адресами, очень похожими на настоящие, чтобы украсть твои данные.
       </p>
 
-      <h3 className={introStyles.listTitle}>Как мошенники подделывают домены:</h3>
+      <h3 className={introStyles.listTitle}>
+        Как мошенники подделывают домены:
+      </h3>
       <ul className={introStyles.list}>
         <li>Заменяют буквы на похожие цифры (o→0, l→1, i→1)</li>
         <li>Добавляют лишние слова: secure, login, verify, free, official</li>
@@ -29,9 +31,12 @@ function Level3IntroContent() {
       </ul>
 
       <div className={introStyles.tip}>
-        <span className={introStyles.tipIcon} aria-hidden="true">💡</span>
+        <span className={introStyles.tipIcon} aria-hidden="true">
+          💡
+        </span>
         <p className={introStyles.tipText}>
-          Всегда проверяй адрес сайта в строке браузера перед тем, как вводить пароль или личные данные!
+          Всегда проверяй адрес сайта в строке браузера перед тем, как вводить
+          пароль или личные данные!
         </p>
       </div>
     </div>
@@ -40,9 +45,9 @@ function Level3IntroContent() {
 
 export function DomainCatcher() {
   const router = useRouter()
-  const completeLevel = useUserStore((s) => s.completeLevel)
-  const loseLife = useUserStore((s) => s.loseLife)
-  const addMistake = useUserStore((s) => s.addMistake)
+  const completeLevel = useUserStore(s => s.completeLevel)
+  const loseLife = useUserStore(s => s.loseLife)
+  const addMistake = useUserStore(s => s.addMistake)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -63,7 +68,7 @@ export function DomainCatcher() {
 
   function handleErrorDismiss() {
     if (errorInfo) {
-      const phishingDomain = errorInfo.round.domains.find((d) => d.isPhishing)
+      const phishingDomain = errorInfo.round.domains.find(d => d.isPhishing)
       addMistake(`Пропустил фишинговый домен: ${phishingDomain?.value ?? ''}`)
     }
     loseLife()
@@ -91,14 +96,22 @@ export function DomainCatcher() {
       <main className={styles.main}>
         <div className={styles.container}>
           <header className={styles.pageHeader}>
-            <div className={styles.levelBadge} aria-label="Уровень 3">03</div>
+            <div className={styles.levelBadge} aria-label="Уровень 3">
+              03
+            </div>
             <div>
               <h1 className={styles.levelTitle}>Охота на фальшивые домены</h1>
-              <p className={styles.levelSubtitle}>Найди фишинговый сайт среди четырёх адресов</p>
+              <p className={styles.levelSubtitle}>
+                Найди фишинговый сайт среди четырёх адресов
+              </p>
             </div>
           </header>
 
-          <div className={styles.roundProgress} role="status" aria-live="polite">
+          <div
+            className={styles.roundProgress}
+            role="status"
+            aria-live="polite"
+          >
             {Array.from({ length: totalRounds }).map((_, i) => (
               <div
                 key={i}
@@ -106,15 +119,15 @@ export function DomainCatcher() {
                   i < roundIndex
                     ? styles.roundDotDone
                     : i === roundIndex
-                    ? styles.roundDotActive
-                    : styles.roundDotEmpty
+                      ? styles.roundDotActive
+                      : styles.roundDotEmpty
                 }
                 aria-label={
                   i < roundIndex
                     ? `Раунд ${i + 1} пройден`
                     : i === roundIndex
-                    ? `Раунд ${i + 1} текущий`
-                    : `Раунд ${i + 1} заблокирован`
+                      ? `Раунд ${i + 1} текущий`
+                      : `Раунд ${i + 1} заблокирован`
                 }
               />
             ))}
@@ -128,13 +141,22 @@ export function DomainCatcher() {
               {currentRound.question}
             </h2>
 
-            <ul className={styles.domainGrid} role="list" aria-label="Выбери фишинговый домен">
-              {currentRound.domains.map((domain) => (
+            <ul
+              className={styles.domainGrid}
+              role="list"
+              aria-label="Выбери фишинговый домен"
+            >
+              {currentRound.domains.map(domain => (
                 <li key={domain.id} role="listitem">
                   <DomainCard
                     value={domain.value}
                     isSelected={selectedDomainId === domain.id}
-                    isCorrect={roundResult === 'correct' && selectedDomainId === domain.id ? true : undefined}
+                    isCorrect={
+                      roundResult === 'correct' &&
+                      selectedDomainId === domain.id
+                        ? true
+                        : undefined
+                    }
                     onSelect={() => setSelectedDomainId(domain.id)}
                     disabled={roundResult !== null}
                   />
@@ -156,8 +178,13 @@ export function DomainCatcher() {
           </section>
 
           <div className={styles.hint} role="note">
-            <span className={styles.hintIcon} aria-hidden="true">🔍</span>
-            <p>Внимательно читай каждый символ. Фальшивые домены очень похожи на настоящие!</p>
+            <span className={styles.hintIcon} aria-hidden="true">
+              🔍
+            </span>
+            <p>
+              Внимательно читай каждый символ. Фальшивые домены очень похожи на
+              настоящие!
+            </p>
           </div>
         </div>
       </main>

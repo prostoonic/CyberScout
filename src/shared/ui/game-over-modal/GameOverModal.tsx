@@ -17,7 +17,7 @@ const CONSEQUENCES = [
 export function GameOverModal({ onRetry }: IProps) {
   useBodyScrollLock()
   const modalRef = useFocusTrap<HTMLDivElement>()
-  const mistakes = useUserStore((s) => s.mistakes)
+  const mistakes = useUserStore(s => s.mistakes)
 
   return (
     <div
@@ -46,13 +46,17 @@ export function GameOverModal({ onRetry }: IProps) {
         <div className={styles.storyBlock} aria-label="Что произошло">
           <p className={styles.storyText}>
             Твой аккаунт{' '}
-            <span className={styles.highlight}>&quot;взломан&quot;</span>.
-            Ты допустил несколько ошибок, и злоумышленники получили доступ к
-            твоим данным.
+            <span className={styles.highlight}>&quot;взломан&quot;</span>. Ты
+            допустил несколько ошибок, и злоумышленники получили доступ к твоим
+            данным.
           </p>
 
-          <ul className={styles.consequences} role="list" aria-label="Последствия">
-            {CONSEQUENCES.map((c) => (
+          <ul
+            className={styles.consequences}
+            role="list"
+            aria-label="Последствия"
+          >
+            {CONSEQUENCES.map(c => (
               <li key={c.text} className={styles.consequenceItem}>
                 <span aria-hidden="true">{c.icon}</span>
                 <span>{c.text}</span>
@@ -67,7 +71,9 @@ export function GameOverModal({ onRetry }: IProps) {
             <ul className={styles.mistakesList} role="list">
               {mistakes.map((m, i) => (
                 <li key={i} className={styles.mistakeItem}>
-                  <span className={styles.mistakeIcon} aria-hidden="true">✗</span>
+                  <span className={styles.mistakeIcon} aria-hidden="true">
+                    ✗
+                  </span>
                   <span>{m}</span>
                 </li>
               ))}

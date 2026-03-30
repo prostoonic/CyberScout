@@ -17,8 +17,9 @@ function SkillCheckIntroContent() {
   return (
     <div className={introStyles.content}>
       <p className={introStyles.lead}>
-        Финальный уровень! Покажи всё, чему научился. Перед тобой будут появляться
-        ситуации из прошлых уровней — определи, безопасна каждая из них или нет.
+        Финальный уровень! Покажи всё, чему научился. Перед тобой будут
+        появляться ситуации из прошлых уровней — определи, безопасна каждая из
+        них или нет.
       </p>
 
       <div className={introStyles.statsRow}>
@@ -37,9 +38,15 @@ function SkillCheckIntroContent() {
       </div>
 
       <ul className={introStyles.rulesList}>
-        <li className={introStyles.rulesItem}>Появляется ситуация — ты выбираешь «Безопасно» или «Опасно»</li>
-        <li className={introStyles.rulesItem}>Темы: пароли, фишинг, домены, 2FA, мессенджеры, Wi-Fi, разрешения</li>
-        <li className={introStyles.rulesItem}>Если таймер истечёт — уровень начнётся заново (жизнь не снимается)</li>
+        <li className={introStyles.rulesItem}>
+          Появляется ситуация — ты выбираешь «Безопасно» или «Опасно»
+        </li>
+        <li className={introStyles.rulesItem}>
+          Темы: пароли, фишинг, домены, 2FA, мессенджеры, Wi-Fi, разрешения
+        </li>
+        <li className={introStyles.rulesItem}>
+          Если таймер истечёт — уровень начнётся заново (жизнь не снимается)
+        </li>
       </ul>
 
       <p className={introStyles.mainRule}>
@@ -59,12 +66,20 @@ const TARGET_SCORE = 10
 
 export function SkillCheck() {
   const router = useRouter()
-  const completeLevel = useUserStore((s) => s.completeLevel)
-  const loseLife = useUserStore((s) => s.loseLife)
-  const addMistake = useUserStore((s) => s.addMistake)
+  const completeLevel = useUserStore(s => s.completeLevel)
+  const loseLife = useUserStore(s => s.loseLife)
+  const addMistake = useUserStore(s => s.addMistake)
 
-  const { phase, score, timeLeft, current, lastVerdict, start, answer, restart } =
-    useSkillCheck()
+  const {
+    phase,
+    score,
+    timeLeft,
+    current,
+    lastVerdict,
+    start,
+    answer,
+    restart,
+  } = useSkillCheck()
 
   const timePercent = (timeLeft / TOTAL_TIME) * 100
   const isTimeLow = timeLeft <= 10
@@ -90,18 +105,24 @@ export function SkillCheck() {
     if (phase === 'won') {
       completeLevel(LEVEL_ID)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase])
 
   return (
     <>
       {phase === 'idle' && (
-        <LevelIntroModal levelNumber={6} levelTitle="Финальное испытание" onStart={start}>
+        <LevelIntroModal
+          levelNumber={6}
+          levelTitle="Финальное испытание"
+          onStart={start}
+        >
           <SkillCheckIntroContent />
         </LevelIntroModal>
       )}
 
-      {phase === 'timeout' && <TimerExpiredModal onRestart={handleTimeoutRestart} />}
+      {phase === 'timeout' && (
+        <TimerExpiredModal onRestart={handleTimeoutRestart} />
+      )}
 
       {phase === 'won' && (
         <SuccessModal
@@ -125,10 +146,20 @@ export function SkillCheck() {
           </header>
 
           <div className={styles.statsBar}>
-            <div className={styles.scoreDisplay} aria-label={`Счёт: ${score} из ${TARGET_SCORE}`}>
+            <div
+              className={styles.scoreDisplay}
+              aria-label={`Счёт: ${score} из ${TARGET_SCORE}`}
+            >
               <span className={styles.scoreLabel}>Счёт</span>
-              <span className={styles.scoreValue}>{score} / {TARGET_SCORE}</span>
-              <div className={styles.scoreTrack} role="progressbar" aria-valuenow={score} aria-valuemax={TARGET_SCORE}>
+              <span className={styles.scoreValue}>
+                {score} / {TARGET_SCORE}
+              </span>
+              <div
+                className={styles.scoreTrack}
+                role="progressbar"
+                aria-valuenow={score}
+                aria-valuemax={TARGET_SCORE}
+              >
                 <div
                   className={styles.scoreFill}
                   style={{ width: `${(score / TARGET_SCORE) * 100}%` }}
@@ -141,9 +172,28 @@ export function SkillCheck() {
               aria-label={`Оставшееся время: ${formatTime(timeLeft)}`}
               aria-live="off"
             >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <circle cx="9" cy="9" r="7.5" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                <path d="M9 5V9.5L12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="9"
+                  cy="9"
+                  r="7.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  fill="none"
+                />
+                <path
+                  d="M9 5V9.5L12 12"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
               <span>{formatTime(timeLeft)}</span>
               <div className={styles.timerTrack}>
@@ -165,7 +215,9 @@ export function SkillCheck() {
               aria-live="polite"
             >
               <div className={styles.topicRow}>
-                <span className={styles.topicLabel} id="situation-topic">{current.topic}</span>
+                <span className={styles.topicLabel} id="situation-topic">
+                  {current.topic}
+                </span>
                 <span className={styles.typeLabel}>{current.type}</span>
               </div>
 
@@ -193,7 +245,9 @@ export function SkillCheck() {
                   aria-label="Безопасная ситуация"
                   disabled={lastVerdict !== null}
                 >
-                  <span className={styles.buttonIcon} aria-hidden="true">✓</span>
+                  <span className={styles.buttonIcon} aria-hidden="true">
+                    ✓
+                  </span>
                   Безопасно
                 </button>
                 <button
@@ -203,7 +257,9 @@ export function SkillCheck() {
                   aria-label="Опасная ситуация"
                   disabled={lastVerdict !== null}
                 >
-                  <span className={styles.buttonIcon} aria-hidden="true">⚠</span>
+                  <span className={styles.buttonIcon} aria-hidden="true">
+                    ⚠
+                  </span>
                   Опасно
                 </button>
               </div>
@@ -212,7 +268,9 @@ export function SkillCheck() {
 
           {phase === 'idle' && (
             <div className={styles.waitingState} aria-hidden="true">
-              <p className={styles.waitingText}>Прочитай инструкцию и начни испытание</p>
+              <p className={styles.waitingText}>
+                Прочитай инструкцию и начни испытание
+              </p>
             </div>
           )}
         </div>

@@ -135,7 +135,9 @@
   font-family: var(--font-plus-jakarta-sans);
   flex-direction: column;
   align-items: flex-start;
-  transition: border-color var(--transition), color var(--transition);
+  transition:
+    border-color var(--transition),
+    color var(--transition);
 
   &.timerLow {
     border-color: var(--color-error);
@@ -184,8 +186,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 // Situation card
@@ -287,8 +294,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .choiceButtons {
@@ -314,7 +325,10 @@
   font-weight: 700;
   font-family: var(--font-plus-jakarta-sans);
   cursor: pointer;
-  transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+  transition:
+    opacity var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 
   &:disabled {
     opacity: 0.6;
@@ -338,7 +352,11 @@
 }
 
 .safeButton {
-  background: linear-gradient(135deg, var(--color-secondary-900), var(--color-secondary-600));
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary-900),
+    var(--color-secondary-600)
+  );
   color: white;
 }
 

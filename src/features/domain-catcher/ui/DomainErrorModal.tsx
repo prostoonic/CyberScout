@@ -12,7 +12,7 @@ interface IProps {
 export function DomainErrorModal({ errorInfo, onClose }: IProps) {
   useBodyScrollLock()
   const { round, selectedDomainValue } = errorInfo
-  const phishingDomain = round.domains.find((d) => d.isPhishing)
+  const phishingDomain = round.domains.find(d => d.isPhishing)
 
   return (
     <div
@@ -25,7 +25,12 @@ export function DomainErrorModal({ errorInfo, onClose }: IProps) {
         <div className={styles.iconWrapper} aria-hidden="true">
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
             <circle cx="32" cy="32" r="32" fill="#FFF0F0" />
-            <path d="M32 20V36M32 44V46" stroke="#E53935" strokeWidth="3.5" strokeLinecap="round" />
+            <path
+              d="M32 20V36M32 44V46"
+              stroke="#E53935"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+            />
           </svg>
         </div>
 
@@ -33,7 +38,8 @@ export function DomainErrorModal({ errorInfo, onClose }: IProps) {
           Не совсем верно!
         </h2>
         <p className={styles.subtitle}>
-          Ты выбрал обычный сайт, а настоящий фишинговый пропустил. Давай разберёмся!
+          Ты выбрал обычный сайт, а настоящий фишинговый пропустил. Давай
+          разберёмся!
         </p>
 
         <div className={styles.compareBlock}>
@@ -46,7 +52,9 @@ export function DomainErrorModal({ errorInfo, onClose }: IProps) {
           {phishingDomain && (
             <div className={styles.compareItem}>
               <span className={styles.compareLabel}>Фишинговый сайт:</span>
-              <div className={styles.domainPill + ' ' + styles.domainPillPhishing}>
+              <div
+                className={styles.domainPill + ' ' + styles.domainPillPhishing}
+              >
                 {phishingDomain.value}
               </div>
             </div>

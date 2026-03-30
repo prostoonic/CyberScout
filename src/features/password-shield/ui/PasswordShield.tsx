@@ -16,9 +16,10 @@ function Level1IntroContent() {
   return (
     <div className={introStyles.content}>
       <p className={introStyles.lead}>
-        Пароль — это защита твоего аккаунта. Если пароль простой, злоумышленники могут легко его
-        подобрать и получить доступ к твоим данным, играм и личной информации. Сложный пароль
-        делает твой аккаунт безопаснее и защищает от взлома.
+        Пароль — это защита твоего аккаунта. Если пароль простой, злоумышленники
+        могут легко его подобрать и получить доступ к твоим данным, играм и
+        личной информации. Сложный пароль делает твой аккаунт безопаснее и
+        защищает от взлома.
       </p>
 
       <h3 className={introStyles.listTitle}>Чек-лист хорошего пароля:</h3>
@@ -33,7 +34,9 @@ function Level1IntroContent() {
       </ul>
 
       <div className={introStyles.example}>
-        <span className={introStyles.exampleLabel}>Пример хорошего пароля:</span>
+        <span className={introStyles.exampleLabel}>
+          Пример хорошего пароля:
+        </span>
         <code className={introStyles.exampleCode}>G4m3!Hero#2026</code>
       </div>
     </div>
@@ -42,7 +45,7 @@ function Level1IntroContent() {
 
 export function PasswordShield() {
   const router = useRouter()
-  const completeLevel = useUserStore((s) => s.completeLevel)
+  const completeLevel = useUserStore(s => s.completeLevel)
   const [showIntro, setShowIntro] = useState(true)
   const [showModal, setShowModal] = useState(false)
 
@@ -104,16 +107,23 @@ export function PasswordShield() {
             </div>
             <div>
               <h1 className={styles.title}>Надёжный пароль</h1>
-              <p className={styles.subtitle}>Создай пароль, который не взломают хакеры!</p>
+              <p className={styles.subtitle}>
+                Создай пароль, который не взломают хакеры!
+              </p>
             </div>
           </header>
 
           <section className={styles.card} aria-labelledby="form-heading">
-            <h2 id="form-heading" className={styles.sectionTitle}>Придумай пароль</h2>
+            <h2 id="form-heading" className={styles.sectionTitle}>
+              Придумай пароль
+            </h2>
 
             <form
               className={styles.form}
-              onSubmit={(e) => { e.preventDefault(); handleSubmit() }}
+              onSubmit={e => {
+                e.preventDefault()
+                handleSubmit()
+              }}
               noValidate
             >
               <Input
@@ -148,8 +158,12 @@ export function PasswordShield() {
               <div className={styles.checklistBlock}>
                 <h3 className={styles.checklistTitle}>Требования к паролю</h3>
                 <ul className={styles.checklist} role="list">
-                  {checklist.map((rule) => (
-                    <ChecklistItem key={rule.id} label={rule.label} met={rule.met} />
+                  {checklist.map(rule => (
+                    <ChecklistItem
+                      key={rule.id}
+                      label={rule.label}
+                      met={rule.met}
+                    />
                   ))}
                 </ul>
                 <p className={styles.checklistTip}>
@@ -157,7 +171,11 @@ export function PasswordShield() {
                 </p>
               </div>
 
-              <Button variant="primary" onClick={handleSubmit} isDisable={!canSubmit}>
+              <Button
+                variant="primary"
+                onClick={handleSubmit}
+                isDisable={!canSubmit}
+              >
                 <span>Завершить уровень</span>
                 <Icon icon="RocketIcon" />
               </Button>

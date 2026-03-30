@@ -94,7 +94,9 @@
   font-family: var(--font-plus-jakarta-sans);
   border-radius: var(--border-radius);
   text-decoration: none;
-  transition: opacity var(--transition), transform var(--transition);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
   margin-top: var(--spacing-sm);
 
   &:hover {

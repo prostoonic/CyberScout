@@ -14,7 +14,7 @@ function getInitials(name: string): string {
   return name
     .split(' ')
     .slice(0, 2)
-    .map((w) => w[0])
+    .map(w => w[0])
     .join('')
     .toUpperCase()
 }
@@ -48,7 +48,9 @@ export function EmailList({ emails, selectedId, answers, onSelect }: IProps) {
               >
                 <div
                   className={styles.emailAvatar}
-                  style={{ background: AVATAR_COLORS[idx % AVATAR_COLORS.length] }}
+                  style={{
+                    background: AVATAR_COLORS[idx % AVATAR_COLORS.length],
+                  }}
                   aria-hidden="true"
                 >
                   {getInitials(email.fromName)}
@@ -56,12 +58,22 @@ export function EmailList({ emails, selectedId, answers, onSelect }: IProps) {
 
                 <div className={styles.emailItemContent}>
                   <div className={styles.emailItemTop}>
-                    <span className={clsx(styles.emailSender, { [styles.emailSenderUnread]: !isAnswered })}>
+                    <span
+                      className={clsx(styles.emailSender, {
+                        [styles.emailSenderUnread]: !isAnswered,
+                      })}
+                    >
                       {email.fromName}
                     </span>
-                    <span className={styles.emailDate}>{email.date.split(',')[0]}</span>
+                    <span className={styles.emailDate}>
+                      {email.date.split(',')[0]}
+                    </span>
                   </div>
-                  <p className={clsx(styles.emailSubjectLine, { [styles.emailSubjectUnread]: !isAnswered })}>
+                  <p
+                    className={clsx(styles.emailSubjectLine, {
+                      [styles.emailSubjectUnread]: !isAnswered,
+                    })}
+                  >
                     {email.subject}
                   </p>
                   <p className={styles.emailPreview}>{email.preview}</p>

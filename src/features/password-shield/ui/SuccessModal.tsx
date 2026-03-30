@@ -51,7 +51,12 @@ export function SuccessModal({ onClose, headerHeight = 64 }: IProps) {
   }, [headerHeight])
 
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
       <div className={styles.modal}>
         <div className={styles.iconWrapper} aria-hidden="true">
           <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
@@ -76,8 +81,8 @@ export function SuccessModal({ onClose, headerHeight = 64 }: IProps) {
           Уровень пройден!
         </h2>
         <p className={styles.description}>
-          Отличная работа! Ты создал надёжный пароль и знаешь, как защитить свой аккаунт.
-          Продолжай своё кибер-приключение!
+          Отличная работа! Ты создал надёжный пароль и знаешь, как защитить свой
+          аккаунт. Продолжай своё кибер-приключение!
         </p>
 
         <div className={styles.badge} aria-label="Три звезды">

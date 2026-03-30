@@ -22,21 +22,37 @@ export function EmailView({ email, result, onAnswer, onBack }: IProps) {
           onClick={onBack}
           aria-label="Вернуться к списку писем"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M12 4L6 10L12 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M12 4L6 10L12 16"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
           <span>Назад</span>
         </button>
       )}
 
       <header className={styles.emailViewHeader}>
-        <h2 id="email-subject" className={styles.emailViewSubject}>{email.subject}</h2>
+        <h2 id="email-subject" className={styles.emailViewSubject}>
+          {email.subject}
+        </h2>
         <div className={styles.emailMeta}>
           <div className={styles.emailMetaFrom}>
             <span className={styles.emailMetaLabel}>От:</span>
             <span className={styles.emailMetaValue}>
               {email.fromName}
-              <span className={styles.emailMetaEmail}>&nbsp;&lt;{email.fromEmail}&gt;</span>
+              <span className={styles.emailMetaEmail}>
+                &nbsp;&lt;{email.fromEmail}&gt;
+              </span>
             </span>
           </div>
           <div className={styles.emailMetaDate}>
@@ -48,13 +64,23 @@ export function EmailView({ email, result, onAnswer, onBack }: IProps) {
 
       <div className={styles.emailBody}>
         {email.body.map((paragraph, i) => (
-          <p key={i} className={styles.emailParagraph}>{paragraph}</p>
+          <p key={i} className={styles.emailParagraph}>
+            {paragraph}
+          </p>
         ))}
 
         {email.suspiciousElement && (
-          <div className={styles.suspiciousBlock} role="note" aria-label="Подозрительный элемент">
-            <span className={styles.suspiciousIcon} aria-hidden="true">⚠️</span>
-            <span className={styles.suspiciousText}>{email.suspiciousElement}</span>
+          <div
+            className={styles.suspiciousBlock}
+            role="note"
+            aria-label="Подозрительный элемент"
+          >
+            <span className={styles.suspiciousIcon} aria-hidden="true">
+              ⚠️
+            </span>
+            <span className={styles.suspiciousText}>
+              {email.suspiciousElement}
+            </span>
           </div>
         )}
       </div>

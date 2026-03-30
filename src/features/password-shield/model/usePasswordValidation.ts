@@ -10,22 +10,22 @@ export const CHECKLIST_RULES: ChecklistRule[] = [
   {
     id: 'length',
     label: 'Минимум 8 символов',
-    test: (p) => p.length >= 8,
+    test: p => p.length >= 8,
   },
   {
     id: 'uppercase',
     label: 'Заглавная буква (A–Z)',
-    test: (p) => /[A-Z]/.test(p),
+    test: p => /[A-Z]/.test(p),
   },
   {
     id: 'digit',
     label: 'Цифра (0–9)',
-    test: (p) => /[0-9]/.test(p),
+    test: p => /[0-9]/.test(p),
   },
   {
     id: 'special',
     label: 'Специальный символ (!@#$%^&*)',
-    test: (p) => /[!@#$%^&*()\-_=+\[\]{};:'",.<>?/\\|`~]/.test(p),
+    test: p => /[!@#$%^&*()\-_=+\[\]{};:'",.<>?/\\|`~]/.test(p),
   },
 ]
 
@@ -63,14 +63,14 @@ export function usePasswordValidation() {
 
   const checklist = useMemo(
     () =>
-      CHECKLIST_RULES.map((rule) => ({
+      CHECKLIST_RULES.map(rule => ({
         ...rule,
         met: rule.test(password),
       })),
     [password]
   )
 
-  const metCount = checklist.filter((r) => r.met).length
+  const metCount = checklist.filter(r => r.met).length
   const allMet = metCount === CHECKLIST_RULES.length
 
   const strengthLevel = getStrengthLevel(metCount, password)
@@ -78,7 +78,8 @@ export function usePasswordValidation() {
   const strengthPercent = STRENGTH_PERCENT[strengthLevel]
 
   const passwordsMatch = password === confirmPassword
-  const showMismatch = confirmTouched && confirmPassword.length > 0 && !passwordsMatch
+  const showMismatch =
+    confirmTouched && confirmPassword.length > 0 && !passwordsMatch
 
   const confirmError = showMismatch ? 'Пароли не совпадают' : ''
   const passwordMismatch = showMismatch

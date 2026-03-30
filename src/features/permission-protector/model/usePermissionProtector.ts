@@ -1,5 +1,10 @@
 import { useState } from 'react'
-import { APP_SCENARIOS, ALL_PERMISSIONS, type PermissionId, type AppScenario } from './apps'
+import {
+  APP_SCENARIOS,
+  ALL_PERMISSIONS,
+  type PermissionId,
+  type AppScenario,
+} from './apps'
 
 export interface ErrorDetail {
   app: AppScenario
@@ -26,15 +31,15 @@ export function usePermissionProtector() {
   const totalApps = APP_SCENARIOS.length
 
   function togglePermission(id: PermissionId) {
-    setEnabled((prev) => ({ ...prev, [id]: !prev[id] }))
+    setEnabled(prev => ({ ...prev, [id]: !prev[id] }))
   }
 
   function saveSettings() {
-    const given = ALL_PERMISSIONS.filter((p) => enabled[p.id]).map((p) => p.id)
+    const given = ALL_PERMISSIONS.filter(p => enabled[p.id]).map(p => p.id)
     const required = currentApp.requiredPermissions
 
-    const extra = given.filter((id) => !required.includes(id))
-    const missing = required.filter((id) => !given.includes(id))
+    const extra = given.filter(id => !required.includes(id))
+    const missing = required.filter(id => !given.includes(id))
 
     const isCorrect = extra.length === 0 && missing.length === 0
 
@@ -42,17 +47,27 @@ export function usePermissionProtector() {
       if (appIndex + 1 >= totalApps) {
         setShowSuccess(true)
       } else {
-        setAppIndex((i) => i + 1)
+        setAppIndex(i => i + 1)
         resetToggles()
       }
     } else {
-      setErrorDetail({ app: currentApp, extraPermissions: extra, missingPermissions: missing })
+      setErrorDetail({
+        app: currentApp,
+        extraPermissions: extra,
+        missingPermissions: missing,
+      })
       setShowError(true)
     }
   }
 
   function resetToggles() {
-    setEnabled({ camera: false, contacts: false, location: false, microphone: false, gallery: false })
+    setEnabled({
+      camera: false,
+      contacts: false,
+      location: false,
+      microphone: false,
+      gallery: false,
+    })
   }
 
   function dismissError() {

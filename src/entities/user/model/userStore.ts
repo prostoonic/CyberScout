@@ -25,7 +25,7 @@ interface UserState {
 
 export const useUserStore = create<UserState>()(
   persist(
-    (set) => ({
+    set => ({
       username: '',
       progress: 0,
       completedLevels: [],
@@ -33,12 +33,12 @@ export const useUserStore = create<UserState>()(
       lives: MAX_LIVES,
       mistakes: [],
 
-      setUsername: (name) => set({ username: name }),
+      setUsername: name => set({ username: name }),
 
-      setAvatarId: (id) => set({ selectedAvatarId: id }),
+      setAvatarId: id => set({ selectedAvatarId: id }),
 
-      completeLevel: (levelId) =>
-        set((state) => {
+      completeLevel: levelId =>
+        set(state => {
           if (state.completedLevels.includes(levelId)) return state
           const completed = [...state.completedLevels, levelId]
           const progress = Math.round((completed.length / LEVELS.length) * 100)
@@ -46,7 +46,7 @@ export const useUserStore = create<UserState>()(
         }),
 
       loseLife: () =>
-        set((state) => ({
+        set(state => ({
           lives: Math.max(0, state.lives - 1),
         })),
 
@@ -55,11 +55,10 @@ export const useUserStore = create<UserState>()(
       startGame: (username, avatarId) =>
         set({ username, selectedAvatarId: avatarId, lives: MAX_LIVES }),
 
-      retryAfterGameOver: () =>
-        set({ lives: MAX_LIVES, mistakes: [] }),
+      retryAfterGameOver: () => set({ lives: MAX_LIVES, mistakes: [] }),
 
-      addMistake: (text) =>
-        set((state) => ({
+      addMistake: text =>
+        set(state => ({
           mistakes: [...state.mistakes, text],
         })),
 

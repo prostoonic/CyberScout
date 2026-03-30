@@ -59,7 +59,12 @@ export function SuccessModal({
   }, [headerHeight])
 
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
+    <div
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="success-modal-title"
+    >
       <div className={styles.modal} ref={modalRef}>
         <div className={styles.iconWrapper} aria-hidden="true">
           <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
@@ -72,7 +77,13 @@ export function SuccessModal({
               strokeLinejoin="round"
             />
             <defs>
-              <linearGradient id="successGradient" x1="0" y1="0" x2="72" y2="72">
+              <linearGradient
+                id="successGradient"
+                x1="0"
+                y1="0"
+                x2="72"
+                y2="72"
+              >
                 <stop offset="0%" stopColor="#0057bd" />
                 <stop offset="100%" stopColor="#6e9fff" />
               </linearGradient>
@@ -80,7 +91,9 @@ export function SuccessModal({
           </svg>
         </div>
 
-        <h2 id="success-modal-title" className={styles.title}>{title}</h2>
+        <h2 id="success-modal-title" className={styles.title}>
+          {title}
+        </h2>
         <p className={styles.description}>{description}</p>
 
         <Button variant="primary" onClick={onClose} isDisable={false}>

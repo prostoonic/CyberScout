@@ -189,7 +189,9 @@
   border-radius: 12px;
   background: var(--color-primary-100);
   border: 1.5px solid var(--color-primary-200);
-  transition: border-color var(--transition), background var(--transition);
+  transition:
+    border-color var(--transition),
+    background var(--transition);
 
   &:has(.toggleOn) {
     border-color: var(--color-primary-600);

@@ -9,7 +9,7 @@ import { useUserStore } from '@/entities/user'
 
 function computeLevels(completedLevels: number[]): Level[] {
   let foundCurrent = false
-  return LEVELS.map((level) => {
+  return LEVELS.map(level => {
     if (completedLevels.includes(level.id)) {
       return { ...level, status: 'completed' as LevelStatus }
     }
@@ -32,7 +32,7 @@ const LEVEL_ROUTES: Record<number, string> = {
 
 export function AdventureMap() {
   const router = useRouter()
-  const completedLevels = useUserStore((s) => s.completedLevels)
+  const completedLevels = useUserStore(s => s.completedLevels)
   const levels = computeLevels(completedLevels)
 
   function handlePlay(id: number) {

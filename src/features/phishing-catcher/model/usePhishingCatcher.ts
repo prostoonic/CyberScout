@@ -21,7 +21,7 @@ export function usePhishingCatcher() {
   const [errorInfo, setErrorInfo] = useState<ErrorInfo | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
 
-  const selectedEmail = EMAILS.find((e) => e.id === selectedId) ?? EMAILS[0]
+  const selectedEmail = EMAILS.find(e => e.id === selectedId) ?? EMAILS[0]
   const answeredCount = Object.keys(answers).length
   const isCurrentAnswered = selectedId in answers
 
@@ -52,7 +52,7 @@ export function usePhishingCatcher() {
       setShowSuccess(true)
       return
     }
-    const nextEmail = EMAILS.find((e) => !(e.id in currentAnswers))
+    const nextEmail = EMAILS.find(e => !(e.id in currentAnswers))
     if (nextEmail) setSelectedId(nextEmail.id)
   }
 

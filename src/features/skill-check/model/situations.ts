@@ -77,7 +77,8 @@ export const SITUATIONS: Situation[] = [
     topic: 'Безопасность соединений',
     type: 'Работа в кафе',
     verdict: 'danger',
-    content: 'Открытая сеть Wi-Fi с названием «Airport_Free_WiFi_Fast». Пароль не требуется.',
+    content:
+      'Открытая сеть Wi-Fi с названием «Airport_Free_WiFi_Fast». Пароль не требуется.',
     explanation:
       'Использование открытых Wi-Fi сетей без VPN позволяет злоумышленникам перехватывать трафик (атака Man-in-the-Middle).',
   },

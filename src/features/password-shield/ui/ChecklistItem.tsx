@@ -14,8 +14,20 @@ export function ChecklistItem({ label, met }: IProps) {
     >
       <span className={styles.checklistIcon} aria-hidden="true">
         {met ? (
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <circle cx="8" cy="8" r="8" fill="currentColor" fillOpacity="0.15" />
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              cx="8"
+              cy="8"
+              r="8"
+              fill="currentColor"
+              fillOpacity="0.15"
+            />
             <path
               d="M4.5 8L6.8 10.5L11.5 5.5"
               stroke="currentColor"
@@ -25,8 +37,21 @@ export function ChecklistItem({ label, met }: IProps) {
             />
           </svg>
         ) : (
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              cx="8"
+              cy="8"
+              r="7"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeOpacity="0.5"
+            />
           </svg>
         )}
       </span>

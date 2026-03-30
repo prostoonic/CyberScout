@@ -10,18 +10,29 @@ interface IProps {
   onOpenChat: (id: number) => void
 }
 
-export function ChatList({ chats, results, completedCount, onOpenChat }: IProps) {
+export function ChatList({
+  chats,
+  results,
+  completedCount,
+  onOpenChat,
+}: IProps) {
   return (
-    <section className={styles.chatListSection} aria-labelledby="chat-list-heading">
+    <section
+      className={styles.chatListSection}
+      aria-labelledby="chat-list-heading"
+    >
       <header className={styles.messengerHeader}>
         <h1 className={styles.messengerTitle}>Сообщения</h1>
-        <span className={styles.messengerProgress} aria-label={`Проверено ${completedCount} из ${chats.length} чатов`}>
+        <span
+          className={styles.messengerProgress}
+          aria-label={`Проверено ${completedCount} из ${chats.length} чатов`}
+        >
           {completedCount}/{chats.length}
         </span>
       </header>
 
       <ul className={styles.chatList} role="list">
-        {chats.map((chat) => {
+        {chats.map(chat => {
           const result = results[chat.id]
           const isDone = !!result
           const isGood = result?.outcome === 'good'
@@ -38,7 +49,9 @@ export function ChatList({ chats, results, completedCount, onOpenChat }: IProps)
                 aria-label={`Открыть чат: ${chat.contactName}${isDone ? (isGood ? ', отвечено верно' : ', допущена ошибка') : ', не отвечено'}`}
               >
                 <div className={styles.chatAvatar} aria-hidden="true">
-                  <span className={styles.chatAvatarEmoji}>{chat.contactEmoji}</span>
+                  <span className={styles.chatAvatarEmoji}>
+                    {chat.contactEmoji}
+                  </span>
                 </div>
 
                 <div className={styles.chatInfo}>
@@ -56,7 +69,9 @@ export function ChatList({ chats, results, completedCount, onOpenChat }: IProps)
                 </div>
 
                 {!isDone && (
-                  <span className={styles.unreadBadge} aria-hidden="true">1</span>
+                  <span className={styles.unreadBadge} aria-hidden="true">
+                    1
+                  </span>
                 )}
               </button>
             </li>

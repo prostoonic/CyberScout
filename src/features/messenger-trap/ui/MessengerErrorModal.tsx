@@ -12,24 +12,39 @@ interface IProps {
 export function MessengerErrorModal({ chat, onClose }: IProps) {
   useBodyScrollLock()
   return (
-    <div className={styles.overlay} role="dialog" aria-modal="true" aria-labelledby="msg-error-title">
+    <div
+      className={styles.overlay}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="msg-error-title"
+    >
       <div className={styles.modal}>
         <div className={styles.iconWrapper} aria-hidden="true">
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
             <circle cx="32" cy="32" r="32" fill="#FFF0F0" />
-            <path d="M32 20V36M32 44V46" stroke="#E53935" strokeWidth="3.5" strokeLinecap="round" />
+            <path
+              d="M32 20V36M32 44V46"
+              stroke="#E53935"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+            />
           </svg>
         </div>
 
-        <h2 id="msg-error-title" className={styles.title}>Осторожно, мошенник!</h2>
+        <h2 id="msg-error-title" className={styles.title}>
+          Осторожно, мошенник!
+        </h2>
 
         <p className={styles.subtitle}>
-          Ты поделился кодом из СМС. Настоящие службы безопасности и техподдержка никогда не просят
-          коды подтверждения — это всегда признак мошенничества!
+          Ты поделился кодом из СМС. Настоящие службы безопасности и
+          техподдержка никогда не просят коды подтверждения — это всегда признак
+          мошенничества!
         </p>
 
         <div className={styles.scammerCard}>
-          <span className={styles.scammerEmoji} aria-hidden="true">{chat.contactEmoji}</span>
+          <span className={styles.scammerEmoji} aria-hidden="true">
+            {chat.contactEmoji}
+          </span>
           <div>
             <p className={styles.scammerName}>{chat.contactName}</p>
             <p className={styles.scammerTag}>Мошенник</p>

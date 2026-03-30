@@ -50,10 +50,8 @@ export const CHATS: Chat[] = [
       { id: 2, text: 'Ок, сейчас переведу деньги' },
     ],
     goodOptionId: 1,
-    goodEndingResponse:
-      'Эм… сейчас не могу говорить. Давай потом…',
-    badEndingResponse:
-      'Спасибо за перевод! Очень щедро с твоей стороны',
+    goodEndingResponse: 'Эм… сейчас не могу говорить. Давай потом…',
+    badEndingResponse: 'Спасибо за перевод! Очень щедро с твоей стороны',
   },
 
   {
@@ -69,8 +67,7 @@ export const CHATS: Chat[] = [
       { id: 2, text: 'Хорошо, номер 1234 5678 9012 3456, срок 12/26, CVV 203' },
     ],
     goodOptionId: 1,
-    goodEndingResponse:
-      'Эх, не получилось… обычно на это ведутся',
+    goodEndingResponse: 'Эх, не получилось… обычно на это ведутся',
     badEndingResponse:
       'Отлично, данные получены. Сейчас проверим ваш баланс… ой, уже списали',
   },
@@ -90,8 +87,7 @@ export const CHATS: Chat[] = [
     goodOptionId: 1,
     goodEndingResponse:
       'Ну и ладно… мы старались сделать ссылку максимально похожей(',
-    badEndingResponse:
-      'Отлично, ты перешел. Теперь жди сюрприз с вирусом',
+    badEndingResponse: 'Отлично, ты перешел. Теперь жди сюрприз с вирусом',
   },
 
   {
@@ -107,9 +103,7 @@ export const CHATS: Chat[] = [
       { id: 2, text: 'Сейчас открою, интересно' },
     ],
     goodOptionId: 1,
-    goodEndingResponse:
-      'Не, так не интересно… открой лучше ссылку',
-    badEndingResponse:
-      'Попался. Теперь у нас есть доступ к твоему устройству',
-  }
+    goodEndingResponse: 'Не, так не интересно… открой лучше ссылку',
+    badEndingResponse: 'Попался. Теперь у нас есть доступ к твоему устройству',
+  },
 ]

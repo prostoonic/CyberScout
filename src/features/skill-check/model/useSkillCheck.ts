@@ -32,7 +32,9 @@ export function useSkillCheck(): SkillCheckState {
   const [timeLeft, setTimeLeft] = useState(TOTAL_TIME)
   const [queue, setQueue] = useState<Situation[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [lastVerdict, setLastVerdict] = useState<'correct' | 'wrong' | null>(null)
+  const [lastVerdict, setLastVerdict] = useState<'correct' | 'wrong' | null>(
+    null
+  )
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const verdictTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -71,7 +73,7 @@ export function useSkillCheck(): SkillCheckState {
     if (phase !== 'playing') return
 
     timerRef.current = setInterval(() => {
-      setTimeLeft((t) => {
+      setTimeLeft(t => {
         if (t <= 1) {
           clearInterval(timerRef.current!)
           setPhase('timeout')
@@ -109,7 +111,7 @@ export function useSkillCheck(): SkillCheckState {
 
       verdictTimerRef.current = setTimeout(() => {
         setLastVerdict(null)
-        setCurrentIndex((i) => i + 1)
+        setCurrentIndex(i => i + 1)
       }, 600)
     },
     [phase, queue, currentIndex, score, clearTimers]
@@ -119,7 +121,19 @@ export function useSkillCheck(): SkillCheckState {
     return () => clearTimers()
   }, [clearTimers])
 
-  const current = phase === 'playing' && queue.length > 0 ? queue[currentIndex] ?? null : null
+  const current =
+    phase === 'playing' && queue.length > 0
+      ? (queue[currentIndex] ?? null)
+      : null
 
-  return { phase, score, timeLeft, current, lastVerdict, start, answer, restart }
+  return {
+    phase,
+    score,
+    timeLeft,
+    current,
+    lastVerdict,
+    start,
+    answer,
+    restart,
+  }
 }

@@ -191,9 +191,15 @@
 }
 
 @keyframes correctPulse {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.03); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .domainCardBar {
@@ -216,9 +222,15 @@
     border-radius: 50%;
     background: var(--color-primary-300);
 
-    &:nth-child(1) { background: #ff6b6b; }
-    &:nth-child(2) { background: #f9a825; }
-    &:nth-child(3) { background: #48ac34; }
+    &:nth-child(1) {
+      background: #ff6b6b;
+    }
+    &:nth-child(2) {
+      background: #f9a825;
+    }
+    &:nth-child(3) {
+      background: #48ac34;
+    }
   }
 }
 

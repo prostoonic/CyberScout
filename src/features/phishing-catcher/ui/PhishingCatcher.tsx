@@ -17,15 +17,18 @@ function Level2IntroContent() {
   return (
     <div className={introStyles.content}>
       <p className={introStyles.lead}>
-        Фишинг — это способ обмана, при котором злоумышленники притворяются надёжными сервисами или
-        организациями, чтобы получить доступ к твоим данным, таким как пароль или банковская
-        информация.
+        Фишинг — это способ обмана, при котором злоумышленники притворяются
+        надёжными сервисами или организациями, чтобы получить доступ к твоим
+        данным, таким как пароль или банковская информация.
       </p>
       <p className={introStyles.lead}>
-        Фишинг опасен тем, что может привести к краже аккаунта, потере денег и утечке личных данных.
+        Фишинг опасен тем, что может привести к краже аккаунта, потере денег и
+        утечке личных данных.
       </p>
 
-      <h3 className={introStyles.listTitle}>Как распознать фишинговое письмо:</h3>
+      <h3 className={introStyles.listTitle}>
+        Как распознать фишинговое письмо:
+      </h3>
       <ul className={introStyles.list}>
         <li>Подозрительный адрес отправителя</li>
         <li>Ошибки в тексте письма</li>
@@ -36,10 +39,12 @@ function Level2IntroContent() {
       </ul>
 
       <div className={introStyles.warning}>
-        <span className={introStyles.warningIcon} aria-hidden="true">⚠️</span>
+        <span className={introStyles.warningIcon} aria-hidden="true">
+          ⚠️
+        </span>
         <p className={introStyles.warningText}>
-          Никогда не переходи по подозрительным ссылкам и не вводи личные данные, если не уверен в
-          надёжности источника.
+          Никогда не переходи по подозрительным ссылкам и не вводи личные
+          данные, если не уверен в надёжности источника.
         </p>
       </div>
     </div>
@@ -48,9 +53,9 @@ function Level2IntroContent() {
 
 export function PhishingCatcher() {
   const router = useRouter()
-  const completeLevel = useUserStore((s) => s.completeLevel)
-  const loseLife = useUserStore((s) => s.loseLife)
-  const addMistake = useUserStore((s) => s.addMistake)
+  const completeLevel = useUserStore(s => s.completeLevel)
+  const loseLife = useUserStore(s => s.loseLife)
+  const addMistake = useUserStore(s => s.addMistake)
   const [showIntro, setShowIntro] = useState(true)
   const [mobileView, setMobileView] = useState<'list' | 'email'>('list')
 
@@ -113,18 +118,28 @@ export function PhishingCatcher() {
         <div className={styles.topBar}>
           <div className={styles.topBarInner}>
             <div className={styles.levelInfo}>
-              <div className={styles.levelBadge} aria-label="Уровень 2">02</div>
+              <div className={styles.levelBadge} aria-label="Уровень 2">
+                02
+              </div>
               <div>
                 <h1 className={styles.levelTitle}>Охотник за фишингом</h1>
-                <p className={styles.levelSubtitle}>Определи фишинговые письма во входящих</p>
+                <p className={styles.levelSubtitle}>
+                  Определи фишинговые письма во входящих
+                </p>
               </div>
             </div>
-            <div className={styles.progress} aria-label={`Проверено ${answeredCount} из ${emails.length} писем`}>
+            <div
+              className={styles.progress}
+              aria-label={`Проверено ${answeredCount} из ${emails.length} писем`}
+            >
               <span className={styles.progressText}>
-                Проверено: <strong>{answeredCount}/{emails.length}</strong>
+                Проверено:{' '}
+                <strong>
+                  {answeredCount}/{emails.length}
+                </strong>
               </span>
               <div className={styles.progressDots} aria-hidden="true">
-                {emails.map((e) => {
+                {emails.map(e => {
                   const r = answers[e.id]
                   return (
                     <span
@@ -133,8 +148,8 @@ export function PhishingCatcher() {
                         !r
                           ? styles.dotEmpty
                           : r.isCorrect
-                          ? styles.dotCorrect
-                          : styles.dotWrong
+                            ? styles.dotCorrect
+                            : styles.dotWrong
                       }
                     />
                   )
@@ -145,7 +160,9 @@ export function PhishingCatcher() {
         </div>
 
         <div className={styles.workspace}>
-          <div className={`${styles.listPanel} ${mobileView === 'email' ? styles.listPanelHidden : ''}`}>
+          <div
+            className={`${styles.listPanel} ${mobileView === 'email' ? styles.listPanelHidden : ''}`}
+          >
             <EmailList
               emails={emails}
               selectedId={selectedId}
@@ -154,19 +171,26 @@ export function PhishingCatcher() {
             />
           </div>
 
-          <div className={`${styles.viewPanel} ${mobileView === 'list' ? styles.viewPanelHidden : ''}`}>
+          <div
+            className={`${styles.viewPanel} ${mobileView === 'list' ? styles.viewPanelHidden : ''}`}
+          >
             <EmailView
               email={selectedEmail}
               result={answers[selectedEmail.id]}
               onAnswer={handleAnswer}
-              onBack={mobileView === 'email' ? () => setMobileView('list') : undefined}
+              onBack={
+                mobileView === 'email' ? () => setMobileView('list') : undefined
+              }
             />
           </div>
         </div>
       </main>
 
       {showError && errorInfo && (
-        <PhishingErrorModal errorInfo={errorInfo} onClose={handleErrorDismiss} />
+        <PhishingErrorModal
+          errorInfo={errorInfo}
+          onClose={handleErrorDismiss}
+        />
       )}
 
       {showSuccess && (

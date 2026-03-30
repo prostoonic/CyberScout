@@ -19,7 +19,9 @@ export default function NotFoundPage() {
         </div>
 
         <div className={styles.content}>
-          <span className={styles.code} aria-hidden="true">404</span>
+          <span className={styles.code} aria-hidden="true">
+            404
+          </span>
           <h1 className={styles.title}>Страница потерялась!</h1>
           <p className={styles.description}>
             Наш робот-разведчик отправился на поиски, но и сам заблудился.

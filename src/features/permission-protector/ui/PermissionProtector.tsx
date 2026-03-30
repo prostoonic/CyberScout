@@ -17,14 +17,17 @@ function Level5IntroContent() {
   return (
     <div className={introStyles.content}>
       <p className={introStyles.lead}>
-        Приложения могут запрашивать доступ к камере, микрофону, контактам и другим данным.
-        Не все разрешения безопасны.
+        Приложения могут запрашивать доступ к камере, микрофону, контактам и
+        другим данным. Не все разрешения безопасны.
       </p>
       <p className={introStyles.lead}>
-        Если дать лишний доступ, приложение может следить за тобой или передавать твои данные.
+        Если дать лишний доступ, приложение может следить за тобой или
+        передавать твои данные.
       </p>
 
-      <h3 className={introStyles.listTitle}>Как понять, можно ли дать разрешение:</h3>
+      <h3 className={introStyles.listTitle}>
+        Как понять, можно ли дать разрешение:
+      </h3>
       <ul className={introStyles.list}>
         <li>Оно должно быть нужно для работы приложения</li>
         <li>Если запрос выглядит странно — лучше отказать</li>
@@ -35,15 +38,27 @@ function Level5IntroContent() {
       <div className={introStyles.examples}>
         <p className={introStyles.examplesTitle}>Примеры:</p>
         <ul className={introStyles.examplesList}>
-          <li><span aria-hidden="true">🚫</span> Фонарик просит доступ к контактам — подозрительно</li>
-          <li><span aria-hidden="true">✅</span> Навигатор просит геолокацию — нормально</li>
-          <li><span aria-hidden="true">✅</span> Соцсеть просит камеру — допустимо</li>
+          <li>
+            <span aria-hidden="true">🚫</span> Фонарик просит доступ к контактам
+            — подозрительно
+          </li>
+          <li>
+            <span aria-hidden="true">✅</span> Навигатор просит геолокацию —
+            нормально
+          </li>
+          <li>
+            <span aria-hidden="true">✅</span> Соцсеть просит камеру — допустимо
+          </li>
         </ul>
       </div>
 
       <div className={introStyles.rule}>
-        <span className={introStyles.ruleIcon} aria-hidden="true">💡</span>
-        <p className={introStyles.ruleText}>Главное правило: давай только необходимые разрешения.</p>
+        <span className={introStyles.ruleIcon} aria-hidden="true">
+          💡
+        </span>
+        <p className={introStyles.ruleText}>
+          Главное правило: давай только необходимые разрешения.
+        </p>
       </div>
     </div>
   )
@@ -51,9 +66,9 @@ function Level5IntroContent() {
 
 export function PermissionProtector() {
   const router = useRouter()
-  const completeLevel = useUserStore((s) => s.completeLevel)
-  const loseLife = useUserStore((s) => s.loseLife)
-  const addMistake = useUserStore((s) => s.addMistake)
+  const completeLevel = useUserStore(s => s.completeLevel)
+  const loseLife = useUserStore(s => s.loseLife)
+  const addMistake = useUserStore(s => s.addMistake)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -90,6 +105,7 @@ export function PermissionProtector() {
         <LevelIntroModal
           levelNumber={5}
           levelTitle="Защитник разрешений"
+          introIcon="GlobeIcon"
           onStart={() => setShowIntro(false)}
         >
           <Level5IntroContent />
@@ -99,15 +115,24 @@ export function PermissionProtector() {
       <main className={styles.main}>
         <div className={styles.container}>
           <header className={styles.pageHeader}>
-            <div className={styles.levelBadge} aria-label="Уровень 5">05</div>
+            <div className={styles.levelBadge} aria-label="Уровень 5">
+              05
+            </div>
             <div>
               <h1 className={styles.levelTitle}>Защитник разрешений</h1>
-              <p className={styles.levelSubtitle}>Выдай только нужные разрешения приложению</p>
+              <p className={styles.levelSubtitle}>
+                Выдай только нужные разрешения приложению
+              </p>
             </div>
           </header>
 
           {/* Progress */}
-          <div className={styles.progressRow} role="status" aria-live="polite" aria-label={`Приложение ${appIndex + 1} из ${totalApps}`}>
+          <div
+            className={styles.progressRow}
+            role="status"
+            aria-live="polite"
+            aria-label={`Приложение ${appIndex + 1} из ${totalApps}`}
+          >
             {Array.from({ length: totalApps }).map((_, i) => (
               <div
                 key={i}
@@ -131,7 +156,9 @@ export function PermissionProtector() {
                 <span className={styles.appIcon}>{currentApp.emoji}</span>
               </div>
               <div>
-                <h2 id="app-name" className={styles.appName}>{currentApp.name}</h2>
+                <h2 id="app-name" className={styles.appName}>
+                  {currentApp.name}
+                </h2>
                 <p className={styles.appDesc}>{currentApp.description}</p>
               </div>
             </div>
@@ -142,27 +169,44 @@ export function PermissionProtector() {
               </legend>
 
               <ul className={styles.permissionList} role="list">
-                {ALL_PERMISSIONS.map((perm) => {
+                {ALL_PERMISSIONS.map(perm => {
                   const isOn = enabled[perm.id]
                   const switchId = `perm-${perm.id}`
                   return (
-                    <li key={perm.id} className={styles.permissionItem} role="listitem">
-                      <label className={styles.permissionLabel} htmlFor={switchId}>
-                        <span className={styles.permissionIconWrap} aria-hidden="true">
+                    <li
+                      key={perm.id}
+                      className={styles.permissionItem}
+                      role="listitem"
+                    >
+                      <label
+                        className={styles.permissionLabel}
+                        htmlFor={switchId}
+                      >
+                        <span
+                          className={styles.permissionIconWrap}
+                          aria-hidden="true"
+                        >
                           {perm.icon}
                         </span>
-                        <span className={styles.permissionText}>{perm.label}</span>
+                        <span className={styles.permissionText}>
+                          {perm.label}
+                        </span>
                       </label>
                       <button
                         id={switchId}
                         type="button"
                         role="switch"
                         aria-checked={isOn}
-                        className={clsx(styles.toggle, { [styles.toggleOn]: isOn })}
+                        className={clsx(styles.toggle, {
+                          [styles.toggleOn]: isOn,
+                        })}
                         onClick={() => togglePermission(perm.id)}
                         aria-label={`${perm.label}: ${isOn ? 'включено' : 'выключено'}`}
                       >
-                        <span className={styles.toggleThumb} aria-hidden="true" />
+                        <span
+                          className={styles.toggleThumb}
+                          aria-hidden="true"
+                        />
                       </button>
                     </li>
                   )
@@ -182,7 +226,10 @@ export function PermissionProtector() {
       </main>
 
       {showError && errorDetail && (
-        <PermissionErrorModal errorDetail={errorDetail} onClose={handleErrorDismiss} />
+        <PermissionErrorModal
+          errorDetail={errorDetail}
+          onClose={handleErrorDismiss}
+        />
       )}
 
       {showSuccess && (

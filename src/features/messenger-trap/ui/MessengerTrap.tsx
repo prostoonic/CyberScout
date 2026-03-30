@@ -17,19 +17,23 @@ function Level4IntroContent() {
   return (
     <div className={introStyles.content}>
       <p className={introStyles.lead}>
-        В этом уровне тебе предстоит определить, какие сообщения пишет настоящий собеседник,
-        а какие — мошенник.
+        В этом уровне тебе предстоит определить, какие сообщения пишет настоящий
+        собеседник, а какие — мошенник.
       </p>
       <p className={introStyles.lead}>
-        Мошенники часто выдают себя за знакомых, коллег или сервисы поддержки. Они могут писать
-        вежливо и убедительно, не вызывая подозрений. Их цель — заставить тебя передать личные
-        данные, код подтверждения или перейти по ссылке.
+        Мошенники часто выдают себя за знакомых, коллег или сервисы поддержки.
+        Они могут писать вежливо и убедительно, не вызывая подозрений. Их цель —
+        заставить тебя передать личные данные, код подтверждения или перейти по
+        ссылке.
       </p>
 
       <div className={introStyles.warning}>
-        <span className={introStyles.warningIcon} aria-hidden="true">⚠️</span>
+        <span className={introStyles.warningIcon} aria-hidden="true">
+          ⚠️
+        </span>
         <p className={introStyles.warningText}>
-          Будь внимателен: даже обычное на первый взгляд сообщение может быть обманом.
+          Будь внимателен: даже обычное на первый взгляд сообщение может быть
+          обманом.
         </p>
       </div>
     </div>
@@ -38,9 +42,9 @@ function Level4IntroContent() {
 
 export function MessengerTrap() {
   const router = useRouter()
-  const completeLevel = useUserStore((s) => s.completeLevel)
-  const loseLife = useUserStore((s) => s.loseLife)
-  const addMistake = useUserStore((s) => s.addMistake)
+  const completeLevel = useUserStore(s => s.completeLevel)
+  const loseLife = useUserStore(s => s.loseLife)
+  const addMistake = useUserStore(s => s.addMistake)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -89,27 +93,40 @@ export function MessengerTrap() {
         <div className={styles.topBar}>
           <div className={styles.topBarInner}>
             <div className={styles.levelInfo}>
-              <div className={styles.levelBadge} aria-label="Уровень 4">04</div>
+              <div className={styles.levelBadge} aria-label="Уровень 4">
+                04
+              </div>
               <div>
                 <h1 className={styles.levelTitle}>Мессенджер ловушка</h1>
-                <p className={styles.levelSubtitle}>Распознай мошенника в переписке</p>
+                <p className={styles.levelSubtitle}>
+                  Распознай мошенника в переписке
+                </p>
               </div>
             </div>
-            <div className={styles.progressInfo} aria-label={`Проверено ${completedCount} из ${chats.length} чатов`}>
+            <div
+              className={styles.progressInfo}
+              aria-label={`Проверено ${completedCount} из ${chats.length} чатов`}
+            >
               <div className={styles.progressDots} aria-hidden="true">
-                {chats.map((c) => {
+                {chats.map(c => {
                   const r = results[c.id]
                   return (
                     <span
                       key={c.id}
                       className={
-                        !r ? styles.dotEmpty : r.outcome === 'good' ? styles.dotGood : styles.dotBad
+                        !r
+                          ? styles.dotEmpty
+                          : r.outcome === 'good'
+                            ? styles.dotGood
+                            : styles.dotBad
                       }
                     />
                   )
                 })}
               </div>
-              <span className={styles.progressText}>{completedCount}/{chats.length}</span>
+              <span className={styles.progressText}>
+                {completedCount}/{chats.length}
+              </span>
             </div>
           </div>
         </div>

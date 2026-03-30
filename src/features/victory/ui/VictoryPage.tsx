@@ -9,17 +9,29 @@ import { AVATARS } from '@/entities/avatar/model/avatars'
 import styles from './victory-page.module.scss'
 
 const ACHIEVEMENTS = [
-  { icon: '🔐', title: 'Мастер паролей', desc: 'Умеет создавать надёжные пароли' },
+  {
+    icon: '🔐',
+    title: 'Мастер паролей',
+    desc: 'Умеет создавать надёжные пароли',
+  },
   { icon: '🎣', title: 'Антифишинг', desc: 'Распознаёт мошеннические письма' },
   { icon: '🌐', title: 'Детектив доменов', desc: 'Выявляет поддельные сайты' },
-  { icon: '💬', title: 'Щит мессенджера', desc: 'Не ведётся на скам-сообщения' },
-  { icon: '🛡️', title: 'Страж разрешений', desc: 'Контролирует доступ приложений' },
+  {
+    icon: '💬',
+    title: 'Щит мессенджера',
+    desc: 'Не ведётся на скам-сообщения',
+  },
+  {
+    icon: '🛡️',
+    title: 'Страж разрешений',
+    desc: 'Контролирует доступ приложений',
+  },
   { icon: '🏆', title: 'Кибер Герой', desc: 'Прошёл финальное испытание' },
 ]
 
 export function VictoryPage() {
-  const username = useUserStore((s) => s.username)
-  const selectedAvatarId = useUserStore((s) => s.selectedAvatarId)
+  const username = useUserStore(s => s.username)
+  const selectedAvatarId = useUserStore(s => s.selectedAvatarId)
   const hasLaunched = useRef(false)
   const [issueDate, setIssueDate] = useState('')
   const [issueYear, setIssueYear] = useState('')
@@ -37,7 +49,8 @@ export function VictoryPage() {
   }, [])
 
   const avatarSrc =
-    AVATARS.find((a) => a.id === selectedAvatarId)?.image ?? '/avatars/Avatar1.svg'
+    AVATARS.find(a => a.id === selectedAvatarId)?.image ??
+    '/avatars/Avatar1.svg'
 
   useEffect(() => {
     if (hasLaunched.current) return
@@ -52,7 +65,14 @@ export function VictoryPage() {
         angle: 60,
         spread: 70,
         origin: { x: 0, y: 0.4 },
-        colors: ['#6e9fff', '#0057bd', '#48ac34', '#ffcc00', '#ff6b6b', '#9c27b0'],
+        colors: [
+          '#6e9fff',
+          '#0057bd',
+          '#48ac34',
+          '#ffcc00',
+          '#ff6b6b',
+          '#9c27b0',
+        ],
         gravity: 0.85,
         scalar: 1.1,
       })
@@ -61,7 +81,14 @@ export function VictoryPage() {
         angle: 120,
         spread: 70,
         origin: { x: 1, y: 0.4 },
-        colors: ['#6e9fff', '#0057bd', '#48ac34', '#ffcc00', '#ff6b6b', '#9c27b0'],
+        colors: [
+          '#6e9fff',
+          '#0057bd',
+          '#48ac34',
+          '#ffcc00',
+          '#ff6b6b',
+          '#9c27b0',
+        ],
         gravity: 0.85,
         scalar: 1.1,
       })
@@ -83,7 +110,8 @@ export function VictoryPage() {
           <span className={styles.username}>{username || 'Герой'}</span>!
         </h1>
         <p className={styles.subtitle}>
-          Ты прошёл все уровни CyberScout и доказал, что умеешь защищать себя в цифровом мире.
+          Ты прошёл все уровни CyberScout и доказал, что умеешь защищать себя в
+          цифровом мире.
         </p>
 
         <article className={styles.passport} aria-label="Паспорт кибер-героя">
@@ -92,7 +120,13 @@ export function VictoryPage() {
             <div className={styles.passportTitleRow}>
               <div className={styles.passportIconWrapper} aria-hidden="true">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                  <circle cx="14" cy="14" r="14" fill="white" fillOpacity="0.2" />
+                  <circle
+                    cx="14"
+                    cy="14"
+                    r="14"
+                    fill="white"
+                    fillOpacity="0.2"
+                  />
                   <path
                     d="M14 6L17 11H22L18 14.5L19.5 20L14 17L8.5 20L10 14.5L6 11H11L14 6Z"
                     fill="white"
@@ -116,13 +150,17 @@ export function VictoryPage() {
                   height={80}
                   className={styles.avatar}
                 />
-                <div className={styles.avatarBadge} aria-hidden="true">🏆</div>
+                <div className={styles.avatarBadge} aria-hidden="true">
+                  🏆
+                </div>
               </div>
               <div className={styles.holderInfo}>
                 <dl className={styles.infoList}>
                   <div className={styles.infoRow}>
                     <dt className={styles.infoLabel}>Имя героя</dt>
-                    <dd className={styles.infoValue}>{username || 'Безымянный Герой'}</dd>
+                    <dd className={styles.infoValue}>
+                      {username || 'Безымянный Герой'}
+                    </dd>
                   </div>
                   <div className={styles.infoRow}>
                     <dt className={styles.infoLabel}>Статус</dt>
@@ -140,14 +178,22 @@ export function VictoryPage() {
               </div>
             </div>
 
-            <div className={styles.achievementsSection} aria-labelledby="achievements-heading">
-              <h3 id="achievements-heading" className={styles.achievementsTitle}>
+            <div
+              className={styles.achievementsSection}
+              aria-labelledby="achievements-heading"
+            >
+              <h3
+                id="achievements-heading"
+                className={styles.achievementsTitle}
+              >
                 Полученные навыки
               </h3>
               <ul className={styles.achievementsList} role="list">
-                {ACHIEVEMENTS.map((a) => (
+                {ACHIEVEMENTS.map(a => (
                   <li key={a.title} className={styles.achievementItem}>
-                    <span className={styles.achievementIcon} aria-hidden="true">{a.icon}</span>
+                    <span className={styles.achievementIcon} aria-hidden="true">
+                      {a.icon}
+                    </span>
                     <div className={styles.achievementText}>
                       <span className={styles.achievementName}>{a.title}</span>
                       <span className={styles.achievementDesc}>{a.desc}</span>
