@@ -70,6 +70,39 @@
     color: var(--color-primary-300);
   }
 
+  /* Chrome / Safari: автозаполнение подменяет color; без этого текст чёрный */
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--color-primary-800);
+    caret-color: var(--color-primary-800);
+    box-shadow: 0 0 0 1000px var(--color-primary-200) inset;
+    transition: background-color 99999s ease-out;
+  }
+
+  &:hover:-webkit-autofill {
+    box-shadow: 0 0 0 1000px var(--color-primary-100) inset;
+  }
+
+  &:focus:-webkit-autofill {
+    box-shadow: 0 0 0 1000px var(--color-primary-100) inset;
+  }
+
+  /* Firefox и др.: автозаполнение */
+  &:autofill {
+    color: var(--color-primary-800);
+    background-color: var(--color-primary-200);
+  }
+
+  &:hover:autofill {
+    background-color: var(--color-primary-100);
+  }
+
+  &:focus:autofill {
+    background-color: var(--color-primary-100);
+  }
+
   &:hover {
     background-color: var(--color-primary-100);
   }
@@ -84,12 +117,27 @@
     background-color: var(--color-error-bg);
     color: var(--color-error);
 
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-text-fill-color: var(--color-error);
+      caret-color: var(--color-error);
+      box-shadow: 0 0 0 1000px var(--color-error-bg) inset;
+      transition: background-color 99999s ease-out;
+    }
+
     &:hover {
       background-color: var(--color-error-bg);
     }
 
     &:focus {
       border-color: var(--color-error);
+      background-color: var(--color-error-bg);
+    }
+
+    &:autofill {
+      color: var(--color-error);
       background-color: var(--color-error-bg);
     }
   }

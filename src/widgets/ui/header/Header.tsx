@@ -36,7 +36,13 @@ export function Header() {
           className={styles.logo}
           aria-label="CyberScout — на карту уровней"
         >
-          <Image src="/logo.svg" alt="CyberScout" width={115} height={28} />
+          <Image
+            className={styles.logoImage}
+            src="/logo.svg"
+            alt="CyberScout"
+            width={115}
+            height={28}
+          />
         </Link>
 
         <div className={styles.center}>
