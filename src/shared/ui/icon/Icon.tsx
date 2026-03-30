@@ -8,6 +8,8 @@ import TrophyIcon from './icons/TrophyIcon'
 import LockIcon from './icons/LockIcon'
 import StarIcon from './icons/StarIcon'
 import CheckIcon from './icons/CheckIcon'
+import EyeIcon from './icons/EyeIcon'
+import EyeOffIcon from './icons/EyeOffIcon'
 
 const iconsMap = {
   RocketIcon,
@@ -20,6 +22,8 @@ const iconsMap = {
   LockIcon,
   StarIcon,
   CheckIcon,
+  EyeIcon,
+  EyeOffIcon,
 } as const
 
 export type IconName = keyof typeof iconsMap

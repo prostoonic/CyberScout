@@ -63,10 +63,17 @@
   color: var(--color-primary-800);
 }
 
+.avatarFieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-l);
+}
+
 .avatarList {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--spacing-s);
 }
 
 .avatarItem {
