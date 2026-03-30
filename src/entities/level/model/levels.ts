@@ -1,3 +1,5 @@
+import type { IconName } from '@/shared/ui/icon/Icon'
+
 export type LevelStatus = 'completed' | 'current' | 'locked'
 
 export interface Level {
@@ -5,7 +7,7 @@ export interface Level {
   number: number
   title: string
   description: string
-  icon: string
+  icon: IconName
   status: LevelStatus
   isFinal?: boolean
 }
@@ -23,7 +25,7 @@ export const LEVELS: Level[] = [
     id: 2,
     number: 2,
     title: 'Фишинг',
-    description: 'Научись распознавать мошеннические письма и сайты',
+    description: 'Научись распознавать мошеннические письма',
     icon: 'FishIcon',
     status: 'completed',
   },
@@ -32,7 +34,7 @@ export const LEVELS: Level[] = [
     number: 3,
     title: 'Фальшивые домены',
     description: 'Как распознавать поддельные сайты и домены',
-    icon: 'ShieldIcon',
+    icon: 'GlobeIcon',
     status: 'current',
   },
   {
@@ -46,9 +48,9 @@ export const LEVELS: Level[] = [
   {
     id: 5,
     number: 5,
-    title: 'Безопасный интернет',
-    description: 'Правила безопасного поведения в цифровом мире',
-    icon: 'GlobeIcon',
+    title: 'Менеджер разрешенй',
+    description: 'Как управлять разрешениями приложений',
+    icon: 'ShieldIcon',
     status: 'locked',
   },
   {
