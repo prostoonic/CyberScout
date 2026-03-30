@@ -1,17 +1,23 @@
 .page {
   width: 100%;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding: 32px var(--spacing-m);
+
+  @media (max-width: 480px) {
+    padding: var(--spacing-xl) var(--spacing-m);
+    align-items: flex-start;
+  }
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
+  width: 100%;
+  max-width: 480px;
 }
 
 .header {
@@ -22,21 +28,25 @@
 }
 
 .title {
-  font-size: 72px;
+  font-size: clamp(50px, 10vw, 72px);
   font-style: normal;
   font-weight: 900;
-  line-height: 72px;
+  line-height: 1;
   font-family: var(--font-plus-jakarta-sans);
   color: var(--color-primary-800);
 }
 
 .text {
-  font-size: 18px;
+  font-size: clamp(15px, 4vw, 18px);
   font-style: normal;
   font-weight: 500;
-  line-height: 28px;
+  line-height: 1.55;
   font-family: var(--font-inter);
   color: var(--color-primary-700);
+}
+
+.main {
+  width: 100%;
 }
 
 .form {
@@ -44,8 +54,13 @@
   flex-direction: column;
   gap: var(--spacing-m);
   background-color: var(--color-base);
-  border-radius: var(--border-radius);
+  border-radius: 24px;
   padding: var(--spacing-xl);
+
+  @media (max-width: 480px) {
+    padding: var(--spacing-m);
+    border-radius: 16px;
+  }
 }
 
 .formWrapper {
@@ -55,10 +70,10 @@
 }
 
 .subtitle {
-  font-size: 20px;
+  font-size: clamp(16px, 4vw, 20px);
   font-style: normal;
   font-weight: 700;
-  line-height: 28px;
+  line-height: 1.4;
   font-family: var(--font-plus-jakarta-sans);
   color: var(--color-primary-800);
 }
@@ -67,6 +82,9 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-l);
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .avatarList {
