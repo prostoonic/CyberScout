@@ -44,6 +44,10 @@
   align-items: center;
   gap: 0;
   position: relative;
+
+  @media (max-width: 600px) {
+    gap: var(--spacing-l);
+  }
 }
 
 /* ── Single level item ── */
