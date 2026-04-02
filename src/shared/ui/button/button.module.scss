@@ -18,7 +18,8 @@
   transition:
     opacity var(--transition),
     transform var(--transition),
-    box-shadow var(--transition);
+    box-shadow var(--transition),
+    outline var(--transition);
 
   &:hover:not(:disabled) {
     opacity: 0.88;

@@ -534,22 +534,28 @@
     transform: translateY(0);
   }
 
-  &:focus-visible {
-    outline: 3px solid currentColor;
-    outline-offset: 3px;
-  }
 }
 
 .btnPhishing {
   @extend %actionBtn;
   background: var(--color-error);
   color: #fff;
+  
+  &:focus-visible {
+    outline: 3px solid var(--color-error);
+    outline-offset: 3px;
+  }
 }
 
 .btnLegit {
   @extend %actionBtn;
   background: var(--gradient-secondary);
   color: #fff;
+
+  &:focus-visible {
+    outline: 3px solid var(--color-secondary-600);
+    outline-offset: 3px;
+  }
 }
 
 .answeredBanner {

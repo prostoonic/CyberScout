@@ -28,7 +28,7 @@
 }
 
 .title {
-  font-size: clamp(50px, 10vw, 72px);
+  font-size: clamp(40px, 13vw, 72px);
   font-style: normal;
   font-weight: 900;
   line-height: 1;
@@ -37,12 +37,13 @@
 }
 
 .text {
-  font-size: clamp(15px, 4vw, 18px);
+  font-size: clamp(14px, 3vw, 20px);
   font-style: normal;
   font-weight: 500;
   line-height: 1.55;
   font-family: var(--font-inter);
   color: var(--color-primary-700);
+  text-wrap: balance;
 }
 
 .main {
@@ -66,7 +67,7 @@
 .formWrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-m);
+  gap: var(--spacing-xl);
 }
 
 .subtitle {
@@ -81,7 +82,7 @@
 .avatarFieldset {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-l);
+  gap: var(--spacing-s);
   border: none;
   padding: 0;
   margin: 0;
