@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { SuccessModal, LevelIntroModal } from '@/shared/ui'
-import { useUserStore } from '@/entities/user'
+import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { usePhishingCatcher } from '../model/usePhishingCatcher'
 import { EmailList } from './EmailList'
 import { EmailView } from './EmailView'
@@ -54,8 +54,10 @@ function Level2IntroContent() {
 export function PhishingCatcher() {
   const router = useRouter()
   const completeLevel = useUserStore(s => s.completeLevel)
-  const loseLife = useUserStore(s => s.loseLife)
   const addMistake = useUserStore(s => s.addMistake)
+  const clearMistakes = useUserStore(s => s.clearMistakes)
+  const [lives, setLives] = useState(MAX_LIVES)
+  const [showLevelFailed, setShowLevelFailed] = useState(false)
   const [showIntro, setShowIntro] = useState(true)
   const [mobileView, setMobileView] = useState<'list' | 'email'>('list')
 
@@ -92,8 +94,17 @@ export function PhishingCatcher() {
         : `Ложная тревога: письмо от ${errorInfo.email.fromEmail} было безопасным`
       addMistake(mistakeText)
     }
-    loseLife()
     dismissError()
+    const newLives = lives - 1
+    setLives(Math.max(0, newLives))
+    if (newLives <= 0) {
+      setShowLevelFailed(true)
+    }
+  }
+
+  function handleRetry() {
+    clearMistakes()
+    router.replace('/levels')
   }
 
   function handleSuccessClose() {
@@ -104,6 +115,8 @@ export function PhishingCatcher() {
 
   return (
     <>
+      {showLevelFailed && <GameOverModal onRetry={handleRetry} />}
+
       {showIntro && (
         <LevelIntroModal
           levelNumber={2}
@@ -128,6 +141,7 @@ export function PhishingCatcher() {
                 </p>
               </div>
             </div>
+            <HeartsDisplay lives={lives} maxLives={MAX_LIVES} />
             <div
               className={styles.progress}
               aria-label={`Проверено ${answeredCount} из ${emails.length} писем`}

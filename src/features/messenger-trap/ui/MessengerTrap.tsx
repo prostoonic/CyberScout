@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { SuccessModal, LevelIntroModal } from '@/shared/ui'
-import { useUserStore } from '@/entities/user'
+import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { useMessengerTrap } from '../model/useMessengerTrap'
 import { ChatList } from './ChatList'
 import { ChatView } from './ChatView'
@@ -43,8 +43,10 @@ function Level4IntroContent() {
 export function MessengerTrap() {
   const router = useRouter()
   const completeLevel = useUserStore(s => s.completeLevel)
-  const loseLife = useUserStore(s => s.loseLife)
   const addMistake = useUserStore(s => s.addMistake)
+  const clearMistakes = useUserStore(s => s.clearMistakes)
+  const [lives, setLives] = useState(MAX_LIVES)
+  const [showLevelFailed, setShowLevelFailed] = useState(false)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -67,8 +69,17 @@ export function MessengerTrap() {
     if (errorChat) {
       addMistake(`Попался на мошенника: ${errorChat.contactName}`)
     }
-    loseLife()
     dismissError()
+    const newLives = lives - 1
+    setLives(Math.max(0, newLives))
+    if (newLives <= 0) {
+      setShowLevelFailed(true)
+    }
+  }
+
+  function handleRetry() {
+    clearMistakes()
+    router.replace('/levels')
   }
 
   function handleSuccessClose() {
@@ -79,6 +90,8 @@ export function MessengerTrap() {
 
   return (
     <>
+      {showLevelFailed && <GameOverModal onRetry={handleRetry} />}
+
       {showIntro && (
         <LevelIntroModal
           levelNumber={4}
@@ -103,6 +116,7 @@ export function MessengerTrap() {
                 </p>
               </div>
             </div>
+            <HeartsDisplay lives={lives} maxLives={MAX_LIVES} />
             <div
               className={styles.progressInfo}
               aria-label={`Проверено ${completedCount} из ${chats.length} чатов`}
