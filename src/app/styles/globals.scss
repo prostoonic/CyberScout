@@ -18,6 +18,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-primary-200);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 
   &.scroll-locked {
     overflow: hidden;
