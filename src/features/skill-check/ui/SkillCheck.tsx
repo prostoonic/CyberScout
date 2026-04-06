@@ -5,13 +5,13 @@ import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
 import { LevelIntroModal, SuccessModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
 import { useUserStore, MAX_LIVES } from '@/entities/user'
+import { SKILL_CHECK_TOTAL_TIME_SECONDS } from '../model/skill-check.constants'
 import { useSkillCheck } from '../model/useSkillCheck'
 import { TimerExpiredModal } from './TimerExpiredModal'
 import styles from './skill-check.module.scss'
 import introStyles from './intro-content.module.scss'
 
 const LEVEL_ID = 6
-const TOTAL_TIME = 30
 
 function SkillCheckIntroContent() {
   return (
@@ -28,7 +28,9 @@ function SkillCheckIntroContent() {
           <span className={introStyles.statLabel}>Очков для победы</span>
         </div>
         <div className={introStyles.stat}>
-          <span className={introStyles.statValue}>30</span>
+          <span className={introStyles.statValue}>
+            {SKILL_CHECK_TOTAL_TIME_SECONDS}
+          </span>
           <span className={introStyles.statLabel}>Секунд на всё</span>
         </div>
         <div className={introStyles.stat}>
@@ -83,7 +85,7 @@ export function SkillCheck() {
     restart,
   } = useSkillCheck()
 
-  const timePercent = (timeLeft / TOTAL_TIME) * 100
+  const timePercent = (timeLeft / SKILL_CHECK_TOTAL_TIME_SECONDS) * 100
   const isTimeLow = timeLeft <= 10
 
   function handleAnswer(verdict: 'safe' | 'danger') {
@@ -157,10 +159,11 @@ export function SkillCheck() {
               <h1 className={styles.title}>Финальное испытание</h1>
               <p className={styles.subtitle}>Безопасно или Опасно?</p>
             </div>
+            <HeartsDisplay lives={lives} maxLives={MAX_LIVES} />
+
           </header>
 
           <div className={styles.statsBar}>
-            <HeartsDisplay lives={lives} maxLives={MAX_LIVES} />
             <div
               className={styles.scoreDisplay}
               aria-label={`Счёт: ${score} из ${TARGET_SCORE}`}

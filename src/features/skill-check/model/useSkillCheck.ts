@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
+import { SKILL_CHECK_TOTAL_TIME_SECONDS } from './skill-check.constants'
 import { SITUATIONS, type Situation } from './situations'
-
-const TOTAL_TIME = 30
 const TARGET_SCORE = 10
 
 type GamePhase = 'idle' | 'playing' | 'timeout' | 'won'
@@ -29,7 +28,7 @@ export interface SkillCheckState {
 export function useSkillCheck(): SkillCheckState {
   const [phase, setPhase] = useState<GamePhase>('idle')
   const [score, setScore] = useState(0)
-  const [timeLeft, setTimeLeft] = useState(TOTAL_TIME)
+  const [timeLeft, setTimeLeft] = useState(SKILL_CHECK_TOTAL_TIME_SECONDS)
   const [queue, setQueue] = useState<Situation[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [lastVerdict, setLastVerdict] = useState<'correct' | 'wrong' | null>(
@@ -55,7 +54,7 @@ export function useSkillCheck(): SkillCheckState {
     setQueue(newQueue)
     setCurrentIndex(0)
     setScore(0)
-    setTimeLeft(TOTAL_TIME)
+    setTimeLeft(SKILL_CHECK_TOTAL_TIME_SECONDS)
     setLastVerdict(null)
     setPhase('playing')
   }, [clearTimers, buildQueue])
@@ -64,7 +63,7 @@ export function useSkillCheck(): SkillCheckState {
     clearTimers()
     setPhase('idle')
     setScore(0)
-    setTimeLeft(TOTAL_TIME)
+    setTimeLeft(SKILL_CHECK_TOTAL_TIME_SECONDS)
     setLastVerdict(null)
   }, [clearTimers])
 
