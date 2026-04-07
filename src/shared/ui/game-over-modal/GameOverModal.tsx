@@ -7,12 +7,6 @@ interface IProps {
   onRetry: () => void
 }
 
-const CONSEQUENCES = [
-  { icon: '💸', text: 'Со счёта списались деньги' },
-  { icon: '📨', text: 'Друзьям отправлены странные сообщения' },
-  { icon: '🔒', text: 'Потерян доступ к аккаунту' },
-]
-
 export function GameOverModal({ onRetry }: IProps) {
   useBodyScrollLock()
   const modalRef = useFocusTrap<HTMLDivElement>()
@@ -23,6 +17,7 @@ export function GameOverModal({ onRetry }: IProps) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="gameover-title"
+      aria-describedby="gameover-description"
     >
       <div className={styles.modal} ref={modalRef}>
         <div className={styles.iconWrapper} aria-hidden="true">
@@ -38,33 +33,19 @@ export function GameOverModal({ onRetry }: IProps) {
         </div>
 
         <h2 id="gameover-title" className={styles.title}>
-          Ты был взломан!
+          Сессия прервана системой.
         </h2>
 
-        <div className={styles.storyBlock} aria-label="Что произошло">
-          <p className={styles.storyText}>
-            Твой аккаунт{' '}
-            <span className={styles.highlight}>&quot;взломан&quot;</span>. Ты
-            допустил несколько ошибок, и злоумышленники получили доступ к твоим
-            данным.
+        <div className={styles.storyBlock}>
+          <p id="gameover-description" className={styles.storyText}>
+            Зафиксировано критическое количество ошибок. Соединение разорвано в
+            целях безопасности.
           </p>
-
-          <ul
-            className={styles.consequences}
-            role="list"
-            aria-label="Последствия"
-          >
-            {CONSEQUENCES.map(c => (
-              <li key={c.text} className={styles.consequenceItem}>
-                <span aria-hidden="true">{c.icon}</span>
-                <span>{c.text}</span>
-              </li>
-            ))}
-          </ul>
+          <p className={styles.question}>Инициализировать новую сессию?</p>
         </div>
 
         <button className={styles.retryButton} onClick={onRetry} type="button">
-          Попробовать ещё
+          Инициализировать
         </button>
       </div>
     </div>

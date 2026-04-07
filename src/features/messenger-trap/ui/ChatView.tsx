@@ -50,11 +50,11 @@ export function ChatView({ state, onSelectOption, onBack }: IProps) {
               {chat.contactName}
             </h2>
             <p className={styles.chatViewStatus}>
-              {isAnswered
-                ? outcome === 'good'
+              {!isAnswered || !showResponse
+                ? 'Сейчас в сети'
+                : outcome === 'good'
                   ? '✅ Распознан мошенник'
-                  : '❌ Попался на уловку'
-                : 'Сейчас в сети'}
+                  : '❌ Попался на уловку'}
             </p>
           </div>
         </div>

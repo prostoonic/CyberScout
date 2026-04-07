@@ -57,44 +57,48 @@ export function PhishingErrorModal({ errorInfo, onClose }: IProps) {
             <p className={styles.hintsTitle}>
               На что нужно было обратить внимание:
             </p>
-            <ul className={styles.hintsList}>
-              {email.phishingHints.map((hint, i) => (
-                <li key={i} className={styles.hintsItem}>
-                  <span className={styles.hintsIcon} aria-hidden="true">
-                    ⚠️
-                  </span>
-                  {hint}
-                </li>
-              ))}
-            </ul>
+            <div className={styles.hintsScroll}>
+              <ul className={styles.hintsList}>
+                {email.phishingHints.map((hint, i) => (
+                  <li key={i} className={styles.hintsItem}>
+                    <span className={styles.hintsIcon} aria-hidden="true">
+                      ⚠️
+                    </span>
+                    {hint}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
 
         {calledPhishing && (
           <div className={styles.hintsBlock}>
             <p className={styles.hintsTitle}>Признаки безопасного письма:</p>
-            <ul className={styles.hintsList}>
-              <li className={styles.hintsItem}>
-                <span className={styles.hintsIcon} aria-hidden="true">
-                  ✅
-                </span>
-                Отправитель использует официальный домен (
-                {email.fromEmail.split('@')[1]})
-              </li>
-              <li className={styles.hintsItem}>
-                <span className={styles.hintsIcon} aria-hidden="true">
-                  ✅
-                </span>
-                Письмо не требует вводить пароль или переходить по
-                подозрительным ссылкам
-              </li>
-              <li className={styles.hintsItem}>
-                <span className={styles.hintsIcon} aria-hidden="true">
-                  ✅
-                </span>
-                Нет угроз и искусственной срочности
-              </li>
-            </ul>
+            <div className={styles.hintsScroll}>
+              <ul className={styles.hintsList}>
+                <li className={styles.hintsItem}>
+                  <span className={styles.hintsIcon} aria-hidden="true">
+                    ✅
+                  </span>
+                  Отправитель использует официальный домен (
+                  {email.fromEmail.split('@')[1]})
+                </li>
+                <li className={styles.hintsItem}>
+                  <span className={styles.hintsIcon} aria-hidden="true">
+                    ✅
+                  </span>
+                  Письмо не требует вводить пароль или переходить по
+                  подозрительным ссылкам
+                </li>
+                <li className={styles.hintsItem}>
+                  <span className={styles.hintsIcon} aria-hidden="true">
+                    ✅
+                  </span>
+                  Нет угроз и искусственной срочности
+                </li>
+              </ul>
+            </div>
           </div>
         )}
 
