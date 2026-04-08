@@ -36,7 +36,6 @@ export function VictoryPage() {
   const [issueDate, setIssueDate] = useState('')
   const [issueYear, setIssueYear] = useState('')
 
-  // Дата только на клиенте — иначе возможен hydration mismatch (локаль/таймзона)
   useEffect(() => {
     setIssueDate(
       new Date().toLocaleDateString('ru-RU', {
@@ -135,7 +134,7 @@ export function VictoryPage() {
               </div>
               <div>
                 <p className={styles.passportPreTitle}>CyberScout</p>
-                <h2 className={styles.passportTitle}>Паспорт Кибер-Героя</h2>
+                <h2 className={styles.passportTitle}>Паспорт Кибер-Скаута</h2>
               </div>
             </div>
           </div>
@@ -164,7 +163,7 @@ export function VictoryPage() {
                   </div>
                   <div className={styles.infoRow}>
                     <dt className={styles.infoLabel}>Статус</dt>
-                    <dd className={styles.infoValueGreen}>Кибер-Разведчик ✓</dd>
+                    <dd className={styles.infoValueGreen}>Кибер-Скаут ✓</dd>
                   </div>
                   <div className={styles.infoRow}>
                     <dt className={styles.infoLabel}>Уровней пройдено</dt>
