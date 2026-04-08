@@ -163,7 +163,7 @@ export function VictoryPage() {
                   </div>
                   <div className={styles.infoRow}>
                     <dt className={styles.infoLabel}>Статус</dt>
-                    <dd className={styles.infoValueGreen}>Кибер-Скаут ✓</dd>
+                    <dd className={styles.infoValueGreen}>Кибер-Герой ✓</dd>
                   </div>
                   <div className={styles.infoRow}>
                     <dt className={styles.infoLabel}>Уровней пройдено</dt>

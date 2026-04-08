@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 import '@/app/styles/globals.scss'
+import { Footer } from '@/widgets/ui'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -34,7 +35,10 @@ export default function RootLayout({
       lang="ru"
       className={`${inter.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <div className="layout-content">{children}</div>
+        <Footer />
+      </body>
     </html>
   )
 }
