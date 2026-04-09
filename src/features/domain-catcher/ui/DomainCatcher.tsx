@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { SuccessModal, LevelIntroModal } from '@/shared/ui'
-import { useUserStore } from '@/entities/user'
+import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { useDomainCatcher } from '../model/useDomainCatcher'
 import { DomainCard } from './DomainCard'
 import { DomainErrorModal } from './DomainErrorModal'
@@ -46,8 +46,10 @@ function Level3IntroContent() {
 export function DomainCatcher() {
   const router = useRouter()
   const completeLevel = useUserStore(s => s.completeLevel)
-  const loseLife = useUserStore(s => s.loseLife)
   const addMistake = useUserStore(s => s.addMistake)
+  const clearMistakes = useUserStore(s => s.clearMistakes)
+  const [lives, setLives] = useState(MAX_LIVES)
+  const [showLevelFailed, setShowLevelFailed] = useState(false)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -71,8 +73,17 @@ export function DomainCatcher() {
       const phishingDomain = errorInfo.round.domains.find(d => d.isPhishing)
       addMistake(`Пропустил фишинговый домен: ${phishingDomain?.value ?? ''}`)
     }
-    loseLife()
     dismissError()
+    const newLives = lives - 1
+    setLives(Math.max(0, newLives))
+    if (newLives <= 0) {
+      setShowLevelFailed(true)
+    }
+  }
+
+  function handleRetry() {
+    clearMistakes()
+    router.replace('/levels')
   }
 
   function handleSuccessClose() {
@@ -83,6 +94,8 @@ export function DomainCatcher() {
 
   return (
     <>
+      {showLevelFailed && <GameOverModal onRetry={handleRetry} />}
+
       {showIntro && (
         <LevelIntroModal
           levelNumber={3}
@@ -105,6 +118,7 @@ export function DomainCatcher() {
                 Найди фишинговый сайт среди четырёх адресов
               </p>
             </div>
+            <HeartsDisplay lives={lives} maxLives={MAX_LIVES} />
           </header>
 
           <div

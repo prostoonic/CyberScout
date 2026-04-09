@@ -17,7 +17,6 @@ export interface AppScenario {
   emoji: string
   description: string
   requiredPermissions: PermissionId[]
-  /** Explanations for each wrong answer (per permission) */
   hints: Partial<Record<PermissionId, string>>
 }
 

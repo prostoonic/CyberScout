@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
-import { SuccessModal, LevelIntroModal } from '@/shared/ui'
-import { useUserStore } from '@/entities/user'
+import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { ALL_PERMISSIONS } from '../model/apps'
 import { usePermissionProtector } from '../model/usePermissionProtector'
 import { PermissionErrorModal } from './PermissionErrorModal'
@@ -67,8 +67,10 @@ function Level5IntroContent() {
 export function PermissionProtector() {
   const router = useRouter()
   const completeLevel = useUserStore(s => s.completeLevel)
-  const loseLife = useUserStore(s => s.loseLife)
   const addMistake = useUserStore(s => s.addMistake)
+  const clearMistakes = useUserStore(s => s.clearMistakes)
+  const [lives, setLives] = useState(MAX_LIVES)
+  const [showLevelFailed, setShowLevelFailed] = useState(false)
   const [showIntro, setShowIntro] = useState(true)
 
   const {
@@ -89,8 +91,17 @@ export function PermissionProtector() {
     if (errorDetail) {
       addMistake(`Неверные разрешения для приложения «${errorDetail.app.name}»`)
     }
-    loseLife()
     dismissError()
+    const newLives = lives - 1
+    setLives(Math.max(0, newLives))
+    if (newLives <= 0) {
+      setShowLevelFailed(true)
+    }
+  }
+
+  function handleRetry() {
+    clearMistakes()
+    router.replace('/levels')
   }
 
   function handleSuccessClose() {
@@ -101,6 +112,8 @@ export function PermissionProtector() {
 
   return (
     <>
+      {showLevelFailed && <GameOverModal onRetry={handleRetry} />}
+
       {showIntro && (
         <LevelIntroModal
           levelNumber={5}
@@ -124,6 +137,7 @@ export function PermissionProtector() {
                 Выдай только нужные разрешения приложению
               </p>
             </div>
+            <HeartsDisplay lives={lives} maxLives={MAX_LIVES} />
           </header>
 
           {/* Progress */}

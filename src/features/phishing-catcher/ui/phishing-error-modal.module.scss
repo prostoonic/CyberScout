@@ -8,7 +8,11 @@
   align-items: center;
   justify-content: center;
   z-index: 300;
-  padding: var(--spacing-m);
+  padding: var(--spacing-sm) var(--spacing-m);
+  padding-top: max(var(--spacing-sm), env(safe-area-inset-top, 0px));
+  padding-bottom: max(var(--spacing-sm), env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   animation: fadeIn 0.2s ease;
 }
 
@@ -24,23 +28,25 @@
 .modal {
   background: var(--color-base);
   border-radius: 24px;
-  padding: 36px 32px;
+  padding: 24px 28px;
   max-width: 480px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: min(90vh, 100dvh - 2rem);
+  margin-block: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-m);
   text-align: center;
+  min-height: 0;
   box-shadow:
     0 24px 48px rgba(229, 57, 53, 0.15),
     0 8px 16px rgba(0, 0, 0, 0.08);
   animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 
   @media (max-width: 480px) {
-    padding: var(--spacing-xl) var(--spacing-m);
+    padding: var(--spacing-m) var(--spacing-m);
     border-radius: 16px;
   }
 }
@@ -56,8 +62,35 @@
   }
 }
 
+.modalTop {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-m);
+  width: 100%;
+}
+
 .iconWrapper {
-  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.modalHints {
+  flex: 1 1 0%;
+  min-height: 0;
+  width: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  text-align: left;
+  padding-right: 2px;
+  margin-right: -2px;
+}
+
+.title,
+.subtitle,
+.emailCard {
+  flex-shrink: 0;
 }
 
 .title {
@@ -107,9 +140,11 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
+  min-width: 0;
 }
 
 .hintsTitle {
+  flex-shrink: 0;
   font-size: 13px;
   font-weight: 700;
   font-family: var(--font-plus-jakarta-sans);
@@ -142,6 +177,7 @@
 }
 
 .button {
+  flex-shrink: 0;
   width: 100%;
   padding: var(--spacing-m);
   border-radius: var(--border-radius);

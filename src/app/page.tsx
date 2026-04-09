@@ -8,7 +8,7 @@ import { Button, Icon, Input } from '@/shared/ui'
 import { AVATARS } from '@/entities/avatar/model/avatars'
 import { useUserStore } from '@/entities/user'
 
-const MAX_NAME_LENGTH = 15
+const MAX_NAME_LENGTH = 10
 
 export default function Home() {
   const router = useRouter()
@@ -16,7 +16,7 @@ export default function Home() {
 
   const [name, setName] = useState('')
   const [nameError, setNameError] = useState('')
-  const [avatar, setAvatar] = useState<number>(1)
+  const [avatar, setAvatar] = useState<number | null >(null)
 
   function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value
@@ -29,12 +29,12 @@ export default function Home() {
   }
 
   function handleStart() {
-    if (!name.trim() || !!nameError) return
-    startGame(name.trim(), avatar)
+    if (!name.trim() || !!nameError || !avatar) return
+    startGame(name.trim(), avatar as number)
     router.replace('/levels')
   }
 
-  const isDisabled = !name.trim() || !!nameError
+  const isDisabled = !name.trim() || !!nameError || !avatar
 
   const avatars = AVATARS.map((a, index) => {
     return (

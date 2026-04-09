@@ -1,17 +1,17 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
-import { LevelIntroModal, SuccessModal } from '@/shared/ui'
-import { useUserStore } from '@/entities/user'
+import { LevelIntroModal, SuccessModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import { useUserStore, MAX_LIVES } from '@/entities/user'
+import { SKILL_CHECK_TOTAL_TIME_SECONDS } from '../model/skill-check.constants'
 import { useSkillCheck } from '../model/useSkillCheck'
 import { TimerExpiredModal } from './TimerExpiredModal'
 import styles from './skill-check.module.scss'
 import introStyles from './intro-content.module.scss'
 
 const LEVEL_ID = 6
-const TOTAL_TIME = 30
 
 function SkillCheckIntroContent() {
   return (
@@ -28,7 +28,9 @@ function SkillCheckIntroContent() {
           <span className={introStyles.statLabel}>Очков для победы</span>
         </div>
         <div className={introStyles.stat}>
-          <span className={introStyles.statValue}>30</span>
+          <span className={introStyles.statValue}>
+            {SKILL_CHECK_TOTAL_TIME_SECONDS}
+          </span>
           <span className={introStyles.statLabel}>Секунд на всё</span>
         </div>
         <div className={introStyles.stat}>
@@ -67,8 +69,10 @@ const TARGET_SCORE = 10
 export function SkillCheck() {
   const router = useRouter()
   const completeLevel = useUserStore(s => s.completeLevel)
-  const loseLife = useUserStore(s => s.loseLife)
   const addMistake = useUserStore(s => s.addMistake)
+  const clearMistakes = useUserStore(s => s.clearMistakes)
+  const [lives, setLives] = useState(MAX_LIVES)
+  const [showLevelFailed, setShowLevelFailed] = useState(false)
 
   const {
     phase,
@@ -81,20 +85,30 @@ export function SkillCheck() {
     restart,
   } = useSkillCheck()
 
-  const timePercent = (timeLeft / TOTAL_TIME) * 100
+  const timePercent = (timeLeft / SKILL_CHECK_TOTAL_TIME_SECONDS) * 100
   const isTimeLow = timeLeft <= 10
 
   function handleAnswer(verdict: 'safe' | 'danger') {
     if (!current) return
     if (verdict !== current.verdict) {
-      loseLife()
       addMistake(`${current.topic}: ${current.type}`)
+      const newLives = lives - 1
+      setLives(Math.max(0, newLives))
+      if (newLives <= 0) {
+        setShowLevelFailed(true)
+        return
+      }
     }
     answer(verdict)
   }
 
   function handleTimeoutRestart() {
     start()
+  }
+
+  function handleRetry() {
+    clearMistakes()
+    router.replace('/levels')
   }
 
   function handleWonClose() {
@@ -110,6 +124,8 @@ export function SkillCheck() {
 
   return (
     <>
+      {showLevelFailed && <GameOverModal onRetry={handleRetry} />}
+
       {phase === 'idle' && (
         <LevelIntroModal
           levelNumber={6}
@@ -143,6 +159,8 @@ export function SkillCheck() {
               <h1 className={styles.title}>Финальное испытание</h1>
               <p className={styles.subtitle}>Безопасно или Опасно?</p>
             </div>
+            <HeartsDisplay lives={lives} maxLives={MAX_LIVES} />
+
           </header>
 
           <div className={styles.statsBar}>
