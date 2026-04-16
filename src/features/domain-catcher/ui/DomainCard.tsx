@@ -8,7 +8,6 @@ interface IProps {
   onSelect: () => void
   disabled?: boolean
 }
-
 export function DomainCard({
   value,
   isSelected,

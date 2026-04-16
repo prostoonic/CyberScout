@@ -24,14 +24,13 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-s);
 }
 
 .title {
   font-size: clamp(40px, 13vw, 72px);
   font-style: normal;
   font-weight: 900;
-  line-height: 1;
   font-family: var(--font-plus-jakarta-sans);
   color: var(--color-primary-800);
 }
@@ -67,7 +66,7 @@
 .formWrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-m);
 }
 
 .subtitle {
