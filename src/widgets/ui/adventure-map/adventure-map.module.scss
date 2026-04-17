@@ -43,7 +43,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+  gap: var(--spacing-xl);
   position: relative;
 
   @media (max-width: 600px) {
@@ -75,10 +75,10 @@
     }
 
     /* Final level — always centred */
-    &:last-child {
-      align-items: center !important;
-      padding: 0 !important;
-    }
+    // &:last-child {
+    //   align-items: center !important;
+    //   padding: 0 !important;
+    // }
   }
 
   @media (min-width: 900px) {
