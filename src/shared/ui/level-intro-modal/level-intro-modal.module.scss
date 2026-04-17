@@ -66,7 +66,7 @@
   display: inline-flex;
   align-items: center;
   padding: 4px 14px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: var(--color-primary-200);
   font-size: 13px;
   font-weight: 700;
@@ -108,16 +108,26 @@
   margin: 0;
 }
 
-.content {
+/* Outer clips to radius; inner scrolls so the scrollbar stays inside rounded corners */
+.contentShell {
   width: 100%;
   text-align: left;
+  border-radius: 12px;
+  border: 1px solid var(--color-primary-200);
+  background: var(--color-primary-100);
+  max-height: 280px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.content {
+  max-height: 280px;
+  overflow-y: auto;
+  padding-block: var(--spacing-m);
+  padding-inline-start: var(--spacing-m);
+  /* Скроллбар вплотную к скруглённому краю оболочки, без отступа справа */
+  padding-inline-end: 0;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
-  padding: var(--spacing-m);
-  background: var(--color-primary-100);
-  border-radius: 12px;
-  border: 1px solid var(--color-primary-200);
-  max-height: 280px;
-  overflow-y: auto;
 }

@@ -74,7 +74,7 @@
   gap: var(--spacing-sm);
   padding: 6px 16px;
   background: var(--color-primary-100);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   border: 1.5px solid var(--color-primary-200);
 }
 
@@ -152,7 +152,7 @@
 .button {
   width: 100%;
   padding: var(--spacing-m);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: var(--color-error);
   border: 0;
   color: #fff;

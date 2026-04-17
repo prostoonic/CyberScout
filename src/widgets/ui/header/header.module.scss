@@ -20,7 +20,7 @@
 
 .logo {
   flex-shrink: 0;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   transition: opacity var(--transition);
 
   img {
@@ -91,7 +91,7 @@
 .progressTrack {
   flex: 1;
   height: 15px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background-color: var(--color-primary-200);
   overflow: hidden;
   min-width: 0;
@@ -103,7 +103,7 @@
 
 .progressFill {
   height: 100%;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: var(--gradient-base);
   transition: width 0.4s ease;
 }

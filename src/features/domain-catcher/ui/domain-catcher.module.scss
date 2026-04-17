@@ -70,7 +70,7 @@
 .roundDotDone {
   width: 36px;
   height: 8px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   transition:
     background 0.3s ease,
     opacity 0.3s ease;
@@ -269,7 +269,7 @@
 .checkButton {
   padding: var(--spacing-m) var(--spacing-xl);
   min-width: 200px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: var(--gradient-base);
   border: none;
   color: var(--color-base);

@@ -73,7 +73,9 @@ export function LevelIntroModal({
           {levelTitle}
         </h2>
 
-        <div className={styles.content}>{children}</div>
+        <div className={styles.contentShell}>
+          <div className={styles.content}>{children}</div>
+        </div>
 
         <Button variant="primary" onClick={onStart} isDisable={false}>
           Начать уровень
