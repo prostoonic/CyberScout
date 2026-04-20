@@ -31,9 +31,6 @@ function Level3IntroContent() {
       </ul>
 
       <div className={introStyles.tip}>
-        <span className={introStyles.tipIcon} aria-hidden="true">
-          💡
-        </span>
         <p className={introStyles.tipText}>
           Всегда проверяй адрес сайта в строке браузера перед тем, как вводить
           пароль или личные данные!

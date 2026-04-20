@@ -53,9 +53,6 @@ function Level5IntroContent() {
       </div>
 
       <div className={introStyles.rule}>
-        <span className={introStyles.ruleIcon} aria-hidden="true">
-          💡
-        </span>
         <p className={introStyles.ruleText}>
           Главное правило: давай только необходимые разрешения.
         </p>

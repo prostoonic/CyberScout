@@ -497,14 +497,13 @@
   font-weight: 600;
   font-family: var(--font-plus-jakarta-sans);
   color: var(--color-primary-700);
-  margin: 0 0 var(--spacing-m);
   text-align: center;
 }
 
 .actionButtons {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-m);
 }
 
 .actionButtonsRow {

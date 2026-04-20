@@ -24,7 +24,7 @@
 .modal {
   background: var(--color-base);
   border-radius: 24px;
-  padding: 40px 32px;
+  padding: var(--spacing-xl);
   max-width: 520px;
   width: 100%;
   max-height: 90vh;
@@ -75,7 +75,8 @@
 }
 
 .iconWrapper {
-  margin-bottom: 4px;
+  width: 64px;
+  height: 64px;
 }
 
 .introIconCircle {
