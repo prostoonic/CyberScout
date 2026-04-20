@@ -87,7 +87,7 @@
 
 .progressDots {
   display: flex;
-  gap: 6px;
+  gap: var(--spacing-sm);
 }
 
 .dotEmpty,
@@ -359,7 +359,7 @@
 .backButton {
   display: none;
   align-items: center;
-  gap: 6px;
+  gap: var(--spacing-sm);
   padding: var(--spacing-m) var(--spacing-l);
   border: none;
   border-bottom: 1px solid var(--color-primary-200);

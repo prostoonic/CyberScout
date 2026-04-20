@@ -205,7 +205,7 @@
 .domainCardBar {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--spacing-sm);
   padding: 4px 10px;
   background: var(--color-base);
   border-radius: 6px;

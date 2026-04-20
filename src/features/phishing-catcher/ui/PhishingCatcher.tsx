@@ -39,9 +39,6 @@ function Level2IntroContent() {
       </ul>
 
       <div className={introStyles.warning}>
-        <span className={introStyles.warningIcon} aria-hidden="true">
-          ⚠️
-        </span>
         <p className={introStyles.warningText}>
           Никогда не переходи по подозрительным ссылкам и не вводи личные
           данные, если не уверен в надёжности источника.
