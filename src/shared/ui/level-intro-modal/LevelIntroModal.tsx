@@ -13,6 +13,10 @@ interface IProps {
   children: ReactNode
   /** Если задано — вместо стандартной декоративной иконки показывается выбранная из набора */
   introIcon?: IconName
+  /** Текст кнопки запуска. По умолчанию «Начать уровень» */
+  buttonLabel?: string
+  /** Текст в бейдже над заголовком. По умолчанию «Уровень {levelNumber}» */
+  badgeLabel?: string
 }
 
 export function LevelIntroModal({
@@ -21,6 +25,8 @@ export function LevelIntroModal({
   onStart,
   children,
   introIcon,
+  buttonLabel = 'Начать уровень',
+  badgeLabel,
 }: IProps) {
   useBodyScrollLock()
   const modalRef = useFocusTrap<HTMLDivElement>()
@@ -42,7 +48,7 @@ export function LevelIntroModal({
     >
       <div className={styles.modal} ref={modalRef}>
         <div className={styles.topRow}>
-          <span className={styles.levelBadge}>Уровень {levelNumber}</span>
+          <span className={styles.levelBadge}>{badgeLabel ?? `Уровень ${levelNumber}`}</span>
         </div>
 
         <div className={styles.iconWrapper} aria-hidden="true">
@@ -78,7 +84,7 @@ export function LevelIntroModal({
         </div>
 
         <Button variant="primary" onClick={onStart} isDisable={false}>
-          Начать уровень
+          {buttonLabel}
         </Button>
       </div>
     </div>

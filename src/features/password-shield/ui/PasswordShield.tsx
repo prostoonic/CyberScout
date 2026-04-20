@@ -16,10 +16,10 @@ function Level1IntroContent() {
   return (
     <div className={introStyles.content}>
       <p className={introStyles.lead}>
-      Пароль — это защита твоего аккаунта. Если пароль простой, злоумышленники
-        могут легко его подобрать и получить доступ к твоим данным, играм и
+        Пароль — это защита твоего аккаунта. Если пароль простой, злоумышленники
+        могут легко его подобрать и получить доступ к твоим данным, играм и
         личной информации. Сложный пароль делает твой аккаунт безопаснее и
-        защищает от взлома.
+        защищает от взлома.
       </p>
 
       <h3 className={introStyles.listTitle}>Чек-лист хорошего пароля:</h3>
@@ -43,41 +43,57 @@ function Level1IntroContent() {
   )
 }
 
+function Part2IntroContent() {
+  return (
+    <div className={introStyles.content}>
+      <p className={introStyles.lead}>
+        Придумывать пароль вручную сложно. Но у твоего браузера есть встроенный
+        генератор паролей — он создаёт длинные случайные пароли, которые почти
+        невозможно взломать!
+      </p>
+
+      <h3 className={introStyles.listTitle}>Как использовать генератор:</h3>
+      <ol className={introStyles.list} style={{ listStyle: 'decimal' }}>
+        <li>Нажми на поле «Пароль» на следующем экране</li>
+        <li>Браузер покажет иконку ключа 🔑 или всплывающее предложение</li>
+        <li>Выбери «Предложить надёжный пароль» (или «Suggest Strong Password»)</li>
+        <li>Прими сгенерированный пароль</li>
+        <li>Введи его повторно в поле подтверждения</li>
+      </ol>
+
+      <div className={introStyles.example}>
+        <span className={introStyles.exampleLabel}>
+          Совет: сохрани пароль в менеджере паролей браузера
+        </span>
+      </div>
+    </div>
+  )
+}
+
 export function PasswordShield() {
   const router = useRouter()
   const completeLevel = useUserStore(s => s.completeLevel)
+
   const [showIntro, setShowIntro] = useState(true)
+  const [part, setPart] = useState<1 | 2>(1)
+  const [showPart2Intro, setShowPart2Intro] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
-  const {
-    password,
-    setPassword,
-    confirmPassword,
-    setConfirmPassword,
-    setConfirmTouched,
-    checklist,
-    strengthLevel,
-    strengthLabel,
-    strengthPercent,
-    confirmError,
-    passwordMismatch,
-    canSubmit,
-  } = usePasswordValidation()
+  const part1 = usePasswordValidation()
+  const part2 = usePasswordValidation()
 
-  function handlePasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setPassword(e.target.value)
+  function handlePart1Submit() {
+    if (!part1.canSubmit) return
+    setShowPart2Intro(true)
   }
 
-  function handleConfirmChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setConfirmPassword(e.target.value)
+  function handlePart2IntroStart() {
+    setShowPart2Intro(false)
+    setPart(2)
   }
 
-  function handleConfirmBlur() {
-    setConfirmTouched(true)
-  }
-
-  function handleSubmit() {
-    if (!canSubmit) return
+  function handlePart2Submit() {
+    if (!part2.canSubmit) return
     completeLevel(LEVEL_ID)
     setShowModal(true)
   }
@@ -86,6 +102,9 @@ export function PasswordShield() {
     setShowModal(false)
     router.replace('/levels')
   }
+
+  const isPartOne = part === 1
+  const active = isPartOne ? part1 : part2
 
   return (
     <>
@@ -99,6 +118,19 @@ export function PasswordShield() {
         </LevelIntroModal>
       )}
 
+      {showPart2Intro && (
+        <LevelIntroModal
+          levelNumber={1}
+          levelTitle="Генератор паролей"
+          badgeLabel="Часть 2 из 2"
+          buttonLabel="Начать часть 2"
+          introIcon="KeyIcon"
+          onStart={handlePart2IntroStart}
+        >
+          <Part2IntroContent />
+        </LevelIntroModal>
+      )}
+
       <main className={styles.main}>
         <div className={styles.container}>
           <header className={styles.pageHeader}>
@@ -108,57 +140,89 @@ export function PasswordShield() {
             <div>
               <h1 className={styles.title}>Надёжный пароль</h1>
               <p className={styles.subtitle}>
-                Создай пароль, который не взломают хакеры!
+                {isPartOne
+                  ? 'Создай пароль, который не взломают хакеры!'
+                  : 'Теперь используй генератор паролей браузера'}
               </p>
             </div>
           </header>
 
+          <div className={styles.stepIndicator} aria-label="Прогресс уровня">
+            <div
+              className={`${styles.step} ${!isPartOne || true ? styles.stepActive : ''}`}
+              aria-current={isPartOne ? 'step' : undefined}
+            >
+              <span className={styles.stepDot} />
+              <span className={styles.stepLabel}>Придумай пароль</span>
+            </div>
+            <div className={styles.stepConnector} />
+            <div
+              className={`${styles.step} ${!isPartOne ? styles.stepActive : styles.stepPending}`}
+              aria-current={!isPartOne ? 'step' : undefined}
+            >
+              <span className={styles.stepDot} />
+              <span className={styles.stepLabel}>Сгенерируй пароль</span>
+            </div>
+          </div>
+
           <section className={styles.card} aria-labelledby="form-heading">
             <h2 id="form-heading" className={styles.sectionTitle}>
-              Придумай пароль
+              {isPartOne ? 'Придумай пароль' : 'Сгенерируй пароль'}
             </h2>
+
+            {!isPartOne && (
+              <div className={styles.generatorHint} role="note">
+                <span className={styles.generatorHintIcon} aria-hidden="true">🔑</span>
+                <p className={styles.generatorHintText}>
+                  Нажми на поле ниже — браузер предложит создать надёжный пароль.
+                  Выбери «Предложить надёжный пароль» и прими его.
+                </p>
+              </div>
+            )}
 
             <form
               className={styles.form}
               onSubmit={e => {
                 e.preventDefault()
-                handleSubmit()
+                isPartOne ? handlePart1Submit() : handlePart2Submit()
               }}
               noValidate
             >
               <Input
-                id="password"
+                id={isPartOne ? 'password' : 'gen-password'}
                 type="password"
-                placeholder="Введи пароль..."
+                placeholder={isPartOne ? 'Введи пароль...' : 'Нажми сюда и выбери предложение браузера'}
                 label="Пароль"
-                value={password}
-                onChange={handlePasswordChange}
-                hasError={passwordMismatch}
+                value={active.password}
+                onChange={e => active.setPassword(e.target.value)}
+                hasError={active.passwordMismatch}
                 showToggle
+                autoComplete={isPartOne ? 'off' : 'new-password'}
               />
 
               <Input
-                id="confirm-password"
+                id={isPartOne ? 'confirm-password' : 'gen-confirm-password'}
                 type="password"
                 placeholder="Повтори пароль..."
                 label="Подтверди пароль"
-                value={confirmPassword}
-                onChange={handleConfirmChange}
-                error={confirmError}
-                onBlur={handleConfirmBlur}
+                value={active.confirmPassword}
+                onChange={e => active.setConfirmPassword(e.target.value)}
+                error={active.confirmError}
+                onBlur={() => active.setConfirmTouched(true)}
                 showToggle
+                autoComplete={isPartOne ? 'off' : 'new-password'}
               />
 
               <PasswordStrengthBar
-                percent={strengthPercent}
-                label={strengthLabel}
-                level={strengthLevel}
+                percent={active.strengthPercent}
+                label={active.strengthLabel}
+                level={active.strengthLevel}
               />
 
               <div className={styles.checklistBlock}>
                 <h3 className={styles.checklistTitle}>Требования к паролю</h3>
                 <ul className={styles.checklist} role="list">
-                  {checklist.map(rule => (
+                  {active.checklist.map(rule => (
                     <ChecklistItem
                       key={rule.id}
                       label={rule.label}
@@ -173,11 +237,11 @@ export function PasswordShield() {
 
               <Button
                 variant="primary"
-                onClick={handleSubmit}
-                isDisable={!canSubmit}
+                onClick={isPartOne ? handlePart1Submit : handlePart2Submit}
+                isDisable={!active.canSubmit}
               >
-                <span>Завершить уровень</span>
-                <Icon icon="RocketIcon" />
+                <span>{isPartOne ? 'Перейти к части 2' : 'Завершить уровень'}</span>
+                <Icon icon={isPartOne ? 'ShieldIcon' : 'RocketIcon'} />
               </Button>
             </form>
           </section>
@@ -187,7 +251,7 @@ export function PasswordShield() {
       {showModal && (
         <SuccessModal
           onClose={handleModalClose}
-          description="Отличная работа! Ты создал надёжный пароль и знаешь, как защитить свой аккаунт. Продолжай своё кибер-приключение!"
+          description="Отличная работа! Ты создал надёжный пароль вручную и с помощью генератора. Теперь ты знаешь оба способа защитить свой аккаунт!"
         />
       )}
     </>
