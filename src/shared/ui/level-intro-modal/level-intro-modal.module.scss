@@ -117,16 +117,15 @@
   background: var(--color-primary-100);
   max-height: 280px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   min-height: 0;
 }
 
 .content {
-  max-height: 280px;
+  min-height: 0;
   overflow-y: auto;
-  padding-block: var(--spacing-m);
-  padding-inline-start: var(--spacing-m);
-  /* Скроллбар вплотную к скруглённому краю оболочки, без отступа справа */
-  padding-inline-end: 0;
+  padding: var(--spacing-m);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
