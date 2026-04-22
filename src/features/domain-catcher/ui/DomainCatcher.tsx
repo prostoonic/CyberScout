@@ -187,16 +187,6 @@ export function DomainCatcher() {
               </button>
             </div>
           </section>
-
-          <div className={styles.hint} role="note">
-            <span className={styles.hintIcon} aria-hidden="true">
-              🔍
-            </span>
-            <p>
-              Внимательно читай каждый символ. Фальшивые домены очень похожи на
-              настоящие!
-            </p>
-          </div>
         </div>
       </main>
 

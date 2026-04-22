@@ -85,10 +85,6 @@ export function SuccessModal({ onClose, headerHeight = 64 }: IProps) {
           аккаунт. Продолжай своё кибер-приключение!
         </p>
 
-        <div className={styles.badge} aria-label="Три звезды">
-          {'★'.repeat(3)}
-        </div>
-
         <Button variant="primary" onClick={onClose} isDisable={false}>
           Продолжить путешествие
         </Button>

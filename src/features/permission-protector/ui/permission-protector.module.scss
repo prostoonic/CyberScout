@@ -266,35 +266,4 @@
     transform: translateX(24px);
   }
 }
-
-/* ── Save button ── */
-.saveButton {
-  width: 100%;
-  padding: var(--spacing-m);
-  border-radius: var(--border-radius-l);
-  background: var(--gradient-base);
-  border: none;
-  color: var(--color-base);
-  font-size: 16px;
-  font-weight: 700;
-  font-family: var(--font-plus-jakarta-sans);
-  cursor: pointer;
-  transition:
-    opacity var(--transition),
-    transform var(--transition);
-
-  &:hover {
-    opacity: 0.88;
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    opacity: 0.75;
-    transform: translateY(0);
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--color-primary-800);
-    outline-offset: 3px;
-  }
-}
+  

@@ -12,6 +12,10 @@
   animation: fadeIn 0.2s ease;
 }
 
+.overlayWarning {
+  background: rgba(0, 87, 189, 0.10);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -177,5 +181,25 @@
   &:focus-visible {
     outline: 3px solid var(--color-error);
     outline-offset: 3px;
+  }
+}
+
+/* ── Warning (blue) variant ────────────────────────────── */
+
+.modalWarning {
+  box-shadow:
+    0 24px 48px rgba(0, 87, 189, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.titleWarning {
+  color: var(--color-primary-800);
+}
+
+.buttonWarning {
+  background: var(--gradient-base);
+
+  &:focus-visible {
+    outline-color: var(--color-primary-800);
   }
 }

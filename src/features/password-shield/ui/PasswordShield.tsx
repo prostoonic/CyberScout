@@ -37,7 +37,7 @@ function Level1IntroContent() {
         <span className={introStyles.exampleLabel}>
           Пример хорошего пароля:
         </span>
-        <code className={introStyles.exampleCode}>G4m3!Hero#2026</code>
+        <code className={introStyles.exampleCode}>bNuyA7!KDNigTr4</code>
       </div>
     </div>
   )
@@ -172,7 +172,6 @@ export function PasswordShield() {
 
             {!isPartOne && (
               <div className={styles.generatorHint} role="note">
-                <span className={styles.generatorHintIcon} aria-hidden="true">🔑</span>
                 <p className={styles.generatorHintText}>
                   Нажми на поле ниже — браузер предложит создать надёжный пароль.
                   Выбери «Предложить надёжный пароль» и прими его.

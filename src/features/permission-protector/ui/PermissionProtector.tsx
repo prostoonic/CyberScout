@@ -10,6 +10,7 @@ import { usePermissionProtector } from '../model/usePermissionProtector'
 import { PermissionErrorModal } from './PermissionErrorModal'
 import styles from './permission-protector.module.scss'
 import introStyles from './intro-content.module.scss'
+import { Button } from '@/shared/ui/button/Button'
 
 const LEVEL_ID = 5
 
@@ -39,15 +40,15 @@ function Level5IntroContent() {
         <p className={introStyles.examplesTitle}>Примеры:</p>
         <ul className={introStyles.examplesList}>
           <li>
-            <span aria-hidden="true">🚫</span> Фонарик просит доступ к контактам
+             Фонарик просит доступ к контактам
             — подозрительно
           </li>
           <li>
-            <span aria-hidden="true">✅</span> Навигатор просит геолокацию —
+            Навигатор просит геолокацию —
             нормально
           </li>
           <li>
-            <span aria-hidden="true">✅</span> Соцсеть просит камеру — допустимо
+             Соцсеть просит камеру — допустимо
           </li>
         </ul>
       </div>
@@ -225,13 +226,13 @@ export function PermissionProtector() {
               </ul>
             </fieldset>
 
-            <button
-              type="button"
-              className={styles.saveButton}
+            <Button
+              variant="primary"
               onClick={saveSettings}
+              isDisable={false}
             >
               Сохранить настройки
-            </button>
+            </Button>
           </section>
         </div>
       </main>
@@ -240,6 +241,7 @@ export function PermissionProtector() {
         <PermissionErrorModal
           errorDetail={errorDetail}
           onClose={handleErrorDismiss}
+          variant={errorDetail.extraPermissions.length === 0 ? 'warning' : 'error'}
         />
       )}
 

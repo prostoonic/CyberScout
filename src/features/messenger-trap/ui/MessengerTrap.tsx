@@ -28,9 +28,6 @@ function Level4IntroContent() {
       </p>
 
       <div className={introStyles.warning}>
-        <span className={introStyles.warningIcon} aria-hidden="true">
-          ⚠️
-        </span>
         <p className={introStyles.warningText}>
           Будь внимателен: даже обычное на первый взгляд сообщение может быть
           обманом.
