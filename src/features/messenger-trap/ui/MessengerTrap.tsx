@@ -2,7 +2,12 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import {
+  SuccessModal,
+  LevelIntroModal,
+  GameOverModal,
+  HeartsDisplay,
+} from '@/shared/ui'
 import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { useMessengerTrap } from '../model/useMessengerTrap'
 import { ChatList } from './ChatList'
@@ -28,9 +33,6 @@ function Level4IntroContent() {
       </p>
 
       <div className={introStyles.warning}>
-        <span className={introStyles.warningIcon} aria-hidden="true">
-          ⚠️
-        </span>
         <p className={introStyles.warningText}>
           Будь внимателен: даже обычное на первый взгляд сообщение может быть
           обманом.

@@ -12,6 +12,10 @@
   animation: fadeIn 0.2s ease;
 }
 
+.overlayWarning {
+  background: rgba(0, 87, 189, 0.1);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -74,7 +78,7 @@
   gap: var(--spacing-sm);
   padding: 6px 16px;
   background: var(--color-primary-100);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   border: 1.5px solid var(--color-primary-200);
 }
 
@@ -109,7 +113,7 @@
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--spacing-sm);
 }
 
 .permList {
@@ -152,7 +156,7 @@
 .button {
   width: 100%;
   padding: var(--spacing-m);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: var(--color-error);
   border: 0;
   color: #fff;
@@ -177,5 +181,25 @@
   &:focus-visible {
     outline: 3px solid var(--color-error);
     outline-offset: 3px;
+  }
+}
+
+/* ── Warning (blue) variant ────────────────────────────── */
+
+.modalWarning {
+  box-shadow:
+    0 24px 48px rgba(0, 87, 189, 0.15),
+    0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.titleWarning {
+  color: var(--color-primary-800);
+}
+
+.buttonWarning {
+  background: var(--gradient-base);
+
+  &:focus-visible {
+    outline-color: var(--color-primary-800);
   }
 }

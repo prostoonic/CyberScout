@@ -3,13 +3,19 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import clsx from 'clsx'
-import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import {
+  SuccessModal,
+  LevelIntroModal,
+  GameOverModal,
+  HeartsDisplay,
+} from '@/shared/ui'
 import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { ALL_PERMISSIONS } from '../model/apps'
 import { usePermissionProtector } from '../model/usePermissionProtector'
 import { PermissionErrorModal } from './PermissionErrorModal'
 import styles from './permission-protector.module.scss'
 import introStyles from './intro-content.module.scss'
+import { Button } from '@/shared/ui/button/Button'
 
 const LEVEL_ID = 5
 
@@ -17,45 +23,34 @@ function Level5IntroContent() {
   return (
     <div className={introStyles.content}>
       <p className={introStyles.lead}>
-        Приложения могут запрашивать доступ к камере, микрофону, контактам и
-        другим данным. Не все разрешения безопасны.
+        Приложения могут запрашивать доступ к камере, микрофону, контактам и
+        другим данным. Не все разрешения безопасны.
       </p>
       <p className={introStyles.lead}>
-        Если дать лишний доступ, приложение может следить за тобой или
+        Если дать лишний доступ, приложение может следить за тобой или
         передавать твои данные.
       </p>
 
       <h3 className={introStyles.listTitle}>
-        Как понять, можно ли дать разрешение:
+        Как понять, можно ли дать разрешение:
       </h3>
       <ul className={introStyles.list}>
-        <li>Оно должно быть нужно для работы приложения</li>
-        <li>Если запрос выглядит странно — лучше отказать</li>
-        <li>Не давай лишние разрешения</li>
-        <li>При необходимости выбирай доступ только во время использования</li>
+        <li>Оно должно быть нужно для работы приложения</li>
+        <li>Если запрос выглядит странно — лучше отказать</li>
+        <li>Не давай лишние разрешения</li>
+        <li>При необходимости выбирай доступ только во время использования</li>
       </ul>
 
       <div className={introStyles.examples}>
         <p className={introStyles.examplesTitle}>Примеры:</p>
         <ul className={introStyles.examplesList}>
-          <li>
-            <span aria-hidden="true">🚫</span> Фонарик просит доступ к контактам
-            — подозрительно
-          </li>
-          <li>
-            <span aria-hidden="true">✅</span> Навигатор просит геолокацию —
-            нормально
-          </li>
-          <li>
-            <span aria-hidden="true">✅</span> Соцсеть просит камеру — допустимо
-          </li>
+          <li>Фонарик просит доступ к контактам  — подозрительно</li>
+          <li>Навигатор просит геолокацию — нормально</li>
+          <li>Соцсеть просит камеру — допустимо</li>
         </ul>
       </div>
 
       <div className={introStyles.rule}>
-        <span className={introStyles.ruleIcon} aria-hidden="true">
-          💡
-        </span>
         <p className={introStyles.ruleText}>
           Главное правило: давай только необходимые разрешения.
         </p>
@@ -228,13 +223,9 @@ export function PermissionProtector() {
               </ul>
             </fieldset>
 
-            <button
-              type="button"
-              className={styles.saveButton}
-              onClick={saveSettings}
-            >
+            <Button variant="primary" onClick={saveSettings} isDisable={false}>
               Сохранить настройки
-            </button>
+            </Button>
           </section>
         </div>
       </main>
@@ -243,6 +234,9 @@ export function PermissionProtector() {
         <PermissionErrorModal
           errorDetail={errorDetail}
           onClose={handleErrorDismiss}
+          variant={
+            errorDetail.extraPermissions.length === 0 ? 'warning' : 'error'
+          }
         />
       )}
 

@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import type { ErrorDetail } from '../model/usePermissionProtector'
 import { ALL_PERMISSIONS } from '../model/apps'
 import styles from './permission-error-modal.module.scss'
@@ -8,36 +9,54 @@ import { useBodyScrollLock } from '@/shared/lib/useBodyScrollLock'
 interface IProps {
   errorDetail: ErrorDetail
   onClose: () => void
+  variant?: 'error' | 'warning'
 }
 
-export function PermissionErrorModal({ errorDetail, onClose }: IProps) {
+export function PermissionErrorModal({
+  errorDetail,
+  onClose,
+  variant = 'error',
+}: IProps) {
   useBodyScrollLock()
   const { app, extraPermissions, missingPermissions } = errorDetail
 
   const getPermission = (id: string) => ALL_PERMISSIONS.find(p => p.id === id)
 
+  const isWarning = variant === 'warning'
+
   return (
     <div
-      className={styles.overlay}
+      className={clsx(styles.overlay, { [styles.overlayWarning]: isWarning })}
       role="dialog"
       aria-modal="true"
       aria-labelledby="perm-error-title"
     >
-      <div className={styles.modal}>
+      <div className={clsx(styles.modal, { [styles.modalWarning]: isWarning })}>
         <div className={styles.iconWrapper} aria-hidden="true">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="32" fill="#FFF0F0" />
-            <path
-              d="M32 20V36M32 44V46"
-              stroke="#E53935"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-            />
-          </svg>
+          {isWarning ? (
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="32" fill="#E3F2FD" />
+              <circle cx="32" cy="22" r="3" fill="#0057BD" />
+              <rect x="29" y="30" width="6" height="14" rx="3" fill="#0057BD" />
+            </svg>
+          ) : (
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="32" fill="#FFF0F0" />
+              <path
+                d="M32 20V36M32 44V46"
+                stroke="#E53935"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
         </div>
 
-        <h2 id="perm-error-title" className={styles.title}>
-          Неверные разрешения!
+        <h2
+          id="perm-error-title"
+          className={clsx(styles.title, { [styles.titleWarning]: isWarning })}
+        >
+          {isWarning ? 'Выбраны не все разрешения' : 'Неверные разрешения!'}
         </h2>
 
         <div className={styles.appBadge}>
@@ -95,7 +114,11 @@ export function PermissionErrorModal({ errorDetail, onClose }: IProps) {
           </div>
         )}
 
-        <button className={styles.button} onClick={onClose} type="button">
+        <button
+          className={clsx(styles.button, { [styles.buttonWarning]: isWarning })}
+          onClick={onClose}
+          type="button"
+        >
           Попробовать снова
         </button>
       </div>

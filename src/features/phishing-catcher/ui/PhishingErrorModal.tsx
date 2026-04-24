@@ -77,7 +77,9 @@ export function PhishingErrorModal({ errorInfo, onClose }: IProps) {
 
             {calledPhishing && (
               <div className={styles.hintsBlock}>
-                <p className={styles.hintsTitle}>Признаки безопасного письма:</p>
+                <p className={styles.hintsTitle}>
+                  Признаки безопасного письма:
+                </p>
                 <ul className={styles.hintsList}>
                   <li className={styles.hintsItem}>
                     <span className={styles.hintsIcon} aria-hidden="true">

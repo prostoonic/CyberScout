@@ -124,7 +124,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-sm);
   width: 100%;
 }
 
@@ -160,7 +160,7 @@
   font-weight: 700;
   font-family: var(--font-plus-jakarta-sans);
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   cursor: pointer;
   transition:
     opacity var(--transition),

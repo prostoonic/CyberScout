@@ -21,6 +21,7 @@ interface IProps {
   type?: 'text' | 'password'
   label?: string
   showToggle?: boolean
+  autoComplete?: string
 }
 
 export function Input({
@@ -35,6 +36,7 @@ export function Input({
   type = 'text',
   label,
   showToggle = false,
+  autoComplete,
 }: IProps) {
   const [visible, setVisible] = useState(false)
 
@@ -73,6 +75,7 @@ export function Input({
           onChange={handleChange}
           maxLength={maxLength}
           onBlur={onBlur}
+          autoComplete={autoComplete}
           aria-invalid={isError}
           aria-describedby={error ? `${id}-error` : undefined}
         />

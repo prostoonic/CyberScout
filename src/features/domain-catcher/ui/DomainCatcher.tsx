@@ -2,7 +2,12 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import {
+  SuccessModal,
+  LevelIntroModal,
+  GameOverModal,
+  HeartsDisplay,
+} from '@/shared/ui'
 import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { useDomainCatcher } from '../model/useDomainCatcher'
 import { DomainCard } from './DomainCard'
@@ -31,9 +36,6 @@ function Level3IntroContent() {
       </ul>
 
       <div className={introStyles.tip}>
-        <span className={introStyles.tipIcon} aria-hidden="true">
-          💡
-        </span>
         <p className={introStyles.tipText}>
           Всегда проверяй адрес сайта в строке браузера перед тем, как вводить
           пароль или личные данные!
@@ -190,16 +192,6 @@ export function DomainCatcher() {
               </button>
             </div>
           </section>
-
-          <div className={styles.hint} role="note">
-            <span className={styles.hintIcon} aria-hidden="true">
-              🔍
-            </span>
-            <p>
-              Внимательно читай каждый символ. Фальшивые домены очень похожи на
-              настоящие!
-            </p>
-          </div>
         </div>
       </main>
 

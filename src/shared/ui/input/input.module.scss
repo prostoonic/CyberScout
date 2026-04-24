@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--spacing-sm);
   width: 100%;
 }
 
@@ -10,7 +10,7 @@
   font-weight: 600;
   font-family: var(--font-plus-jakarta-sans);
   color: var(--color-primary-800);
-  padding-inline: var(--spacing-s);
+  // padding-inline: var(--spacing-s);
 }
 
 .inputWrapper {
@@ -50,9 +50,10 @@
 }
 
 .input {
-  padding-inline: var(--spacing-l);
+  padding-left: var(--spacing-l);
+  padding-right: 48px;
   padding-block: var(--spacing-m);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-s);
   background-color: var(--color-primary-200);
   border: none;
   outline: 3px solid transparent;

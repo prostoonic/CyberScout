@@ -1,5 +1,6 @@
 .main {
-  min-height: 100vh;
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,7 +93,7 @@
   font-size: 15px;
   font-weight: 700;
   font-family: var(--font-plus-jakarta-sans);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   text-decoration: none;
   transition:
     opacity var(--transition),

@@ -1,11 +1,9 @@
 .node {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: var(--spacing-m);
   width: 100%;
-  max-width: 260px;
-  text-align: center;
+  max-width: 350px;
+  text-align: left;
 }
 
 /* ── Circle ── */
@@ -13,6 +11,7 @@
 .circleWrapper {
   position: relative;
   display: inline-flex;
+  height: 120px;
 }
 
 .circle {
@@ -103,20 +102,20 @@
   }
 }
 
-.final .circle {
-  width: 140px;
-  height: 140px;
-}
+// .final .circle {
+//   width: 140px;
+//   height: 140px;
+// }
 
-/* ── Final badge ── */
+// /* ── Final badge ── */
 
-.finalBadge {
-  position: absolute;
-  top: -8px;
-  right: -4px;
-  font-size: 22px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
+// .finalBadge {
+//   position: absolute;
+//   top: -8px;
+//   right: -4px;
+//   font-size: 22px;
+//   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+// }
 
 /* ── Number badge ── */
 
@@ -149,7 +148,6 @@
 .info {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--spacing-sm);
   width: 100%;
 }
@@ -193,7 +191,8 @@
   justify-content: center;
   gap: var(--spacing-sm);
   padding: 10px 24px;
-  border-radius: var(--border-radius);
+  max-width: 125px;
+  border-radius: var(--border-radius-l);
   font-size: 14px;
   font-weight: 700;
   border: none;

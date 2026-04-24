@@ -32,7 +32,7 @@ export function LevelNode({ level, onPlay }: IProps) {
         [styles.completed]: isCompleted,
         [styles.current]: isCurrent,
         [styles.locked]: isLocked,
-        [styles.final]: isFinal,
+        // [styles.final]: isFinal,
       })}
       aria-label={`Уровень ${number}: ${title}. ${STATUS_LABEL[status]}`}
     >

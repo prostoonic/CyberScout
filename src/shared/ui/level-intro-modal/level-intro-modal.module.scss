@@ -24,7 +24,7 @@
 .modal {
   background: var(--color-base);
   border-radius: 24px;
-  padding: 40px 32px;
+  padding: var(--spacing-xl);
   max-width: 520px;
   width: 100%;
   max-height: 90vh;
@@ -66,7 +66,7 @@
   display: inline-flex;
   align-items: center;
   padding: 4px 14px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: var(--color-primary-200);
   font-size: 13px;
   font-weight: 700;
@@ -75,7 +75,8 @@
 }
 
 .iconWrapper {
-  margin-bottom: 4px;
+  width: 64px;
+  height: 64px;
 }
 
 .introIconCircle {
@@ -108,16 +109,25 @@
   margin: 0;
 }
 
-.content {
+/* Outer clips to radius; inner scrolls so the scrollbar stays inside rounded corners */
+.contentShell {
   width: 100%;
   text-align: left;
+  border-radius: 12px;
+  border: 1px solid var(--color-primary-200);
+  background: var(--color-primary-100);
+  max-height: 280px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.content {
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--spacing-m);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
-  padding: var(--spacing-m);
-  background: var(--color-primary-100);
-  border-radius: 12px;
-  border: 1px solid var(--color-primary-200);
-  max-height: 280px;
-  overflow-y: auto;
 }

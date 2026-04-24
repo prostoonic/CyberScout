@@ -1,5 +1,6 @@
 .main {
   flex: 1;
+  min-height: 0;
   padding: var(--spacing-xl) var(--spacing-m);
   display: flex;
   justify-content: center;
@@ -22,7 +23,7 @@
 .levelBadge {
   width: 56px;
   height: 56px;
-  border-radius: 16px;
+  border-radius: 50%;
   background: var(--gradient-base);
   display: flex;
   align-items: center;
@@ -86,7 +87,7 @@
   padding: 14px var(--spacing-m);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--spacing-sm);
 }
 
 .scoreLabel {
@@ -243,7 +244,7 @@
   display: inline-flex;
   align-items: center;
   padding: 4px 12px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: var(--color-primary-200);
   font-size: 12px;
   font-weight: 700;

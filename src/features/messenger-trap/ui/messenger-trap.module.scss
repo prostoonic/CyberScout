@@ -2,8 +2,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 0;
   background: var(--color-primary-100);
-  height: calc(100vh - 61px);
   overflow: hidden;
 }
 
@@ -160,7 +160,7 @@
   color: rgba(255, 255, 255, 0.7);
   background: rgba(255, 255, 255, 0.1);
   padding: 3px 10px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
 }
 
 .chatList {
@@ -603,7 +603,7 @@
 .backToListButton {
   width: 100%;
   padding: var(--spacing-m);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   border: 2px solid var(--color-primary-200);
   background: var(--color-base);
   color: var(--color-primary-800);

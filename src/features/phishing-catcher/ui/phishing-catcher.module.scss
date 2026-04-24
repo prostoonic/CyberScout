@@ -2,8 +2,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 0;
   background: var(--color-primary-100);
-  height: calc(100vh - 61px);
   overflow: hidden;
 }
 
@@ -87,7 +87,7 @@
 
 .progressDots {
   display: flex;
-  gap: 6px;
+  gap: var(--spacing-sm);
 }
 
 .dotEmpty,
@@ -359,7 +359,7 @@
 .backButton {
   display: none;
   align-items: center;
-  gap: 6px;
+  gap: var(--spacing-sm);
   padding: var(--spacing-m) var(--spacing-l);
   border: none;
   border-bottom: 1px solid var(--color-primary-200);
@@ -497,14 +497,13 @@
   font-weight: 600;
   font-family: var(--font-plus-jakarta-sans);
   color: var(--color-primary-700);
-  margin: 0 0 var(--spacing-m);
   text-align: center;
 }
 
 .actionButtons {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-m);
 }
 
 .actionButtonsRow {
@@ -523,7 +522,7 @@
   justify-content: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-m);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   border: none;
   font-size: 15px;
   font-weight: 700;
@@ -543,14 +542,13 @@
     opacity: 0.75;
     transform: translateY(0);
   }
-
 }
 
 .btnPhishing {
   @extend %actionBtn;
   background: var(--color-error);
   color: #fff;
-  
+
   &:focus-visible {
     outline: 3px solid var(--color-error);
     outline-offset: 3px;

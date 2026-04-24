@@ -2,7 +2,12 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import {
+  SuccessModal,
+  LevelIntroModal,
+  GameOverModal,
+  HeartsDisplay,
+} from '@/shared/ui'
 import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { usePhishingCatcher } from '../model/usePhishingCatcher'
 import { EmailList } from './EmailList'
@@ -39,9 +44,6 @@ function Level2IntroContent() {
       </ul>
 
       <div className={introStyles.warning}>
-        <span className={introStyles.warningIcon} aria-hidden="true">
-          ⚠️
-        </span>
         <p className={introStyles.warningText}>
           Никогда не переходи по подозрительным ссылкам и не вводи личные
           данные, если не уверен в надёжности источника.

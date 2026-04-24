@@ -5,7 +5,7 @@
   align-items: flex-start;
   padding: 40px var(--spacing-m) var(--spacing-xl);
   background: var(--color-primary-100);
-  min-height: calc(100vh - 60px);
+  min-height: 0;
 }
 
 .container {
@@ -33,7 +33,7 @@
   display: inline-flex;
   align-items: center;
   padding: 6px 18px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: linear-gradient(135deg, #f9a825, #ff6f00);
   box-shadow: 0 4px 14px rgba(249, 168, 37, 0.4);
 }
@@ -365,7 +365,7 @@
   font-size: 15px;
   font-weight: 700;
   font-family: var(--font-plus-jakarta-sans);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   text-decoration: none;
   border: 2px solid var(--color-primary-200);
   transition:

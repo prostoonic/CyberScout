@@ -2,7 +2,7 @@
   flex: 1;
   padding: var(--spacing-xl);
   background: var(--color-primary-100);
-  min-height: calc(100vh - 61px);
+  min-height: 0;
 
   @media (max-width: 600px) {
     padding: var(--spacing-m);
@@ -14,7 +14,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-m);
 }
 
 /* ── Page header ── */
@@ -70,7 +70,7 @@
 .roundDotDone {
   width: 36px;
   height: 8px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   transition:
     background 0.3s ease,
     opacity 0.3s ease;
@@ -105,7 +105,7 @@
   padding: var(--spacing-xl);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-l);
 
   @media (max-width: 480px) {
     padding: var(--spacing-m);
@@ -205,7 +205,7 @@
 .domainCardBar {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--spacing-sm);
   padding: 4px 10px;
   background: var(--color-base);
   border-radius: 6px;
@@ -269,7 +269,7 @@
 .checkButton {
   padding: var(--spacing-m) var(--spacing-xl);
   min-width: 200px;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-l);
   background: var(--gradient-base);
   border: none;
   color: var(--color-base);
@@ -304,28 +304,4 @@
   @media (max-width: 480px) {
     width: 100%;
   }
-}
-
-/* ── Hint ── */
-.hint {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-m);
-  background: rgba(110, 159, 255, 0.08);
-  border: 1px solid rgba(110, 159, 255, 0.2);
-  border-radius: 12px;
-
-  p {
-    font-size: 13px;
-    font-family: var(--font-inter);
-    color: var(--color-primary-700);
-    margin: 0;
-    line-height: 1.5;
-  }
-}
-
-.hintIcon {
-  font-size: 16px;
-  flex-shrink: 0;
 }

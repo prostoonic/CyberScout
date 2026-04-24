@@ -72,9 +72,6 @@ export function ChatView({ state, onSelectOption, onBack }: IProps) {
 
         {/* Scammer's message */}
         <div className={styles.messageRow}>
-          <div className={styles.messageAvatarSmall} aria-hidden="true">
-            {chat.contactEmoji}
-          </div>
           <div className={styles.bubbleWrap}>
             <article
               className={clsx(styles.bubble, styles.bubbleIncoming)}
@@ -104,9 +101,6 @@ export function ChatView({ state, onSelectOption, onBack }: IProps) {
         {/* Scammer's response */}
         {showResponse && (
           <div className={clsx(styles.messageRow, styles.messageRowResponse)}>
-            <div className={styles.messageAvatarSmall} aria-hidden="true">
-              {chat.contactEmoji}
-            </div>
             <div className={styles.bubbleWrap}>
               <article
                 className={clsx(styles.bubble, styles.bubbleIncoming, {
