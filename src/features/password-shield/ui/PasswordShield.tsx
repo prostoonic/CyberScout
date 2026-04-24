@@ -56,7 +56,9 @@ function Part2IntroContent() {
       <ol className={introStyles.list} style={{ listStyle: 'decimal' }}>
         <li>Нажми на поле «Пароль» на следующем экране</li>
         <li>Браузер покажет иконку ключа 🔑 или всплывающее предложение</li>
-        <li>Выбери «Предложить надёжный пароль» (или «Suggest Strong Password»)</li>
+        <li>
+          Выбери «Предложить надёжный пароль» (или «Suggest Strong Password»)
+        </li>
         <li>Прими сгенерированный пароль</li>
         <li>Введи его повторно в поле подтверждения</li>
       </ol>
@@ -173,8 +175,8 @@ export function PasswordShield() {
             {!isPartOne && (
               <div className={styles.generatorHint} role="note">
                 <p className={styles.generatorHintText}>
-                  Нажми на поле ниже — браузер предложит создать надёжный пароль.
-                  Выбери «Предложить надёжный пароль» и прими его.
+                  Нажми на поле ниже — браузер предложит создать надёжный
+                  пароль. Выбери «Предложить надёжный пароль» и прими его.
                 </p>
               </div>
             )}
@@ -190,7 +192,11 @@ export function PasswordShield() {
               <Input
                 id={isPartOne ? 'password' : 'gen-password'}
                 type="password"
-                placeholder={isPartOne ? 'Введи пароль...' : 'Нажми сюда и выбери предложение браузера'}
+                placeholder={
+                  isPartOne
+                    ? 'Введи пароль...'
+                    : 'Нажми сюда и выбери предложение браузера'
+                }
                 label="Пароль"
                 value={active.password}
                 onChange={e => active.setPassword(e.target.value)}
@@ -239,7 +245,9 @@ export function PasswordShield() {
                 onClick={isPartOne ? handlePart1Submit : handlePart2Submit}
                 isDisable={!active.canSubmit}
               >
-                <span>{isPartOne ? 'Перейти к части 2' : 'Завершить уровень'}</span>
+                <span>
+                  {isPartOne ? 'Перейти к части 2' : 'Завершить уровень'}
+                </span>
                 <Icon icon={isPartOne ? 'ShieldIcon' : 'RocketIcon'} />
               </Button>
             </form>

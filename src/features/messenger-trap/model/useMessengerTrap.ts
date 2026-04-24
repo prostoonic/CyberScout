@@ -63,15 +63,11 @@ export function useMessengerTrap() {
         optionId === chat.goodOptionId ? 'good' : 'bad'
 
       setActiveState(prev =>
-        prev
-          ? { ...prev, selectedOptionId: optionId, outcome }
-          : prev
+        prev ? { ...prev, selectedOptionId: optionId, outcome } : prev
       )
 
       setTimeout(() => {
-        setActiveState(prev =>
-          prev ? { ...prev, showResponse: true } : prev
-        )
+        setActiveState(prev => (prev ? { ...prev, showResponse: true } : prev))
 
         const result: ChatResult = {
           chatId: chat.id,

@@ -78,12 +78,12 @@ export function SuccessModal({ onClose, headerHeight = 64 }: IProps) {
         </div>
 
         <h2 id="modal-title" className={styles.title}>
-    Уровень пройден!
-</h2>
-<p className={styles.description}>
-    Отличная работа! Ты создал надёжный пароль и знаешь, как защитить свой
-    аккаунт. Продолжай своё кибер-приключение!
-</p>
+          Уровень пройден!
+        </h2>
+        <p className={styles.description}>
+          Отличная работа! Ты создал надёжный пароль и знаешь, как защитить свой
+          аккаунт. Продолжай своё кибер-приключение!
+        </p>
         <Button variant="primary" onClick={onClose} isDisable={false}>
           Продолжить путешествие
         </Button>

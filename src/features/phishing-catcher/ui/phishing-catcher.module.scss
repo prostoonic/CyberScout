@@ -542,14 +542,13 @@
     opacity: 0.75;
     transform: translateY(0);
   }
-
 }
 
 .btnPhishing {
   @extend %actionBtn;
   background: var(--color-error);
   color: #fff;
-  
+
   &:focus-visible {
     outline: 3px solid var(--color-error);
     outline-offset: 3px;

@@ -12,7 +12,11 @@ interface IProps {
   variant?: 'error' | 'warning'
 }
 
-export function PermissionErrorModal({ errorDetail, onClose, variant = 'error' }: IProps) {
+export function PermissionErrorModal({
+  errorDetail,
+  onClose,
+  variant = 'error',
+}: IProps) {
   useBodyScrollLock()
   const { app, extraPermissions, missingPermissions } = errorDetail
 
@@ -48,7 +52,10 @@ export function PermissionErrorModal({ errorDetail, onClose, variant = 'error' }
           )}
         </div>
 
-        <h2 id="perm-error-title" className={clsx(styles.title, { [styles.titleWarning]: isWarning })}>
+        <h2
+          id="perm-error-title"
+          className={clsx(styles.title, { [styles.titleWarning]: isWarning })}
+        >
           {isWarning ? 'Выбраны не все разрешения' : 'Неверные разрешения!'}
         </h2>
 

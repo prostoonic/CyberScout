@@ -26,7 +26,6 @@
   min-width: 0;
 }
 
-
 .logo {
   flex-shrink: 0;
   border-radius: var(--border-radius-l);
@@ -147,7 +146,9 @@
   margin: 0;
   cursor: pointer;
   flex-shrink: 0;
-  transition: opacity var(--transition), transform var(--transition);
+  transition:
+    opacity var(--transition),
+    transform var(--transition);
 
   &:hover {
     opacity: 0.85;

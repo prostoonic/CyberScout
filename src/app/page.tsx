@@ -16,7 +16,7 @@ export default function Home() {
 
   const [name, setName] = useState('')
   const [nameError, setNameError] = useState('')
-  const [avatar, setAvatar] = useState<number | null >(null)
+  const [avatar, setAvatar] = useState<number | null>(null)
 
   function handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value

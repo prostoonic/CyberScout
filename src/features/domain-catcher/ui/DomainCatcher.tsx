@@ -2,7 +2,12 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { SuccessModal, LevelIntroModal, GameOverModal, HeartsDisplay } from '@/shared/ui'
+import {
+  SuccessModal,
+  LevelIntroModal,
+  GameOverModal,
+  HeartsDisplay,
+} from '@/shared/ui'
 import { useUserStore, MAX_LIVES } from '@/entities/user'
 import { useDomainCatcher } from '../model/useDomainCatcher'
 import { DomainCard } from './DomainCard'

@@ -48,7 +48,9 @@ export function LevelIntroModal({
     >
       <div className={styles.modal} ref={modalRef}>
         <div className={styles.topRow}>
-          <span className={styles.levelBadge}>{badgeLabel ?? `Уровень ${levelNumber}`}</span>
+          <span className={styles.levelBadge}>
+            {badgeLabel ?? `Уровень ${levelNumber}`}
+          </span>
         </div>
 
         <div className={styles.iconWrapper} aria-hidden="true">
@@ -66,7 +68,13 @@ export function LevelIntroModal({
                 strokeLinecap="round"
               />
               <defs>
-                <linearGradient id="introGradient" x1="0" y1="0" x2="64" y2="64">
+                <linearGradient
+                  id="introGradient"
+                  x1="0"
+                  y1="0"
+                  x2="64"
+                  y2="64"
+                >
                   <stop offset="0%" stopColor="#0057bd" />
                   <stop offset="100%" stopColor="#6e9fff" />
                 </linearGradient>

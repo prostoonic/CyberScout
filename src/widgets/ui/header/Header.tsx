@@ -23,7 +23,6 @@ export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.leading}>
-       
         <Link
           href="/levels"
           className={styles.logo}
