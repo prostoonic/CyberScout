@@ -17,48 +17,48 @@ const LEVEL_ID = 5
 function Level5IntroContent() {
   return (
     <div className={introStyles.content}>
-      <p className={introStyles.lead}>
-        Приложения могут запрашивать доступ к камере, микрофону, контактам и
-        другим данным. Не все разрешения безопасны.
-      </p>
-      <p className={introStyles.lead}>
-        Если дать лишний доступ, приложение может следить за тобой или
+    <p className={introStyles.lead}>
+        Приложения могут запрашивать доступ к камере, микрофону, контактам и
+        другим данным. Не все разрешения безопасны.
+    </p>
+    <p className={introStyles.lead}>
+        Если дать лишний доступ, приложение может следить за тобой или
         передавать твои данные.
-      </p>
+    </p>
 
-      <h3 className={introStyles.listTitle}>
-        Как понять, можно ли дать разрешение:
-      </h3>
-      <ul className={introStyles.list}>
-        <li>Оно должно быть нужно для работы приложения</li>
-        <li>Если запрос выглядит странно — лучше отказать</li>
-        <li>Не давай лишние разрешения</li>
-        <li>При необходимости выбирай доступ только во время использования</li>
-      </ul>
+    <h3 className={introStyles.listTitle}>
+        Как понять, можно ли дать разрешение:
+    </h3>
+    <ul className={introStyles.list}>
+        <li>Оно должно быть нужно для работы приложения</li>
+        <li>Если запрос выглядит странно — лучше отказать</li>
+        <li>Не давай лишние разрешения</li>
+        <li>При необходимости выбирай доступ только во время использования</li>
+    </ul>
 
-      <div className={introStyles.examples}>
+    <div className={introStyles.examples}>
         <p className={introStyles.examplesTitle}>Примеры:</p>
         <ul className={introStyles.examplesList}>
-          <li>
-             Фонарик просит доступ к контактам
-            — подозрительно
-          </li>
-          <li>
-            Навигатор просит геолокацию —
-            нормально
-          </li>
-          <li>
-             Соцсеть просит камеру — допустимо
-          </li>
+            <li>
+                Фонарик просит доступ к контактам
+                 — подозрительно
+            </li>
+            <li>
+                Навигатор просит геолокацию —
+                нормально
+            </li>
+            <li>
+                Соцсеть просит камеру — допустимо
+            </li>
         </ul>
-      </div>
-
-      <div className={introStyles.rule}>
-        <p className={introStyles.ruleText}>
-          Главное правило: давай только необходимые разрешения.
-        </p>
-      </div>
     </div>
+
+    <div className={introStyles.rule}>
+        <p className={introStyles.ruleText}>
+            Главное правило: давай только необходимые разрешения.
+        </p>
+    </div>
+</div>
   )
 }
 

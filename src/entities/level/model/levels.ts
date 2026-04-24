@@ -16,7 +16,7 @@ export const LEVELS: Level[] = [
   {
     id: 1,
     number: 1,
-    title: 'Пароли',
+    title: 'Надёжный пароль',
     description: 'Как создавать надёжные пароли и хранить их в безопасности',
     icon: 'KeyIcon',
     status: 'completed',
@@ -24,7 +24,7 @@ export const LEVELS: Level[] = [
   {
     id: 2,
     number: 2,
-    title: 'Фишинг',
+    title: 'Охотник за фишингом',
     description: 'Научись распознавать мошеннические письма',
     icon: 'FishIcon',
     status: 'completed',
@@ -32,7 +32,7 @@ export const LEVELS: Level[] = [
   {
     id: 3,
     number: 3,
-    title: 'Фальшивые домены',
+    title: 'Охота на фальшивые домены',
     description: 'Как распознавать поддельные сайты и домены',
     icon: 'GlobeIcon',
     status: 'current',
@@ -40,7 +40,7 @@ export const LEVELS: Level[] = [
   {
     id: 4,
     number: 4,
-    title: 'Скам-сообщения',
+    title: 'Мессенджер-ловушка',
     description: 'Как распознавать мошеннические сообщения и спам',
     icon: 'ChatWarningIcon',
     status: 'locked',
@@ -48,7 +48,7 @@ export const LEVELS: Level[] = [
   {
     id: 5,
     number: 5,
-    title: 'Менеджер разрешенй',
+    title: 'Защитник разрешений',
     description: 'Как управлять разрешениями приложений',
     icon: 'ShieldIcon',
     status: 'locked',

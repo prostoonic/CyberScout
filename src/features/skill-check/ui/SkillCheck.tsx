@@ -16,45 +16,45 @@ const LEVEL_ID = 6
 function SkillCheckIntroContent() {
   return (
     <div className={introStyles.content}>
-      <p className={introStyles.lead}>
+    <p className={introStyles.lead}>
         Финальный уровень! Покажи всё, чему научился. Перед тобой будут
-        появляться ситуации из прошлых уровней — определи, безопасна каждая из
-        них или нет.
-      </p>
+        появляться ситуации из прошлых уровней — определи, безопасна каждая из
+        них или нет.
+    </p>
 
-      <div className={introStyles.statsRow}>
+    <div className={introStyles.statsRow}>
         <div className={introStyles.stat}>
-          <span className={introStyles.statValue}>10</span>
-          <span className={introStyles.statLabel}>Очков для победы</span>
+            <span className={introStyles.statValue}>10</span>
+            <span className={introStyles.statLabel}>Очков для победы</span>
         </div>
         <div className={introStyles.stat}>
-          <span className={introStyles.statValue}>
-            {SKILL_CHECK_TOTAL_TIME_SECONDS}
-          </span>
-          <span className={introStyles.statLabel}>Секунд на всё</span>
+            <span className={introStyles.statValue}>
+                {SKILL_CHECK_TOTAL_TIME_SECONDS}
+            </span>
+            <span className={introStyles.statLabel}>Секунд на всё</span>
         </div>
         <div className={introStyles.stat}>
-          <span className={introStyles.statValue}>+1</span>
-          <span className={introStyles.statLabel}>Очко за верный ответ</span>
+            <span className={introStyles.statValue}>+1</span>
+            <span className={introStyles.statLabel}>Очко за верный ответ</span>
         </div>
-      </div>
-
-      <ul className={introStyles.rulesList}>
-        <li className={introStyles.rulesItem}>
-          Появляется ситуация — ты выбираешь «Безопасно» или «Опасно»
-        </li>
-        <li className={introStyles.rulesItem}>
-          Темы: пароли, фишинг, домены, 2FA, мессенджеры, Wi-Fi, разрешения
-        </li>
-        <li className={introStyles.rulesItem}>
-          Если таймер истечёт — уровень начнётся заново (жизнь не снимается)
-        </li>
-      </ul>
-
-      <p className={introStyles.mainRule}>
-        Главное правило: если есть сомнение — это, скорее всего, опасно.
-      </p>
     </div>
+
+    <ul className={introStyles.rulesList}>
+        <li className={introStyles.rulesItem}>
+            Появляется ситуация — ты выбираешь «Безопасно» или «Опасно»
+        </li>
+        <li className={introStyles.rulesItem}>
+            Темы: пароли, фишинг, домены, 2FA, мессенджеры, Wi-Fi, разрешения
+        </li>
+        <li className={introStyles.rulesItem}>
+            Если таймер истечёт — уровень начнётся заново (жизнь не снимается)
+        </li>
+    </ul>
+
+    <p className={introStyles.mainRule}>
+        Главное правило: если есть сомнение — это, скорее всего, опасно.
+    </p>
+</div>
   )
 }
 
