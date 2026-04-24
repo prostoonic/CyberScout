@@ -2,6 +2,7 @@
 
 import styles from './timer-expired-modal.module.scss'
 import { useBodyScrollLock } from '@/shared/lib/useBodyScrollLock'
+import { SKILL_CHECK_TOTAL_TIME_SECONDS } from '../model/skill-check.constants'
 
 interface IProps {
   onRestart: () => void
@@ -43,7 +44,7 @@ export function TimerExpiredModal({ onRestart }: IProps) {
           Время вышло!
         </h2>
         <p className={styles.description}>
-          Ты не успел набрать 10 очков за 30 секунд. Не расстраивайся — попробуй
+          Ты не успел набрать 10 очков за {SKILL_CHECK_TOTAL_TIME_SECONDS} секунд. Не расстраивайся — попробуй
           ещё раз!
         </p>
 
