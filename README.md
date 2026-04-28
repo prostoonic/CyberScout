@@ -87,9 +87,11 @@ npm run dev
 ```bash
 npm run build
 ```
+
 ---
 
 ## 🌍 Демо
+
 Полноценная рабочая версия проекта доступна по ссылке ниже:
 
 ### 🔗 [Перейти к проекту](https://cyber-scout-game.vercel.app)

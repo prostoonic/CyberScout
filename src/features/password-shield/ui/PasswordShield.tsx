@@ -15,15 +15,15 @@ const LEVEL_ID = 1
 function Level1IntroContent() {
   return (
     <div className={introStyles.content}>
-    <p className={introStyles.lead}>
+      <p className={introStyles.lead}>
         Пароль — это защита твоего аккаунта. Если пароль простой, злоумышленники
         могут легко его подобрать и получить доступ к твоим данным, играм и
         личной информации. Сложный пароль делает твой аккаунт безопаснее и
         защищает от взлома.
-    </p>
+      </p>
 
-    <h3 className={introStyles.listTitle}>Чек-лист хорошего пароля:</h3>
-    <ul className={introStyles.list}>
+      <h3 className={introStyles.listTitle}>Чек-лист хорошего пароля:</h3>
+      <ul className={introStyles.list}>
         <li>Минимум 8 символов</li>
         <li>Есть заглавная буква (A–Z)</li>
         <li>Есть строчная буква (a–z)</li>
@@ -31,44 +31,44 @@ function Level1IntroContent() {
         <li>Есть специальный символ (! @#$%^&*)</li>
         <li>Не содержит личную информацию (имя, дата рождения)</li>
         <li>Уникальный, не используется на других сайтах</li>
-    </ul>
+      </ul>
 
-    <div className={introStyles.example}>
+      <div className={introStyles.example}>
         <span className={introStyles.exampleLabel}>
-            Пример хорошего пароля:
+          Пример хорошего пароля:
         </span>
         <code className={introStyles.exampleCode}>bNuyA7!KDNigTr4</code>
+      </div>
     </div>
-</div>
   )
 }
 
 function Part2IntroContent() {
   return (
     <div className={introStyles.content}>
-    <p className={introStyles.lead}>
+      <p className={introStyles.lead}>
         Придумывать пароль вручную сложно. Но у твоего браузера есть встроенный
         генератор паролей — он создаёт длинные случайные пароли, которые почти
         невозможно взломать!
-    </p>
+      </p>
 
-    <h3 className={introStyles.listTitle}>Как использовать генератор:</h3>
-    <ol className={introStyles.list} style={{ listStyle: 'decimal' }}>
+      <h3 className={introStyles.listTitle}>Как использовать генератор:</h3>
+      <ol className={introStyles.list} style={{ listStyle: 'decimal' }}>
         <li>Нажми на поле «Пароль» на следующем экране</li>
         <li>Браузер покажет иконку ключа 🔑 или всплывающее предложение</li>
         <li>
-            Выбери «Предложить надёжный пароль» (или «Suggest Strong Password»)
+          Выбери «Предложить надёжный пароль» (или «Suggest Strong Password»)
         </li>
         <li>Прими сгенерированный пароль</li>
         <li>Введи его повторно в поле подтверждения</li>
-    </ol>
+      </ol>
 
-    <div className={introStyles.example}>
+      <div className={introStyles.example}>
         <span className={introStyles.exampleLabel}>
-            Совет: сохрани пароль в менеджере паролей браузера
+          Совет: сохрани пароль в менеджере паролей браузера
         </span>
+      </div>
     </div>
-</div>
   )
 }
 
@@ -175,9 +175,9 @@ export function PasswordShield() {
             {!isPartOne && (
               <div className={styles.generatorHint} role="note">
                 <p className={styles.generatorHintText}>
-    Нажми на поле ниже — браузер предложит создать надёжный
-    пароль. Выбери «Предложить надёжный пароль» и прими его.
-</p>
+                  Нажми на поле ниже — браузер предложит создать надёжный
+                  пароль. Выбери «Предложить надёжный пароль» и прими его.
+                </p>
               </div>
             )}
 
