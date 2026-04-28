@@ -11,6 +11,7 @@ function sanitize(value: string): string {
 
 interface IProps {
   id: string
+  name?: string
   placeholder: string
   value?: string
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -26,6 +27,7 @@ interface IProps {
 
 export function Input({
   id,
+  name,
   placeholder,
   value,
   onChange,
@@ -70,6 +72,7 @@ export function Input({
             [styles.inputWithToggle]: showToggle,
           })}
           id={id}
+          name={name}
           placeholder={placeholder}
           value={value}
           onChange={handleChange}
