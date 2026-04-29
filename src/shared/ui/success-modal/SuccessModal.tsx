@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import confetti from 'canvas-confetti'
+import { getConfettiViewportScale } from '@/shared/lib/confettiViewportScale'
 import styles from './success-modal.module.scss'
 import { Button } from '../button/Button'
 import { useBodyScrollLock, useFocusTrap } from '@/shared/lib/useBodyScrollLock'
@@ -34,23 +35,28 @@ export function SuccessModal({
     const end = Date.now() + 4000
 
     const frame = () => {
+      const { particleMultiplier, scalarMultiplier, spreadExtra } =
+        getConfettiViewportScale()
+      const spread = 55 + spreadExtra
+      const particles = Math.max(4, Math.round(6 * particleMultiplier))
+
       confetti({
-        particleCount: 6,
+        particleCount: particles,
         angle: 60,
-        spread: 55,
+        spread,
         origin: { x: 0, y: originY },
         colors: ['#6e9fff', '#3d57a7', '#48ac34', '#ffcc00', '#ff6b6b'],
         gravity: 0.9,
-        scalar: 0.9,
+        scalar: 0.9 * scalarMultiplier,
       })
       confetti({
-        particleCount: 6,
+        particleCount: particles,
         angle: 120,
-        spread: 55,
+        spread,
         origin: { x: 1, y: originY },
         colors: ['#6e9fff', '#3d57a7', '#48ac34', '#ffcc00', '#ff6b6b'],
         gravity: 0.9,
-        scalar: 0.9,
+        scalar: 0.9 * scalarMultiplier,
       })
       if (Date.now() < end) requestAnimationFrame(frame)
     }

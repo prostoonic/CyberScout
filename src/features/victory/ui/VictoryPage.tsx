@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import confetti from 'canvas-confetti'
 import { useUserStore } from '@/entities/user'
+import { getConfettiViewportScale } from '@/shared/lib/confettiViewportScale'
 import { AVATARS } from '@/entities/avatar/model/avatars'
 import styles from './victory-page.module.scss'
 
@@ -59,10 +60,15 @@ export function VictoryPage() {
     const end = Date.now() + duration
 
     const frame = () => {
+      const { particleMultiplier, scalarMultiplier, spreadExtra } =
+        getConfettiViewportScale()
+      const spread = 70 + spreadExtra
+      const particles = Math.max(6, Math.round(8 * particleMultiplier))
+
       confetti({
-        particleCount: 8,
+        particleCount: particles,
         angle: 60,
-        spread: 70,
+        spread,
         origin: { x: 0, y: 0.4 },
         colors: [
           '#6e9fff',
@@ -73,12 +79,12 @@ export function VictoryPage() {
           '#9c27b0',
         ],
         gravity: 0.85,
-        scalar: 1.1,
+        scalar: 1.1 * scalarMultiplier,
       })
       confetti({
-        particleCount: 8,
+        particleCount: particles,
         angle: 120,
-        spread: 70,
+        spread,
         origin: { x: 1, y: 0.4 },
         colors: [
           '#6e9fff',
@@ -89,7 +95,7 @@ export function VictoryPage() {
           '#9c27b0',
         ],
         gravity: 0.85,
-        scalar: 1.1,
+        scalar: 1.1 * scalarMultiplier,
       })
       if (Date.now() < end) requestAnimationFrame(frame)
     }
