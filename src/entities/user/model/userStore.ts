@@ -41,7 +41,13 @@ export const useUserStore = create<UserState>()(
         }),
 
       startGame: (username, avatarId) =>
-        set({ username, selectedAvatarId: avatarId, progress: 0, completedLevels: [], mistakes: [] }),
+        set({
+          username,
+          selectedAvatarId: avatarId,
+          progress: 0,
+          completedLevels: [],
+          mistakes: [],
+        }),
 
       addMistake: text =>
         set(state => ({
